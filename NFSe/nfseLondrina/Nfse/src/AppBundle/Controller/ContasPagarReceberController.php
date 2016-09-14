@@ -313,16 +313,19 @@ class ContasPagarReceberController extends Controller
      */
     public function BaixarLancamentos(Request $request, ContasPagarReceber $conta){
 
-        $sql = "select icp.id, icp.valor, icp.acrescimo, icp.desconto, icp.data_vencimento,
-                lan.valor \"lan_valor\", lan.acrescimo \"lan_acres\", lan.desconto \"lan_desc\", lan.data_lancamento
+        $sql = "select icp.id, icp.valor, icp.acrescimo, icp.desconto, icp.data_vencimento, icp.historico,
+                ((icp.valor + icp.acrescimo - icp.desconto) - sum(recicp.valor)) \"saldo\",
+                sum(recicp.valor) \"valorPago\", sum(recicp.acrescimo) \"recicp_acres\", sum(recicp.desconto) \"recicp_desc\", 
+                recicp.data_lancamento \"data_pagamento\"
                 from itens_conta_pagar_receber icp
-                left join lancamentos lan on lan.id_empresa = icp.id_empresa and lan.id_doc =icp.id
-                where icp.id_conta =40
+                left join recebimento_itens_conta_pagar_receber recicp on recicp.id_empresa = icp.id_empresa and recicp.id_item_conta =icp.id
+                where icp.id_conta = :idcont
                 order by icp.data_vencimento";
 
         $em = $this->getDoctrine()->getManager();
         $stmt = $em->getConnection()->prepare($sql);
-        $stmt->execute();
+        $params['idcont'] = $conta->getId();
+        $stmt->execute($params);
         $items = $stmt->fetchAll();
 
         return $this->render('contas/baixa.html.twig', array(

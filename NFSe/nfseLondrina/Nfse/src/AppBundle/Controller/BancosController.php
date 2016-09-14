@@ -42,6 +42,7 @@ class BancosController extends Controller
     public function newAction(Request $request)
     {
         $banco = new Bancos();
+
         $form = $this->createForm('AppBundle\Form\BancosType', $banco);
         $form->handleRequest($request);
 

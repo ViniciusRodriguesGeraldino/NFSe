@@ -60,10 +60,9 @@
                                 <tr>
                                     <th><div class="text-center">Vencimento</div></th>
                                     <th><div class="text-right">Valor</div></th>
-                                    <th><div class="text-right">Acréscimo</div></th>
-                                    <th><div class="text-right">Desconto</div></th>
+                                    <th><div class="text-right">Valor Pago</div></th>
+                                    <th><div class="text-right">Saldo</div></th>
                                     <th><div class="text-center">Histórico</div></th>
-                                    <th><div class="text-center">Valor Pago</div></th>
                                     <th class=""></th>
                                 </tr>
                                 </thead>
@@ -77,19 +76,16 @@
                                                    value="{{ item.data_vencimento|date('d/m/Y') }}" data-format="dd/MM/yyyy" required="required" placeholder="DD/MM/AAAA"></td>
 
                                         <td><input type="text" id="itemValor{{ count }}" name="itemValor{{ count }}" class="text-right ContaItem" required="required"
-                                                   value="{{ item.valor }}" placeholder="0,00"></td>
+                                                   value="{{ item.valor|number_format(2, ',', '') }}" placeholder="0,00"></td>
 
-                                        <td><input type="text" id="itemAcrescimo{{ count }}" name="itemAcrescimo{{ count }}" class="text-right ContaItem"
-                                                   value="{{ item.acrescimo }}" placeholder="0,00"></td>
+                                        <td><input type="text" id="itemValorPago{{ count }}" name="itemValorPago{{ count }}" class="text-right ContaItem"
+                                                   value="{{ item.valorPago|number_format(2, ',', '') }}" placeholder="0,00"></td>
 
-                                        <td><input type="text" id="itemDesconto{{ count }}" name="itemDesconto{{ count }}" class="text-right ContaItem"
-                                                   value="{{ item.desconto }}" placeholder="0,00"></td>
-
-                                        <td><input type="text" id="itemHistorico{{ count }}" name="itemHistorico{{ count }}" class="text-center ContaItem"
-                                                   value="" ></td>
+                                        <td><input type="text" id="itemSaldo{{ count }}" name="itemSaldo{{ count }}" class="text-right ContaItem"
+                                                   value="{{ item.saldo|number_format(2, ',', '') }}" placeholder="0,00"></td>
 
                                         <td><input type="text" id="itemHistorico{{ count }}" name="itemHistorico{{ count }}" class="text-center ContaItem"
-                                                   value="" ></td>
+                                                   value="{{ item.historico }}" ></td>
 
                                         {#<td href="#" id="btnRemoveLinha" class="sale-delete-row">×</td>#}
                                         <td>
@@ -161,12 +157,16 @@
                                 <table id="table_pgtos" class="table table-bordered center padding-left table-pagamento">
                                     <thead>
                                     <tr>
-                                        <th>Forma Pagamento</th>
+                                        <th class="text-center">Data Recebimento</th>
+                                        <th class="text-center">Forma Pagamento</th>
                                         <th class="text-right">Valor</th>
+                                        <th class="text-right">Desconto</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
+                                        {#<td><input type="text"></td>#}
+                                        {#<td><input type="text"></td>#}
                                         {#<td><input type="text"></td>#}
                                         {#<td><input type="text"></td>#}
                                     </tr>
@@ -257,7 +257,7 @@
             $("#grid_forma_pagamento").show();
             $("#FinalizarPagamento").prop('disabled', true);
 
-            
+
         }
         
         function AddPagamento() {
@@ -271,11 +271,22 @@
             var newRow = table.insertRow(numOfRows);
             var rowNumber = numOfRows - 1;
 
+//          <th class="text-center">Data Recebimento</th>
+//          <th class="text-center">Forma Pagamento</th>
+//          <th class="text-right">Valor</th>
+//          <th class="text-right">Desconto</th>
+
             newCell = newRow.insertCell(0);
-            newCell.innerHTML = '<input type="text" value="'+formaPgto.value+ ' - ' + text_pagto +'" id="tableFormaPagto' + rowNumber + '" name="tableFormaPagto' + rowNumber + '" class="">';
+            newCell.innerHTML = '<input type="text" value="'+dataHoje+'" id="tableDataPagto' + rowNumber + '" name="tableDataPagto' + rowNumber + '" class="text-right">';
 
             newCell = newRow.insertCell(1);
+            newCell.innerHTML = '<select id="tableFormaPagamento' + rowNumber + '" name="tableFormaPagamento' + rowNumber + '"><option value="Dinheiro">Dinheiro</option><option value="Cartao">Cartão</option><option value="Cheque">Cheque</option></select>';
+
+            newCell = newRow.insertCell(2);
             newCell.innerHTML = '<input type="text" value="'+val+'" id="tableValorPagto' + rowNumber + '" name="tableValorPagto' + rowNumber + '" class="text-right">';
+
+            newCell = newRow.insertCell(3);
+            newCell.innerHTML = '<input type="text" value="'+formaPgto.value+ ' - ' + text_pagto +'" id="tableFormaPagto' + rowNumber + '" name="tableFormaPagto' + rowNumber + '" class="">';
 
             $("#grid_pagamentos").show();
             $("#grid_forma_pagamento").hide();

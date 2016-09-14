@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\RecebimentoItensContaPagarReceber" table="recebimento_itens_conta_pagar_receber">
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idEmpresa" type="integer" column="ID_EMPRESA" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idItemConta" type="integer" column="ID_ITEM_CONTA" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="valor" type="float" column="VALOR" precision="10" scale="0" nullable="true"/>
+    <field name="acrescimo" type="float" column="ACRESCIMO" precision="10" scale="0" nullable="true"/>
+    <field name="desconto" type="float" column="DESCONTO" precision="10" scale="0" nullable="true"/>
+    <field name="datalancamento" type="date" column="DATA_LANCAMENTO" nullable="true"/>
+    <field name="historico" type="string" column="HISTORICO" length="100" nullable="true"/>
+  </entity>
+</doctrine-mapping>

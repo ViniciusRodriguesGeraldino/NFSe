@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ItensContaPagarReceber
  *
- * @ORM\Table(name="itens_conta_pagar_receber")
+ * @ORM\Table(name="recebimento_itens_conta_pagar_receber")
  * @ORM\Entity
  */
 class ItensContaPagarReceber
@@ -24,16 +24,16 @@ class ItensContaPagarReceber
     /**
      * @var integer
      *
-     * @ORM\Column(name="ID_EMPRESA", type="integer", nullable=false)
+     * @ORM\Column(name="EMPRESA", type="integer", nullable=false)
      */
     private $idEmpresa;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="ID_CONTA", type="integer", nullable=false)
+     * @ORM\Column(name="ID_DOC", type="integer", nullable=false)
      */
-    private $idConta;
+    private $idItemConta;
 
 
     /**
@@ -46,13 +46,13 @@ class ItensContaPagarReceber
     /**
      * @var float
      *
-     * @ORM\Column(name="ACRESCIMO", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="ACRESCIMOS", type="float", precision=10, scale=0, nullable=true)
      */
     private $acrescimo;
     /**
      * @var float
      *
-     * @ORM\Column(name="DESCONTO", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="DESCONTOS", type="float", precision=10, scale=0, nullable=true)
      */
     private $desconto;
 
@@ -63,14 +63,7 @@ class ItensContaPagarReceber
      */
     private $datalancamento;
 
-    /**
-     * @var date
-     *
-     * @ORM\Column(name="DATA_VENCIMENTO", type="date", nullable=true)
-     */
-    private $datavencimento;
-
-    /**
+     /**
      * @var string
      *
      * @ORM\Column(name="HISTORICO", type="string", length=10, nullable=true)
@@ -94,7 +87,7 @@ class ItensContaPagarReceber
      *
      * @param integer $idEmpresa
      *
-     * @return ItensContaPagarReceber
+     * @return RecebimentoItensContaPagarReceber
      */
     public function setIdEmpresa($idEmpresa)
     {
@@ -114,27 +107,27 @@ class ItensContaPagarReceber
     }
 
     /**
-     * Set idConta
+     * Set idItemConta
      *
-     * @param integer $idConta
+     * @param integer $idItemConta
      *
-     * @return ItensContaPagarReceber
+     * @return RecebimentoItensContaPagarReceber
      */
-    public function setIdConta($idConta)
+    public function setIdItemConta($idItemConta)
     {
-        $this->idConta = $idConta;
+        $this->idItemConta = $idItemConta;
 
         return $this;
     }
 
     /**
-     * Get idConta
+     * Get idItemConta
      *
      * @return integer
      */
-    public function getIdConta()
+    public function getIdItemConta()
     {
-        return $this->idConta;
+        return $this->idItemConta;
     }
 
     /**
@@ -142,7 +135,7 @@ class ItensContaPagarReceber
      *
      * @param float $valor
      *
-     * @return ItensContaPagarReceber
+     * @return RecebimentoItensContaPagarReceber
      */
     public function setValor($valor)
     {
@@ -166,7 +159,7 @@ class ItensContaPagarReceber
      *
      * @param float $acrescimo
      *
-     * @return ItensContaPagarReceber
+     * @return RecebimentoItensContaPagarReceber
      */
     public function setAcrescimo($acrescimo)
     {
@@ -190,7 +183,7 @@ class ItensContaPagarReceber
      *
      * @param float $desconto
      *
-     * @return ItensContaPagarReceber
+     * @return RecebimentoItensContaPagarReceber
      */
     public function setDescontos($desconto)
     {
@@ -214,7 +207,7 @@ class ItensContaPagarReceber
      *
      * @param date $datalancamento
      *
-     * @return ItensContaPagarReceber
+     * @return RecebimentoItensContaPagarReceber
      */
     public function setDataLancamento($datalancamento)
     {
@@ -231,31 +224,6 @@ class ItensContaPagarReceber
     public function getDataLancamento()
     {
         return $this->datalancamento;
-    }
-
-
-    /**
-     * Set datavencimento
-     *
-     * @param date $datavencimento
-     *
-     * @return ItensContaPagarReceber
-     */
-    public function setDataVencimento($datavencimento)
-    {
-        $this->datavencimento = $datavencimento;
-
-        return $this;
-    }
-
-    /**
-     * Get datavencimento
-     *
-     * @return \DateTime
-     */
-    public function getDataVencimento()
-    {
-        return $this->datavencimento;
     }
 
     /**

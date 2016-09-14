@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <h1 class="pagination-centered">Lista de Contas</h1>
+            </div>
+        </div>
+
+        <div class="row padding-top padding-bottom">
+            <div class="col-xs-1 col-xs-offset-1">
+                <a class="abutton" href="{{ path('contas_new') }}">Nova Conta</a>
+            </div>
+        </div>
+
+        <div class="row row-centered">
+            <div class="col-xs-10 col-xs-offset-1">
+                <table class="table pagination-centered">
+            <thead>
+                <tr>
+                    {#<th>Conta</th>#}
+                    <th class="text-left">Tipo Conta</th>
+                    <th class="text-left">Nome</th>
+                    <th class="text-right">Documento</th>
+                    <th class="text-right">Valor</th>
+                    <th class="text-center">Data Lançamento</th>
+                    <th class="text-center">Data Vencimento</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for conta in contas %}
+                <tr>
+                    {#<td>{{ conta.id }}</td>#}
+                    <td class="text-left">{{ conta.tipoConta }}</td>
+                    <td class="text-left">{{ conta.nome }}</td>
+                    <td class="text-right">{{ conta.numeroDocumento }}</td>
+                    <td class="text-right">{{ conta.valorTotal|number_format(2, ',', '') }}</td>
+                    <td class="text-center">{% if conta.dataLancamento %}{{ conta.dataLancamento|date('d/m/Y') }}{% endif %}</td>
+                    <td class="text-center">{% if conta.dataVencimento %}{{ conta.dataVencimento|date('d/m/Y') }}{% endif %}</td>
+                    <td><a href="{{ path('contas_edit', { 'id': conta.id }) }}">Editar</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,235 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if possuiLancamentos %}
+        <div class="container disabledDiv">
+    {% else %}
+        <div class="container">
+    {% endif %}
+
+        <form class="" method="post" action="" id="contas_form_edit">
+
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <h1 class="padding-bottom">Editar Conta</h1>
+                </div>
+            </div>
+
+            <div class="row row-centered">
+                <div class="col-xs-10 col-xs-offset-1">
+
+                    <div class="row padding-top">
+                        <div class="col-xs-2">
+                            <label>Tipo de Conta: </label>
+                            {% if conta.tipoConta == 'PAGAR' %}
+                                <select id="tipoConta" name="tipoConta" class="form-control"><option value="1">A Pagar</option>
+                                                                                             <option value="2">A Receber</option>
+                                </select>
+                            {% else %}
+                                <select id="tipoConta" name="tipoConta" class="form-control"><option value="2">A Receber</option>
+                                                                                            <option value="1">A Pagar</option>
+                                </select>
+                            {% endif %}
+                        </div>
+
+                        <div class=" col-xs-3">
+                            <div class="float-left no-padding-left col-xs-4">
+                                <label>Cliente</label>
+                            </div>
+                            <div class="float-right text-right col-xs-8">
+                                <a href="" class="customer-edit-link">
+                                    Perfil do cliente
+                                </a>
+                            </div>
+                            {#<input type="text" style="display:none" id="idCliente" name="idCliente">#}
+
+                            <input type="text" id="NomeCliente" name="NomeCliente" class="NomeCliente form-control" required="required"
+                                   value="({{ conta.idCliente }}) {{ conta.nome }}" placeholder="Digite o nome do cliente" onchange="">
+                        </div>
+
+                        <div class="col-xs-2 fix-padding">
+                            <label>Data Vencimento</label>
+                            <div class="input-append date" id="datetimepicker1" >
+                                <input type="text" id="dataVencimentoNota" name="dataVencimentoNota" class="form-control" value="{{ conta.datavencimento|date('d/m/Y') }}"
+                                       data-format="dd/MM/yyyy" required="required" placeholder="DD/MM/AAAA">
+                            <span class="add-on">
+                                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                            </span>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-3 fix-padding">
+                            <label>Número Documento</label>
+                            <div class="input-append">
+                                <input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" value="{{ conta.numeroDocumento }}"
+                                       data-format="dd/MM/yyyy" required="required" placeholder="Digite o número do doc.">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row padding-top">
+                        <div class="col-xs-2">
+                            <label>Valor Total</label>
+                            <div class="input-append">
+                                <input type="text" id="valorTotalDocumento" name="valorTotalDocumento" class="form-control" value="{{ conta.valorTotal }}"
+                                       required="required" placeholder="0,00" style="text-align: right">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2">
+                            <label>Acréscimos</label>
+                            <div class="input-append">
+                                <input type="text" id="acrescimos" name="acrescimos" class="form-control" value="{{ conta.acrescimos }}"
+                                       placeholder="0,00" style="text-align: right">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2">
+                            <label>Descontos</label>
+                            <div class="input-append">
+                                <input type="text" id="descontos" name="descontos" class="form-control" value="{{ conta.descontos }}"
+                                       placeholder="0,00" style="text-align: right">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <label>Histórico</label>
+                            <div class="input-append">
+                                <input type="text" id="historico" name="historico" class="form-control" value="{{ conta.historico }}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row padding-top">
+                        <div class="col-xs-3">
+                            <label>Forma de Pagamento</label>
+                            {% if conta.pagamento == '1' %}
+                                <select id="formaPagamento" onchange="habilitaParcelamento()" onblur="lancaValores();"
+                                        class="form-control"><option value="1">À Vista</option>
+                                                             <option value="2">À Prazo</option>
+                                                             <option hidden value="3">Cheque</option>
+                                </select>
+                            {% else %}
+                                <select id="formaPagamento" onchange="habilitaParcelamento()" onblur="lancaValores();"
+                                        class="form-control"><option value="2">À Prazo</option>
+                                                             <option value="1">À Vista</option>
+                                                             <option hidden value="3">Cheque</option>
+                                </select>
+                            {% endif %}
+                        </div>
+
+
+                        {% if conta.pagamento == '2' %}
+                            <div class="col-xs-2" id="Parcelamento">
+                                <label>Qtd. Parcelas</label>
+                                <div class="input-append">
+                                    <input type="text" id="qtdParcelas" name="qtdParcelas" class="form-control" value="{{ itens|length }}"
+                                           placeholder="1x" style="text-align: right" onblur="carregaLinhasLancamento()">
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-xs-2" id="Parcelamento" hidden>
+                                <label>Qtd. Parcelas</label>
+                                <div class="input-append">
+                                    <input type="text" id="qtdParcelas" name="qtdParcelas" class="form-control" value=""
+                                           placeholder="1x" style="text-align: right" onblur="carregaLinhasLancamento()">
+                                </div>
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                    <div class="row padding-top">
+                        <label style="display: block" class="padding-left">Lançamentos</label>
+                        <div class="col-xs-10">
+                            <table class="tabelaLancamentos table table-bordered" id="tabelaLancamentos">
+                                <thead>
+                                <tr>
+                                    <th><div class="text-center">Vencimento</div></th>
+                                    <th><div class="text-right">Valor</div></th>
+                                    <th><div class="text-right">Acréscimo</div></th>
+                                    <th><div class="text-right">Desconto</div></th>
+                                    <th><div class="text-center">Histórico</div></th>
+                                    {#<th><div class="text-center">Centro Custo</div></th>#}
+                                    <th class=""></th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+
+                                {% for item in itens %}
+                                    <tr>
+                                        <td><input type="text" id="itemVencimento0" name="itemVencimento0" class="text-center ContaItem"
+                                                   value="{{ item.datavencimento|date('d/m/Y') }}" data-format="dd/MM/yyyy" required="required" placeholder="DD/MM/AAAA"></td>
+
+                                        <td><input type="text" id="itemValor0" name="itemValor0" class="text-right ContaItem" required="required"
+                                                   value="{{ item.valor }}" placeholder="0,00"></td>
+
+                                        <td><input type="text" id="itemAcrescimo0" name="itemAcrescimo0" class="text-right ContaItem"
+                                                   value="{{ item.acrescimo }}" placeholder="0,00"></td>
+
+                                        <td><input type="text" id="itemDesconto0" name="itemDescontol0" class="text-right ContaItem"
+                                                   value="{{ item.desconto }}" placeholder="0,00"></td>
+
+                                        <td><input type="text" id="itemHistorico0" name="itemHistorico0" class="text-center ContaItem"
+                                                   value="{{ item.historico }}" ></td>
+
+                                        <td href="#" id="btnRemoveLinha" class="sale-delete-row">×</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div class="row padding-top">
+                        <div class="col-xs-1">
+                            <input href="#" type="submit" class="abutton" value="Salvar" id="btnSave" name="Salvar">
+                        </div>
+
+                        <div class="col-xs-1" style="padding-left: 50px">
+                            <a class="abuttonVoltar" href="{{ path('contas_index') }}">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    {% if possuiLancamentos %}
+        <div class="modal show">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                {#<button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+                  {#<span aria-hidden="true">&times;</span>#}
+                {#</button>#}
+                <h4 class="modal-title">Lançamento</h4>
+              </div>
+              <div class="modal-body">
+                <p>Esta conta não pode ser edita pois já possui lançamento, estorne o lançamento para poder edita-la&hellip;</p>
+              </div>
+              <div class="modal-footer">
+                <a class="abuttonVoltar" href="{{ path('contas_index') }}">Voltar</a>
+                {#<button type="button" class="btn btn-primary" onclick="">OK</button>#}
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="{{ asset('assets/js/contas.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,313 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+
+        <form class="" method="post" action="" id=lancamentos_form">
+
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <h1 class="padding-bottom">Baixa de Conta</h1>
+                </div>
+            </div>
+
+            <div class="row row-centered">
+                <div class="col-xs-10 col-xs-offset-1">
+
+                    <div class="row padding-top">
+                        <div class="col-xs-2">
+                            <label>Tipo de Conta: </label>
+                            {% if conta.tipoConta == 'PAGAR' %}
+                                <input type="text" disabled class="form-control" value="A Pagar"/>
+                            {% else %}
+                                <input type="text" disabled class="form-control" value="A Receber"/>
+                            {% endif %}
+                        </div>
+
+                        <div class=" col-xs-3">
+                            <div class="float-left no-padding-left col-xs-4">
+                                <label>Cliente</label>
+                            </div>
+                            {#<input type="text" style="display:none" id="idCliente" name="idCliente">#}
+                            <input type="text" disabled id="NomeCliente" name="NomeCliente" class="NomeCliente form-control" required="required"
+                                   value="({{ conta.idCliente }}) {{ conta.nome }}" placeholder="Digite o nome do cliente" onchange="">
+                        </div>
+
+                        <div class="col-xs-3 fix-padding">
+                            <label>Número Documento</label>
+                            <div class="input-append">
+                                <input type="text" disabled id="numeroDocumento" name="numeroDocumento" class="form-control" value="{{ conta.numeroDocumento }}"
+                                       data-format="dd/MM/yyyy" required="required" placeholder="Digite o número do doc.">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2">
+                            <label>Valor Total</label>
+                            <div class="input-append">
+                                <input type="text" disabled id="valorTotalDocumento" name="valorTotalDocumento" class="form-control" value="{{ conta.valorTotal|number_format(2, ',', '') }}"
+                                       required="required" placeholder="0,00" style="text-align: right">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row padding-top">
+                        <label style="display: block" class="padding-left">Lançamentos</label>
+                        <div class="col-xs-10">
+                            <table class="tabelaLancamentos table table-bordered" id="tabelaLancamentos">
+                                <thead>
+                                <tr>
+                                    <th><div class="text-center">Vencimento</div></th>
+                                    <th><div class="text-right">Valor</div></th>
+                                    <th><div class="text-right">Acréscimo</div></th>
+                                    <th><div class="text-right">Desconto</div></th>
+                                    <th><div class="text-center">Histórico</div></th>
+                                    <th><div class="text-center">Valor Pago</div></th>
+                                    <th class=""></th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+
+                                {% set count = 0 %}
+                                {% for item in items %}
+                                    <tr>
+                                        <td><input type="text" id="itemVencimento{{ count }}" name="itemVencimento{{ count }}" class="text-center ContaItem"
+                                                   value="{{ item.data_vencimento|date('d/m/Y') }}" data-format="dd/MM/yyyy" required="required" placeholder="DD/MM/AAAA"></td>
+
+                                        <td><input type="text" id="itemValor{{ count }}" name="itemValor{{ count }}" class="text-right ContaItem" required="required"
+                                                   value="{{ item.valor }}" placeholder="0,00"></td>
+
+                                        <td><input type="text" id="itemAcrescimo{{ count }}" name="itemAcrescimo{{ count }}" class="text-right ContaItem"
+                                                   value="{{ item.acrescimo }}" placeholder="0,00"></td>
+
+                                        <td><input type="text" id="itemDesconto{{ count }}" name="itemDesconto{{ count }}" class="text-right ContaItem"
+                                                   value="{{ item.desconto }}" placeholder="0,00"></td>
+
+                                        <td><input type="text" id="itemHistorico{{ count }}" name="itemHistorico{{ count }}" class="text-center ContaItem"
+                                                   value="" ></td>
+
+                                        <td><input type="text" id="itemHistorico{{ count }}" name="itemHistorico{{ count }}" class="text-center ContaItem"
+                                                   value="" ></td>
+
+                                        {#<td href="#" id="btnRemoveLinha" class="sale-delete-row">×</td>#}
+                                        <td>
+                                            <button type="button" data-id="{{ count }}" class="btn btn-xs btn-success open-Modal" data-toggle="modal" data-target="#myModal">
+                                                Pagar
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    {% set count = count + 1%}
+                                {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div class="row padding-top">
+                        <div class="col-xs-1">
+                            <input href="#" type="submit" class="abutton" value="Salvar" id="btnSave" name="Salvar">
+                        </div>
+
+                        <div class="col-xs-1" style="padding-left: 50px">
+                            <a class="abuttonVoltar" href="{{ path('contas_index') }}">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Pagamento</h4>
+                </div>
+                <div class="modal-body">
+                    {#Div de Pagamentos#}
+                    <div id="grid_pagamentos">
+                        <div class="row">
+                            <label class="col-sm-4 control-label padding-left">Valor Total: </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="" id="valorTot" value="">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-sm-4 control-label padding-left">Valor Pago: </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="" id="valorPago" value="0,00">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-sm-4 control-label padding-left">Troco: </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="" id="valorTroco" value="0,00">
+                            </div>
+                        </div>
+
+                        <div class="row padding-top">
+                            <div class="padding-left padding-right">
+                                <table id="table_pgtos" class="table table-bordered center padding-left table-pagamento">
+                                    <thead>
+                                    <tr>
+                                        <th>Forma Pagamento</th>
+                                        <th class="text-right">Valor</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        {#<td><input type="text"></td>#}
+                                        {#<td><input type="text"></td>#}
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row padding-top">
+                        <div class="col-sm-1">
+                            <button id="addFormPag" class="btn btn-sm btn-link" onclick="AdicionaFormaPgto()">Adicionar Pagamento</button>
+                        </div>
+                    </div>
+                    </div>
+
+                    {#Div Selecionar Forma Pagamento#}
+                    <div id="grid_forma_pagamento" hidden>
+                        <div class="row">
+                            <label class="col-sm-6 control-label padding-left">Forma Pagamento</label>
+                            <div class="col-sm-5">
+                                <select id="forma_pgto" class="form-control">
+                                    <option value="1">Dinheiro</option>
+                                    <option value="2">Cartão</option>
+                                    <option value="3">Cheque</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row padding-top">
+                            <label class="col-sm-6 control-label padding-left">Valor</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="valor_pagto" value="" placeholder="0,00">
+                            </div>
+                        </div>
+
+                        <div class="row padding-top">
+                            <div class="col-sm-1">
+                                <button class="btn btn-sm btn-link" onclick="AddPagamento()">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="FinalizarPagamento">Finalizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="{{ asset('assets/js/contas.js') }}"></script>
+
+    <script>
+
+        $(document).on("click", ".open-Modal", function () {
+            var id = $(this).data('id');
+
+            var totPago  = document.getElementById('valorPago');
+            var totPagar = document.getElementById('valorTot');
+            var troco    = document.getElementById('valorTroco');
+
+            totPago.value = '0.00';
+            totPagar.value = '0.00';
+            troco.value = '0.00';
+
+            var total = document.getElementById('itemValor'+id);
+
+            totPagar.value = total.value;
+
+            var table = document.getElementById('table_pgtos');
+            for (var i = 1, row; row = table.rows[i]; i++) {
+                table.deleteRow(i);
+            }
+
+            $("#grid_pagamentos").show();
+            $("#grid_forma_pagamento").hide();
+        });
+
+        function AdicionaFormaPgto() {
+            $("#grid_pagamentos").hide();
+            $("#grid_forma_pagamento").show();
+            $("#FinalizarPagamento").prop('disabled', true);
+
+            
+        }
+        
+        function AddPagamento() {
+            var formaPgto = document.getElementById('forma_pgto');
+            var valorPgto = document.getElementById('valor_pagto');
+            var table     = document.getElementById('table_pgtos');
+            var val       = parseFloat(valorPgto.value).toFixed(2);
+            var text_pagto = formaPgto.options[formaPgto.selectedIndex].text;
+
+            var numOfRows = table.rows.length;
+            var newRow = table.insertRow(numOfRows);
+            var rowNumber = numOfRows - 1;
+
+            newCell = newRow.insertCell(0);
+            newCell.innerHTML = '<input type="text" value="'+formaPgto.value+ ' - ' + text_pagto +'" id="tableFormaPagto' + rowNumber + '" name="tableFormaPagto' + rowNumber + '" class="">';
+
+            newCell = newRow.insertCell(1);
+            newCell.innerHTML = '<input type="text" value="'+val+'" id="tableValorPagto' + rowNumber + '" name="tableValorPagto' + rowNumber + '" class="text-right">';
+
+            $("#grid_pagamentos").show();
+            $("#grid_forma_pagamento").hide();
+            $("#FinalizarPagamento").prop('disabled', false);
+
+            CalculaPgto();
+        }
+
+        function CalculaPgto() {
+
+            var table    = document.getElementById('table_pgtos');
+            var soma     = 0.0;
+            var totPago  = document.getElementById('valorPago');
+            var totPagar = document.getElementById('valorTot');
+            var troco    = document.getElementById('valorTroco');
+
+            for (var i = 1, row; row = table.rows[i]; i++) {
+
+                for (var j = 0, col; col = row.cells[j]; j++) {
+                    if (j == 1) {
+                        soma += parseFloat(col.firstChild.value);
+                    }
+                }
+            }
+
+            totPago.value = soma.toFixed(2);
+
+            if(soma > parseFloat(totPagar.value)){
+                var troc = soma - parseFloat(totPagar.value);
+                valorTroco.value = troc.toFixed(2);
+            }
+        }
+    </script>
+
+{% endblock %}

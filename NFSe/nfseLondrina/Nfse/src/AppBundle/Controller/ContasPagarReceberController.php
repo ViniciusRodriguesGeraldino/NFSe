@@ -11,6 +11,7 @@ use AppBundle\Entity\ItensContaPagarReceber;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\Query\ResultSetMapping;
+use AppBundle\Entity\RecebimentoItensContaPagarReceber;
 
 /**
  * ContasPagarReceber controller.
@@ -319,12 +320,14 @@ class ContasPagarReceberController extends Controller
                 recicp.data_lancamento \"data_pagamento\"
                 from itens_conta_pagar_receber icp
                 left join recebimento_itens_conta_pagar_receber recicp on recicp.id_empresa = icp.id_empresa and recicp.id_item_conta =icp.id
-                where icp.id_conta = :idcont
+                where icp.id_conta = :idcont and icp.id_empresa = :idemp
+                group by  icp.id
                 order by icp.data_vencimento";
 
         $em = $this->getDoctrine()->getManager();
         $stmt = $em->getConnection()->prepare($sql);
         $params['idcont'] = $conta->getId();
+        $params['idemp'] = $this->get('app.emp')->getIdEmpresa();
         $stmt->execute($params);
         $items = $stmt->fetchAll();
 
@@ -335,4 +338,75 @@ class ContasPagarReceberController extends Controller
 
     }
 
+    /**
+     *
+     * @Route("/{id}/getPagamentos", name="getPagamentos")
+     * @Method({"GET", "POST"})
+     */
+    public function getPagamentos(Request $request){
+        $idConta = $request->request->get('idConta', null);
+
+        $sql = "select id, valor, acrescimo, desconto, data_lancamento, forma_pagamento from recebimento_itens_conta_pagar_receber 
+                where id_empresa= :idemp and id_item_conta= :iditemconta";
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['iditemconta'] = (int)$idConta;
+        $params['idemp'] = $this->get('app.emp')->getIdEmpresa();
+        $stmt->execute($params);
+        $items = $stmt->fetchAll();
+
+        return new JsonResponse($items);
+    }
+
+    /**
+     *
+     * @Route("/{id}/salvaLancamentosItemsContas", name="salvaLancamentosItemsContas")
+     * @Method({"GET", "POST"})
+     */
+    public function salvaLancamentosItemsContas(Request $request){
+
+        $lancamentos = $request->request->get('lancamentos', null);
+        $idConta = $request->request->get('idConta', null);
+
+        $this->LimpaLancamentosConta($idConta);
+
+        //Deleta para criar novamente.
+        $em = $this->getDoctrine()->getManager();
+        $itens = $em->getRepository('AppBundle:RecebimentoItensContaPagarReceber')->findBy(array('idItemConta' => $idConta));
+
+        foreach ($itens as $iten) {
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->remove($iten);
+            $em->flush();
+        }
+
+        foreach ($lancamentos as $lancamento){
+
+            $data = $this->inverteData($lancamento['data_pagamento']);
+
+            $item_recebimento = new RecebimentoItensContaPagarReceber();
+
+            $item_recebimento->setIdItemConta($idConta);
+            $item_recebimento->setIdEmpresa($this->get('app.emp')->getIdEmpresa());
+            $item_recebimento->setValor($lancamento['valor_pago']);
+            $item_recebimento->setDataLancamento(new \DateTime(date($data)));
+            $item_recebimento->setAcrescimo(0);
+            $item_recebimento->setDescontos($lancamento['desconto']);
+            $item_recebimento->setHistorico('Pagamento de conta empresa:'.$item_recebimento->getIdEmpresa().' da Conta:'.$idConta.' na Data:'.$lancamento['data_pagamento']);
+            $item_recebimento->setFormaPagamento($lancamento['forma_pagamento']);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($item_recebimento);
+            $em->flush();
+        }
+
+        $response['success'] = true;
+        return new JsonResponse( $response );
+    }
+
+
+    public function LimpaLancamentosConta($idConta){
+
+    }
 }

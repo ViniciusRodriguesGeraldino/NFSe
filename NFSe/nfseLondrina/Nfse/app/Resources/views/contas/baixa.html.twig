@@ -14,7 +14,6 @@
 
             <div class="row row-centered">
                 <div class="col-xs-10 col-xs-offset-1">
-
                     <div class="row padding-top">
                         <div class="col-xs-2">
                             <label>Tipo de Conta: </label>
@@ -53,7 +52,7 @@
 
 
                     <div class="row padding-top">
-                        <label style="display: block" class="padding-left">Lançamentos</label>
+                        <label style="display: block" class="padding-left">Parcelas</label>
                         <div class="col-xs-10">
                             <table class="tabelaLancamentos table table-bordered" id="tabelaLancamentos">
                                 <thead>
@@ -89,7 +88,7 @@
 
                                         {#<td href="#" id="btnRemoveLinha" class="sale-delete-row">×</td>#}
                                         <td>
-                                            <button type="button" data-id="{{ count }}" class="btn btn-xs btn-success open-Modal" data-toggle="modal" data-target="#myModal">
+                                            <button type="button" data-id="{{ count }}" id="{{ item.id }}" class="btn btn-xs btn-success open-Modal" data-toggle="modal" data-target="#myModal">
                                                 Pagar
                                             </button>
                                         </td>
@@ -105,11 +104,11 @@
 
 
                     <div class="row padding-top">
-                        <div class="col-xs-1">
-                            <input href="#" type="submit" class="abutton" value="Salvar" id="btnSave" name="Salvar">
-                        </div>
+                        {#<div class="col-xs-1">#}
+                            {#<input href="#" type="submit" class="abutton" value="Salvar" id="btnSave" name="Salvar">#}
+                        {#</div>#}
 
-                        <div class="col-xs-1" style="padding-left: 50px">
+                        <div class="col-xs-1" >
                             <a class="abuttonVoltar" href="{{ path('contas_index') }}">Voltar</a>
                         </div>
                     </div>
@@ -130,27 +129,39 @@
                 </div>
                 <div class="modal-body">
                     {#Div de Pagamentos#}
+                    <input type="hidden" id="idConta" value="">
                     <div id="grid_pagamentos">
                         <div class="row">
-                            <label class="col-sm-4 control-label padding-left">Valor Total: </label>
-                            <div class="col-sm-3">
+                            <label class="col-xs-3 control-label padding-left">Valor Total: </label>
+                            <div class="col-xs-2">
                                 <input type="text" class="" id="valorTot" value="">
                             </div>
+
+
+                            <label class="col-xs-3 control-label">Desconto: </label>
+                            <div class="col-xs-2">
+                                <input type="text" class="" id="valorTotDesconto" value="0,00">
+                            </div>
                         </div>
 
                         <div class="row">
-                            <label class="col-sm-4 control-label padding-left">Valor Pago: </label>
-                            <div class="col-sm-3">
+                            <label class="col-xs-3 control-label padding-left">Valor Pago: </label>
+                            <div class="col-xs-2">
                                 <input type="text" class="" id="valorPago" value="0,00">
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <label class="col-sm-4 control-label padding-left">Troco: </label>
-                            <div class="col-sm-3">
-                                <input type="text" class="" id="valorTroco" value="0,00">
+                            <label class="col-xs-3 control-label">Juros: </label>
+                            <div class="col-xs-2">
+                                <input type="text" class="" id="valorTotAcrescimo" value="0,00">
                             </div>
                         </div>
+
+                        {#<div class="row">#}
+                            {#<label class="col-sm-4 control-label padding-left">Troco: </label>#}
+                            {#<div class="col-sm-3">#}
+                                {#<input type="text" class="" id="valorTroco" value="0,00">#}
+                            {#</div>#}
+                        {#</div>#}
 
                         <div class="row padding-top">
                             <div class="padding-left padding-right">
@@ -159,8 +170,9 @@
                                     <tr>
                                         <th class="text-center">Data Recebimento</th>
                                         <th class="text-center">Forma Pagamento</th>
-                                        <th class="text-right">Valor</th>
+                                        <th class="text-right">Valor Pago</th>
                                         <th class="text-right">Desconto</th>
+                                        <th class="text-right"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -177,41 +189,15 @@
 
                         <div class="row padding-top">
                         <div class="col-sm-1">
-                            <button id="addFormPag" class="btn btn-sm btn-link" onclick="AdicionaFormaPgto()">Adicionar Pagamento</button>
+                            <button id="addFormPag" class="btn btn-sm btn-link" onclick="GeraNovoPgto()">Adicionar Pagamento</button>
                         </div>
                     </div>
                     </div>
 
-                    {#Div Selecionar Forma Pagamento#}
-                    <div id="grid_forma_pagamento" hidden>
-                        <div class="row">
-                            <label class="col-sm-6 control-label padding-left">Forma Pagamento</label>
-                            <div class="col-sm-5">
-                                <select id="forma_pgto" class="form-control">
-                                    <option value="1">Dinheiro</option>
-                                    <option value="2">Cartão</option>
-                                    <option value="3">Cheque</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row padding-top">
-                            <label class="col-sm-6 control-label padding-left">Valor</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="valor_pagto" value="" placeholder="0,00">
-                            </div>
-                        </div>
-
-                        <div class="row padding-top">
-                            <div class="col-sm-1">
-                                <button class="btn btn-sm btn-link" onclick="AddPagamento()">Adicionar</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="FinalizarPagamento">Finalizar</button>
+                    <button type="button" class="btn btn-primary" id="FinalizarPagamento">Salvar</button>
                 </div>
             </div>
         </div>
@@ -228,96 +214,214 @@
 
     <script>
 
+        $(document).on('blur', '.Calculos', function () {
+            CalculaPgto();
+        })
+
         $(document).on("click", ".open-Modal", function () {
             var id = $(this).data('id');
-
             var totPago  = document.getElementById('valorPago');
             var totPagar = document.getElementById('valorTot');
-            var troco    = document.getElementById('valorTroco');
 
             totPago.value = '0.00';
             totPagar.value = '0.00';
-            troco.value = '0.00';
 
             var total = document.getElementById('itemValor'+id);
 
             totPagar.value = total.value;
 
             var table = document.getElementById('table_pgtos');
-            for (var i = 1, row; row = table.rows[i]; i++) {
+            var rowCount = table.rows.length;
+            for (var i=rowCount-1; i >=1; i--) {
                 table.deleteRow(i);
             }
 
             $("#grid_pagamentos").show();
-            $("#grid_forma_pagamento").hide();
+
+            var idConta = $(this).attr('id');
+            var idC = document.getElementById('idConta');
+            idC.value = idConta;
+
+            jQuery.ajax({
+                type: "POST",
+                url: "getPagamentos",
+                data: {idConta: idConta},
+                success: function (data) {
+                    for(var i=0; i <= data.length -1; i++){
+                        AddPagamento(FormataData(data[i].data_lancamento), data[i].forma_pagamento, data[i].valor, data[i].desconto, 1);
+                    }
+                    CalculaPgto();
+                }
+            });
+
         });
 
-        function AdicionaFormaPgto() {
-            $("#grid_pagamentos").hide();
-            $("#grid_forma_pagamento").show();
-            $("#FinalizarPagamento").prop('disabled', true);
 
+        function AddPagamento(dataPgto = null, formaPG = 'Dinheiro', val = 0, desc = 0, tpPg) {
 
-        }
-        
-        function AddPagamento() {
-            var formaPgto = document.getElementById('forma_pgto');
-            var valorPgto = document.getElementById('valor_pagto');
             var table     = document.getElementById('table_pgtos');
-            var val       = parseFloat(valorPgto.value).toFixed(2);
-            var text_pagto = formaPgto.options[formaPgto.selectedIndex].text;
-
             var numOfRows = table.rows.length;
             var newRow = table.insertRow(numOfRows);
             var rowNumber = numOfRows - 1;
+            var dataHoje = null;
+            if(dataPgto == null)
+                dataHoje = getToday();
+            else
+                dataHoje = dataPgto;
 
-//          <th class="text-center">Data Recebimento</th>
-//          <th class="text-center">Forma Pagamento</th>
-//          <th class="text-right">Valor</th>
-//          <th class="text-right">Desconto</th>
+            val = parseFloat(val).toFixed(2);
+            desc = parseFloat(desc).toFixed(2);
 
             newCell = newRow.insertCell(0);
-            newCell.innerHTML = '<input type="text" value="'+dataHoje+'" id="tableDataPagto' + rowNumber + '" name="tableDataPagto' + rowNumber + '" class="text-right">';
+            newCell.innerHTML = '<input type="text" value="'+dataHoje+'" id="tableDataPagto' + rowNumber + '" name="tableDataPagto' + rowNumber + '" class="text-center">';
 
             newCell = newRow.insertCell(1);
-            newCell.innerHTML = '<select id="tableFormaPagamento' + rowNumber + '" name="tableFormaPagamento' + rowNumber + '"><option value="Dinheiro">Dinheiro</option><option value="Cartao">Cartão</option><option value="Cheque">Cheque</option></select>';
+            newCell.innerHTML = '<select class="" id="tableFormaPagamento' + rowNumber + '" name="tableFormaPagamento' + rowNumber + '"><option value="Dinheiro">Dinheiro</option><option value="Cartao">Cartão</option><option value="Cheque">Cheque</option></select>';
 
             newCell = newRow.insertCell(2);
-            newCell.innerHTML = '<input type="text" value="'+val+'" id="tableValorPagto' + rowNumber + '" name="tableValorPagto' + rowNumber + '" class="text-right">';
+            newCell.innerHTML = '<input type="text" value="'+val+'" id="tableValorPagto' + rowNumber + '" name="tableValorPagto' + rowNumber + '" class="text-right Calculos">';
 
             newCell = newRow.insertCell(3);
-            newCell.innerHTML = '<input type="text" value="'+formaPgto.value+ ' - ' + text_pagto +'" id="tableFormaPagto' + rowNumber + '" name="tableFormaPagto' + rowNumber + '" class="">';
+            newCell.innerHTML = '<input type="text" value="'+desc+'" id="tableDesconto' + rowNumber + '" name="tableDesconto' + rowNumber + '" class="text-right Calculos">';
 
-            $("#grid_pagamentos").show();
-            $("#grid_forma_pagamento").hide();
-            $("#FinalizarPagamento").prop('disabled', false);
+            newCell = newRow.insertCell(4);
+            newCell.innerHTML = '×';
+            newCell.setAttribute('onclick', 'RemoveTableRow(this)');
+            newCell.setAttribute('id', 'btnRemoveLinha');
+            newCell.setAttribute('class', 'sale-delete-row');
 
-            CalculaPgto();
+            var select = document.getElementById('tableFormaPagamento'+ rowNumber);
+            select.value = formaPG;
+
+            newRow.id = 'row'+rowNumber;
+
+            if(tpPg == 1)
+                DisableRow('#row'+rowNumber);
+        }
+
+        function DisableRow(trLinha) {
+//            var td = document.getElementById(trLinha).disabled = true;
+//            $.ajax(trLinha).prop("disabled",false);
+        }
+
+        function getToday() {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+
+            var yyyy = today.getFullYear();
+            if(dd<10){
+                dd='0'+dd
+            }
+            if(mm<10){
+                mm='0'+mm
+            }
+            var today = dd+'/'+mm+'/'+yyyy;
+            return today;
         }
 
         function CalculaPgto() {
 
             var table    = document.getElementById('table_pgtos');
             var soma     = 0.0;
+            var desc     = 0.0;
+            var aux      = 0.0;
             var totPago  = document.getElementById('valorPago');
-            var totPagar = document.getElementById('valorTot');
-            var troco    = document.getElementById('valorTroco');
+            var valorTot = document.getElementById('valorTot');
+            var desconto = document.getElementById('valorTotDesconto');
+            var acrescimo= document.getElementById('valorTotAcrescimo');
 
             for (var i = 1, row; row = table.rows[i]; i++) {
 
                 for (var j = 0, col; col = row.cells[j]; j++) {
-                    if (j == 1) {
+
+                    if (j == 2) {
                         soma += parseFloat(col.firstChild.value);
+                        aux = parseFloat(col.firstChild.value);
+                        col.firstChild.value = aux.toFixed(2);
+                    }
+
+                    if (j == 3) {
+                        desc += parseFloat(col.firstChild.value);
+                        aux = parseFloat(col.firstChild.value);
+                        col.firstChild.value = aux.toFixed(2);
                     }
                 }
             }
 
             totPago.value = soma.toFixed(2);
+            desconto.value = desc.toFixed(2);
 
-            if(soma > parseFloat(totPagar.value)){
-                var troc = soma - parseFloat(totPagar.value);
-                valorTroco.value = troc.toFixed(2);
+            acrescimo.value = 0.0;
+            if(parseFloat(totPago.value) > parseFloat(valorTot.value)){
+                acrescimo.value = (parseFloat(totPago.value) - parseFloat(valorTot.value)).toFixed(2);
             }
+        }
+
+        jQuery('#FinalizarPagamento').click(function () {
+
+            var table = document.getElementById('table_pgtos');
+            var rowLength = table.rows.length;
+            var lancs = [];
+            var idConta = document.getElementById('idConta');
+
+            for(var i=1; i<rowLength; i+=1){
+                var row = table.rows[i];
+
+                lancs[i-1] = {
+                        data_pagamento: row.cells[0].children[0].value,
+                        forma_pagamento: row.cells[1].children[0].value,
+                        valor_pago: row.cells[2].children[0].value,
+                        desconto: row.cells[3].children[0].value
+                    }
+            }
+
+            var acrescimo= document.getElementById('valorTotAcrescimo');
+            if(parseFloat(acrescimo.value) > 0){
+                var r = confirm("Houve um valor a mais lançado nesta conta! \n Deseja lançar este valor na próxima conta?");
+                if (r == true) {
+                    RealizaLancamentoNovaConta(acrescimo.value);
+                } else {
+                    txt = "You pressed Cancel!";
+                }
+            }
+
+            jQuery.ajax({
+                type: "POST",
+                url: "salvaLancamentosItemsContas",
+                data: {lancamentos: lancs, idConta : idConta.value},
+                success: function (data) {
+                    alert("Salvo com sucesso!");
+                }
+            });
+
+            return false;
+        });
+
+        function GeraNovoPgto() {
+            var valorTotal = document.getElementById('valorTot');
+            var valorPago  = document.getElementById('valorPago');
+            var restante   = parseFloat(valorTotal.value) - parseFloat(valorPago.value);
+            AddPagamento(getToday(), 'Dinheiro', restante, 0, 0);
+            CalculaPgto();
+        }
+
+        function FormataData(data) {
+            return data.substring(8, 10) + '/' + data.substring(5, 7) + '/' + data.substring(0, 4);
+        }
+
+        (function ($) {
+            RemoveTableRow = function (handler) {
+                var tr = $(handler).closest('tr');
+                tr.fadeOut(400, function () {
+                    tr.remove();
+                });
+                return false;
+            };
+        })(jQuery);
+
+        function RealizaLancamentoNovaConta(valor) {
+
         }
     </script>
 

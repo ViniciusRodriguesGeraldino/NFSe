@@ -27,6 +27,7 @@
                     <th class="text-center">Data Lançamento</th>
                     <th class="text-center">Data Vencimento</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -40,6 +41,7 @@
                     <td class="text-center">{% if conta.dataLancamento %}{{ conta.dataLancamento|date('d/m/Y') }}{% endif %}</td>
                     <td class="text-center">{% if conta.dataVencimento %}{{ conta.dataVencimento|date('d/m/Y') }}{% endif %}</td>
                     <td><a href="{{ path('contas_edit', { 'id': conta.id }) }}">Editar</a></td>
+                    <td><a href="{{ path('contas_baixa', { 'id': conta.id }) }}">Baixar</a></td>
                 </tr>
             {% endfor %}
             </tbody>

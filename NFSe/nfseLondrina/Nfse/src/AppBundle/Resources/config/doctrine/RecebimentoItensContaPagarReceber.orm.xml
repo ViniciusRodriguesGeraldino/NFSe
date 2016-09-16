@@ -19,5 +19,6 @@
     <field name="desconto" type="float" column="DESCONTO" precision="10" scale="0" nullable="true"/>
     <field name="datalancamento" type="date" column="DATA_LANCAMENTO" nullable="true"/>
     <field name="historico" type="string" column="HISTORICO" length="100" nullable="true"/>
+    <field name="formaPagamento" type="string" column="FORMA_PAGAMENTO" length="20" nullable="true"/>
   </entity>
 </doctrine-mapping>

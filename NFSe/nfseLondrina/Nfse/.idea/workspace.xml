@@ -24,15 +24,17 @@
       <file leaf-file-name="ContasPagarReceberController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ContasPagarReceberController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="323" column="0" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+            <state relative-caret-position="211">
+              <caret line="393" column="12" selection-start-line="393" selection-start-column="12" selection-end-line="393" selection-end-column="47" />
               <folding>
-                <element signature="e#891#921#1#PHP" expanded="true" />
-                <element signature="e#2200#2234#1#PHP" expanded="true" />
-                <element signature="e#8048#8082#1#PHP" expanded="true" />
-                <element signature="e#9397#9420#1#PHP" expanded="true" />
-                <element signature="e#11092#11116#0#PHP" expanded="true" />
-                <marker date="1473884589583" expanded="true" signature="10190:10841" ph="select icp.i... itens_conta_pagar_receber" />
+                <element signature="e#40#85#0#PHP" expanded="true" />
+                <element signature="e#947#977#1#PHP" expanded="true" />
+                <element signature="e#2256#2290#1#PHP" expanded="true" />
+                <element signature="e#8104#8138#1#PHP" expanded="true" />
+                <element signature="e#9453#9476#1#PHP" expanded="true" />
+                <element signature="e#12674#12719#1#PHP" expanded="true" />
+                <marker date="1474055767131" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
+                <marker date="1474055767131" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
               </folding>
             </state>
           </provider>
@@ -41,13 +43,41 @@
       <file leaf-file-name="baixa.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/baixa.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="276" column="12" selection-start-line="276" selection-start-column="12" selection-end-line="276" selection-end-column="12" />
+            <state relative-caret-position="466">
+              <caret line="427" column="14" selection-start-line="427" selection-start-column="14" selection-end-line="427" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sibrax_nota.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/js/sibrax_nota.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="376">
+              <caret line="405" column="5" selection-start-line="400" selection-start-column="4" selection-end-line="405" selection-end-column="5" />
               <folding>
-                <element signature="e#9934#11260#0#HTML" expanded="false" />
-                <element signature="e#12047#12778#0#HTML" expanded="false" />
-                <element signature="e#14919#15732#0#HTML" expanded="false" />
+                <element signature="e#51#1932#0" expanded="false" />
+                <element signature="e#2010#2317#0" expanded="false" />
+                <element signature="e#2352#2426#0" expanded="false" />
+                <element signature="n#!!block;n#inserirLinhaTabela#0" expanded="false" />
+                <element signature="e#4461#4653#0" expanded="false" />
+                <element signature="e#4738#10419#0" expanded="false" />
+                <element signature="e#10498#10559#0" expanded="false" />
+                <element signature="n#!!block;n#totaliza#0" expanded="false" />
+                <element signature="n#!!block;n#subtotaliza#0" expanded="false" />
+                <element signature="n#!!block;n#reenviarNf#0" expanded="false" />
+                <element signature="n#!!block;n#ImprimirNf#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sibrax.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/css/sibrax.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="348" column="13" selection-start-line="348" selection-start-column="1" selection-end-line="348" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -59,11 +89,13 @@
       <list>
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/BancosController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/RecebimentoItensContaPagarReceber.orm.xml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/ItensContaPagarReceber.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/RecebimentoItensContaPagarReceber.orm.xml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/RecebimentoItensContaPagarReceber.php" />
+        <option value="$PROJECT_DIR$/web/assets/css/sibrax.css" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ContasPagarReceberController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/contas/baixa.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/contas/index.html.twig" />
       </list>
     </option>
   </component>
@@ -202,6 +234,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -217,6 +251,82 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -314,6 +424,28 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -337,6 +469,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nota" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -368,8 +526,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -445,24 +601,27 @@
       <workItem from="1473861577387" duration="493000" />
       <workItem from="1473862111874" duration="182000" />
       <workItem from="1473862320527" duration="4449000" />
-      <workItem from="1473879756320" duration="5629000" />
+      <workItem from="1473879756320" duration="5741000" />
+      <workItem from="1473938645939" duration="12991000" />
+      <workItem from="1474024268778" duration="14434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11431000" />
+    <option name="totallyTimeSpent" value="38968000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20953101" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21558245" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -470,7 +629,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -492,7 +650,9 @@
     </ignored-roots>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -501,12 +661,80 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#891#921#1#PHP" expanded="true" />
-            <element signature="e#2200#2234#1#PHP" expanded="true" />
-            <element signature="e#8048#8082#1#PHP" expanded="true" />
-            <element signature="e#9397#9420#1#PHP" expanded="true" />
-            <element signature="e#11092#11116#0#PHP" expanded="true" />
-            <marker date="1473884589583" expanded="true" signature="10190:10841" ph="select icp.i... itens_conta_pagar_receber" />
+            <element signature="e#40#85#0#PHP" expanded="true" />
+            <element signature="e#947#977#1#PHP" expanded="true" />
+            <element signature="e#2256#2290#1#PHP" expanded="true" />
+            <element signature="e#8104#8138#1#PHP" expanded="true" />
+            <element signature="e#9453#9476#1#PHP" expanded="true" />
+            <element signature="e#12674#12719#1#PHP" expanded="true" />
+            <marker date="1474055767131" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474055767131" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/baixa.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5610">
+          <caret line="330" column="43" selection-start-line="330" selection-start-column="43" selection-end-line="330" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/js/contas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4131">
+          <caret line="243" column="47" selection-start-line="243" selection-start-column="47" selection-end-line="243" selection-end-column="47" />
+          <folding>
+            <element signature="n#!!block;n#carregaLinhasLancamento#0" expanded="false" />
+            <element signature="e#2306#2498#0" expanded="false" />
+            <element signature="n#!!block;n#lancaValores#0" expanded="false" />
+            <element signature="n#!!block;n#retornaProximoMes#0" expanded="false" />
+            <element signature="e#7487#7769#0" expanded="false" />
+            <element signature="n#!!block;n#habilitaParcelamento#0" expanded="false" />
+            <element signature="e#9249#10402#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ContasPagarReceberController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5491">
+          <caret line="323" column="0" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+          <folding>
+            <element signature="e#40#85#0#PHP" expanded="true" />
+            <element signature="e#947#977#1#PHP" expanded="true" />
+            <element signature="e#2256#2290#1#PHP" expanded="true" />
+            <element signature="e#8104#8138#1#PHP" expanded="true" />
+            <element signature="e#9453#9476#1#PHP" expanded="true" />
+            <element signature="e#12674#12719#1#PHP" expanded="true" />
+            <marker date="1474055767131" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474055767131" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/baixa.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ContasPagarReceberController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#40#85#0#PHP" expanded="true" />
+            <element signature="e#947#977#1#PHP" expanded="true" />
+            <element signature="e#2256#2290#1#PHP" expanded="true" />
+            <element signature="e#8104#8138#1#PHP" expanded="true" />
+            <element signature="e#9453#9476#1#PHP" expanded="true" />
+            <element signature="e#12674#12719#1#PHP" expanded="true" />
+            <marker date="1474055767131" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474055767131" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
           </folding>
         </state>
       </provider>
@@ -576,9 +804,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/js/contas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="243" column="47" selection-start-line="243" selection-start-column="47" selection-end-line="243" selection-end-column="47" />
+          <folding>
+            <element signature="n#!!block;n#carregaLinhasLancamento#0" expanded="false" />
+            <element signature="e#2306#2498#0" expanded="false" />
+            <element signature="n#!!block;n#lancaValores#0" expanded="false" />
+            <element signature="n#!!block;n#retornaProximoMes#0" expanded="false" />
+            <element signature="e#7487#7769#0" expanded="false" />
+            <element signature="n#!!block;n#habilitaParcelamento#0" expanded="false" />
+            <element signature="e#9249#10402#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/css/sibrax.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="348" column="13" selection-start-line="348" selection-start-column="1" selection-end-line="348" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Nota.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/LancamentosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/NotaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="209" column="35" selection-start-line="209" selection-start-column="35" selection-end-line="209" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ItensContaPagarReceber.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
+        <state relative-caret-position="17">
           <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
           <folding />
         </state>
@@ -586,44 +862,90 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/RecebimentoItensContaPagarReceber.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="227" column="0" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
+        <state relative-caret-position="196">
+          <caret line="120" column="26" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/RecebimentoItensContaPagarReceber.orm.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="112" selection-start-line="2" selection-start-column="75" selection-end-line="2" selection-end-column="112" />
+        <state relative-caret-position="187">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1064">
+          <caret line="21" column="73" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/nota/newnfse.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="116" column="59" selection-start-line="116" selection-start-column="45" selection-end-line="116" selection-end-column="59" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ContasPagarReceberController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="323" column="0" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+        <state relative-caret-position="211">
+          <caret line="393" column="12" selection-start-line="393" selection-start-column="12" selection-end-line="393" selection-end-column="47" />
           <folding>
-            <element signature="e#891#921#1#PHP" expanded="true" />
-            <element signature="e#2200#2234#1#PHP" expanded="true" />
-            <element signature="e#8048#8082#1#PHP" expanded="true" />
-            <element signature="e#9397#9420#1#PHP" expanded="true" />
-            <element signature="e#11092#11116#0#PHP" expanded="true" />
-            <marker date="1473884589583" expanded="true" signature="10190:10841" ph="select icp.i... itens_conta_pagar_receber" />
+            <element signature="e#40#85#0#PHP" expanded="true" />
+            <element signature="e#947#977#1#PHP" expanded="true" />
+            <element signature="e#2256#2290#1#PHP" expanded="true" />
+            <element signature="e#8104#8138#1#PHP" expanded="true" />
+            <element signature="e#9453#9476#1#PHP" expanded="true" />
+            <element signature="e#12674#12719#1#PHP" expanded="true" />
+            <marker date="1474055767131" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474055767131" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/js/sibrax_nota.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="405" column="5" selection-start-line="400" selection-start-column="4" selection-end-line="405" selection-end-column="5" />
+          <folding>
+            <element signature="e#51#1932#0" expanded="false" />
+            <element signature="e#2010#2317#0" expanded="false" />
+            <element signature="e#2352#2426#0" expanded="false" />
+            <element signature="n#!!block;n#inserirLinhaTabela#0" expanded="false" />
+            <element signature="e#4461#4653#0" expanded="false" />
+            <element signature="e#4738#10419#0" expanded="false" />
+            <element signature="e#10498#10559#0" expanded="false" />
+            <element signature="n#!!block;n#totaliza#0" expanded="false" />
+            <element signature="n#!!block;n#subtotaliza#0" expanded="false" />
+            <element signature="n#!!block;n#reenviarNf#0" expanded="false" />
+            <element signature="n#!!block;n#ImprimirNf#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/baixa.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="276" column="12" selection-start-line="276" selection-start-column="12" selection-end-line="276" selection-end-column="12" />
-          <folding>
-            <element signature="e#9934#11260#0#HTML" expanded="false" />
-            <element signature="e#12047#12778#0#HTML" expanded="false" />
-            <element signature="e#14919#15732#0#HTML" expanded="false" />
-          </folding>
+        <state relative-caret-position="466">
+          <caret line="427" column="14" selection-start-line="427" selection-start-column="14" selection-end-line="427" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>

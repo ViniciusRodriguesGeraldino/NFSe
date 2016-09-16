@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ItensContaPagarReceber
+ * RecebimentoItensContaPagarReceber
  *
  * @ORM\Table(name="recebimento_itens_conta_pagar_receber")
  * @ORM\Entity
  */
-class ItensContaPagarReceber
+class RecebimentoItensContaPagarReceber
 {
     /**
      * @var integer
@@ -63,14 +63,19 @@ class ItensContaPagarReceber
      */
     private $datalancamento;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="HISTORICO", type="string", length=10, nullable=true)
      */
     private $historico;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="HISTORICO", type="string", length=10, nullable=true)
+     */
+    private $formaPagamento;
 
     /**
      * Get id
@@ -219,7 +224,7 @@ class ItensContaPagarReceber
     /**
      * Get datalancamento
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDataLancamento()
     {
@@ -231,7 +236,7 @@ class ItensContaPagarReceber
      *
      * @param string $historico
      *
-     * @return ItensContaPagarReceber
+     * @return RecebimentoItensContaPagarReceber
      */
     public function setHistorico($historico)
     {
@@ -239,6 +244,31 @@ class ItensContaPagarReceber
 
         return $this;
     }
+
+    /**
+     * Get formaPagamento
+     *
+     * @return string
+     */
+    public function getFormaPagamento()
+    {
+        return $this->formaPagamento;
+    }
+
+    /**
+     * Set formaPagamento
+     *
+     * @param string $formaPagamento
+     *
+     * @return RecebimentoItensContaPagarReceber
+     */
+    public function setFormaPagamento($formaPagamento)
+    {
+        $this->formaPagamento = $formaPagamento;
+
+        return $this;
+    }
+
 
     /**
      * Get historico

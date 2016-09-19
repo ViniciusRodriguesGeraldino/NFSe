@@ -72,25 +72,74 @@
                                 {% for item in items %}
                                     <tr>
                                         <td><input type="text" id="itemVencimento{{ count }}" name="itemVencimento{{ count }}" class="text-center ContaItem"
-                                                   value="{{ item.data_vencimento|date('d/m/Y') }}" data-format="dd/MM/yyyy" required="required" placeholder="DD/MM/AAAA"></td>
+                                                   value="{{ item.data_vencimento|date('d/m/Y') }}" data-format="dd/MM/yyyy" required="required" placeholder="DD/MM/AAAA"
+                                                   {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                       style="color: #ac2925"
+                                                   {% elseif item.valorPago == item.valor %}
+                                                       style="color: #2e6da4"
+                                                   {% endif %}
+                                            ></td>
 
                                         <td><input type="text" id="itemValor{{ count }}" name="itemValor{{ count }}" class="text-right ContaItem" required="required"
-                                                   value="{{ item.valor|number_format(2, ',', '') }}" placeholder="0,00"></td>
+                                                   value="{{ item.valor|number_format(2, ',', '') }}" placeholder="0,00"
+                                                    {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                        style="color: #ac2925"
+                                                    {% elseif item.valorPago == item.valor %}
+                                                        style="color: #2e6da4"
+                                                    {% endif %}
+                                            ></td>
 
                                         <td><input type="text" id="itemValorPago{{ count }}" name="itemValorPago{{ count }}" class="text-right ContaItem"
-                                                   value="{{ item.valorPago|number_format(2, ',', '') }}" placeholder="0,00"></td>
+                                                   value="{{ item.valorPago|number_format(2, ',', '') }}" placeholder="0,00"
+                                                    {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                        style="color: #ac2925"
+                                                    {% elseif item.valorPago == item.valor %}
+                                                        style="color: #2e6da4"
+                                                    {% endif %}
+                                            ></td>
 
                                         <td><input type="text" id="itemSaldo{{ count }}" name="itemSaldo{{ count }}" class="text-right ContaItem"
-                                                   value="{{ item.saldo|number_format(2, ',', '') }}" placeholder="0,00"></td>
+                                                   value="{% if item.saldo >=0 %} {{ item.saldo|number_format(2, ',', '') }} {% else %} 0,00 {% endif %}" placeholder="0,00"
+                                                    {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                        style="color: #ac2925"
+                                                    {% elseif item.valorPago == item.valor %}
+                                                        style="color: #2e6da4"
+                                                    {% endif %}
+                                            ></td>
 
                                         <td><input type="text" id="itemHistorico{{ count }}" name="itemHistorico{{ count }}" class="text-center ContaItem"
-                                                   value="{{ item.historico }}" ></td>
+                                                   value="{{ item.historico }}"
+                                                    {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                        style="color: #ac2925"
+                                                    {% elseif item.valorPago == item.valor %}
+                                                        style="color: #2e6da4"
+                                                    {% endif %}
+                                            ></td>
 
                                         {#<td href="#" id="btnRemoveLinha" class="sale-delete-row">×</td>#}
-                                        <td>
-                                            <button type="button" data-id="{{ count }}" id="{{ item.id }}" class="btn btn-xs btn-success open-Modal" data-toggle="modal" data-target="#myModal">
-                                                Pagar
-                                            </button>
+                                        <td class="center">
+                                                {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                    <button type="button" data-id="{{ count }}" id="{{ item.id }}"
+                                                            class="btn btn-xs btn-danger open-Modal" data-toggle="modal" data-target="#myModal">
+                                                       Atraso
+                                                    </button>
+                                                {% elseif item.valorPago >= item.valor %}
+                                                    <button type="button" data-id="{{ count }}" id="{{ item.id }}"
+                                                            class="btn btn-xs btn-group open-Modal" data-toggle="modal" data-target="#myModal">
+                                                        Pago
+                                                    </button>
+                                                {% elseif item.saldo > 0 %}
+                                                    <button type="button" data-id="{{ count }}" id="{{ item.id }}"
+                                                            class="btn btn-xs btn-warning open-Modal" data-toggle="modal" data-target="#myModal">
+                                                        Pagar
+                                                    </button>
+                                                {% else %}
+                                                    <button type="button" data-id="{{ count }}" id="{{ item.id }}"
+                                                            class="btn btn-xs btn-success open-Modal" data-toggle="modal" data-target="#myModal">
+                                                        Pagar
+                                                    </button>
+                                                {% endif %}
+
                                         </td>
                                     </tr>
 
@@ -108,7 +157,7 @@
                             {#<input href="#" type="submit" class="abutton" value="Salvar" id="btnSave" name="Salvar">#}
                         {#</div>#}
 
-                        <div class="col-xs-1" >
+                        <div class="col-xs-1">
                             <a class="abuttonVoltar" href="{{ path('contas_index') }}">Voltar</a>
                         </div>
                     </div>
@@ -213,6 +262,10 @@
     <script src="{{ asset('assets/js/contas.js') }}"></script>
 
     <script>
+
+        $(function () {
+            $("[data-toggle='tooltip']").tooltip();
+        });
 
         $(document).on('blur', '.Calculos', function () {
             CalculaPgto();
@@ -363,7 +416,7 @@
             var table = document.getElementById('table_pgtos');
             var rowLength = table.rows.length;
             var lancs = [];
-            var idConta = document.getElementById('idConta');
+            var idConta = document.getElementById('idConta'); // Id parcela
 
             for(var i=1; i<rowLength; i+=1){
                 var row = table.rows[i];
@@ -377,19 +430,33 @@
             }
 
             var acrescimo= document.getElementById('valorTotAcrescimo');
+
             if(parseFloat(acrescimo.value) > 0){
-                var r = confirm("Houve um valor a mais lançado nesta conta! \n Deseja lançar este valor na próxima conta?");
-                if (r == true) {
-                    RealizaLancamentoNovaConta(acrescimo.value);
-                } else {
-                    txt = "You pressed Cancel!";
+                var confirma = false;
+
+                jQuery.ajax({
+                    type: "POST",
+                    url: "getProximaConta",
+                    data: {idConta : idConta.value},
+                    async: false,
+                    success: function (data) {
+                        confirma = data.possuiProximaParcela;
+                    }
+                });
+
+                var lancarRestanteProximaParcela = false;
+
+                if(confirma){
+                    var r = confirm("Houve um valor a mais lançado nesta conta! \n Deseja lançar este valor na próxima conta?");
+                    if (r == true)
+                        lancarRestanteProximaParcela = true;
                 }
             }
 
             jQuery.ajax({
                 type: "POST",
                 url: "salvaLancamentosItemsContas",
-                data: {lancamentos: lancs, idConta : idConta.value},
+                data: {lancamentos: lancs, idConta : idConta.value, acrescimoUtil : lancarRestanteProximaParcela, acresJuros : acrescimo.value},
                 success: function (data) {
                     alert("Salvo com sucesso!");
                 }
@@ -415,6 +482,7 @@
                 var tr = $(handler).closest('tr');
                 tr.fadeOut(400, function () {
                     tr.remove();
+                    CalculaPgto();
                 });
                 return false;
             };
@@ -423,6 +491,7 @@
         function RealizaLancamentoNovaConta(valor) {
 
         }
+
     </script>
 
 {% endblock %}

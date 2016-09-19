@@ -364,10 +364,13 @@ class ContasPagarReceberController extends Controller
      * @Route("/{id}/salvaLancamentosItemsContas", name="salvaLancamentosItemsContas")
      * @Method({"GET", "POST"})
      */
-    public function salvaLancamentosItemsContas(Request $request){
+    public function salvaLancamentosItemsContas(Request $request, ContasPagarReceber $conta){
 
         $lancamentos = $request->request->get('lancamentos', null);
         $idConta = $request->request->get('idConta', null);
+        $acrescimoUtil = $request->request->get('acrescimoUtil', null);
+        $acresJuros = $request->request->get('acresJuros', null);
+        $lancarNovoLancamento = $acrescimoUtil === 'true'? true: false;
 
         $this->LimpaLancamentosConta($idConta);
 
@@ -389,15 +392,79 @@ class ContasPagarReceberController extends Controller
 
             $item_recebimento->setIdItemConta($idConta);
             $item_recebimento->setIdEmpresa($this->get('app.emp')->getIdEmpresa());
-            $item_recebimento->setValor($lancamento['valor_pago']);
+
+            if($lancarNovoLancamento === true) {
+                if($acresJuros > $lancamento['valor_pago'])
+                    $item_recebimento->setValor($lancamento['valor_pago']);
+                else
+                    $item_recebimento->setValor($lancamento['valor_pago'] - $acresJuros);
+            }
+            else
+                $item_recebimento->setValor($lancamento['valor_pago']);
+
             $item_recebimento->setDataLancamento(new \DateTime(date($data)));
             $item_recebimento->setAcrescimo(0);
             $item_recebimento->setDescontos($lancamento['desconto']);
             $item_recebimento->setHistorico('Pagamento de conta empresa:'.$item_recebimento->getIdEmpresa().' da Conta:'.$idConta.' na Data:'.$lancamento['data_pagamento']);
-            $item_recebimento->setFormaPagamento($lancamento['forma_pagamento']);
+
+            $formaPagamento = $lancamento['forma_pagamento'];
+
+            $item_recebimento->setFormaPagamento($formaPagamento);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($item_recebimento);
+            $em->flush();
+        }
+
+        //Se o "acrescimo" foi definido como extra, será adicionado a próxima parcela como parte do pagamento
+        //Senão será jogado como juros na parcela
+        if($lancarNovoLancamento === true){
+
+            $idAuxParcela = $idConta;
+            $valor_lancado = $acresJuros;
+
+            while ($valor_lancado > 0) {
+
+                $items = $this->getUltimaContaSemPagamento(
+                    $conta->getId(),
+                    $this->get('app.emp')->getIdEmpresa(),
+                    $idAuxParcela
+                );
+
+                $valor = $items[0]['valor'];
+                $idAuxParcela = $items[0]['id'];
+
+//                die(var_dump($idAuxParcela.' - '.$valor_lancado));
+
+                if($valor_lancado >= $valor) {
+                    $valor_lancado -= $valor;
+                }else {
+                    $valor = $valor_lancado;
+                    $valor_lancado = 0;
+                }
+
+                $item_recebimento_proxima_conta = new RecebimentoItensContaPagarReceber();
+
+                $item_recebimento_proxima_conta->setIdItemConta($idAuxParcela);
+                $item_recebimento_proxima_conta->setIdEmpresa($this->get('app.emp')->getIdEmpresa());
+                $item_recebimento_proxima_conta->setValor($valor);
+                $item_recebimento_proxima_conta->setDataLancamento(new \DateTime(date($data)));
+                $item_recebimento_proxima_conta->setAcrescimo(0);
+                $item_recebimento_proxima_conta->setDescontos(0);
+                $item_recebimento_proxima_conta->setHistorico(
+                    'Saldo de lançamento anterior sobre pagamento de parcela, lançado nesta parcela como pagamento da mesma. (id parcela anterior:'.$idConta.')'
+                );
+                $item_recebimento_proxima_conta->setFormaPagamento($formaPagamento);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($item_recebimento_proxima_conta);
+                $em->flush();
+            }
+
+        }else{
+            $conta->setAcrescimos($acresJuros);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($conta);
             $em->flush();
         }
 
@@ -405,8 +472,59 @@ class ContasPagarReceberController extends Controller
         return new JsonResponse( $response );
     }
 
+    public function getUltimaContaSemPagamento($conta, $idemp, $idparcela){
+
+        $sql = "select icp.id, icp.valor from itens_conta_pagar_receber icp 
+                left join recebimento_itens_conta_pagar_receber ricpr on ricpr.id_item_conta = icp.id and ricpr.id_empresa = icp.id_empresa
+                where icp.id_empresa = :idemp and icp.id_conta = :idconta and ricpr.valor is null and icp.id <> :idparcela
+                order by icp.data_vencimento
+                limit 1";
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['idconta'] = $conta;
+        $params['idemp'] = $idemp;
+        $params['idparcela'] = $idparcela;
+        $stmt->execute($params);
+        return $stmt->fetchAll();
+    }
+
 
     public function LimpaLancamentosConta($idConta){
 
+    }
+
+
+    /**
+     *
+     * @Route("/{id}/getProximaConta", name="getProximaConta")
+     * @Method({"GET", "POST"})
+     */
+    public function getProximaConta(Request $request, ContasPagarReceber $conta){
+
+        $parcela = $request->request->get('idConta', null);
+
+        $sql = "select icp.valor, ricpr.valor \"valor_recebido\" from itens_conta_pagar_receber icp 
+                left join recebimento_itens_conta_pagar_receber ricpr on ricpr.id_item_conta = icp.id and ricpr.id_empresa = icp.id_empresa
+                where icp.id_empresa = :idemp and icp.id_conta = :idconta and ricpr.valor is null and icp.id <> :idparcela
+                order by icp.data_vencimento
+                limit 1";
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['idconta'] = $conta->getId();
+        $params['idemp'] = $this->get('app.emp')->getIdEmpresa();
+        $params['idparcela'] = $parcela;
+        $stmt->execute($params);
+        $items = $stmt->fetchAll();
+
+        $possuiProximaParcela = false;
+
+        if(count($items) > 0)
+            $possuiProximaParcela = true;
+
+        $response['possuiProximaParcela'] = $possuiProximaParcela;
+
+        return new JsonResponse($response);
     }
 }

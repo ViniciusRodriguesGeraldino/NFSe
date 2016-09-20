@@ -350,3 +350,8 @@ table th {
     background-color: #ddd;
     cursor: not-allowed;
 }
+
+#scrollable-dropdown-menu .tt-dropdown-menu {
+    max-height: 150px;
+    overflow-y: auto;
+}

@@ -12,7 +12,7 @@
 
             <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
-                    <h1 class="padding-bottom">Editar Conta</h1>
+                    <h1 class="padding-bottom">Editar Conta a {% if conta.tipoConta == 'PAGAR' %}Pagar{% elseif conta.tipoConta == 'RECEBER' %}Receber{% endif %}</h1>
                 </div>
             </div>
 
@@ -20,7 +20,7 @@
                 <div class="col-xs-10 col-xs-offset-1">
 
                     <div class="row padding-top">
-                        <div class="col-xs-2">
+                        <div class="col-xs-2" hidden>
                             <label>Tipo de Conta: </label>
                             {% if conta.tipoConta == 'PAGAR' %}
                                 <select id="tipoConta" name="tipoConta" class="form-control"><option value="1">A Pagar</option>
@@ -66,13 +66,26 @@
                                        data-format="dd/MM/yyyy" required="required" placeholder="Digite o número do doc.">
                             </div>
                         </div>
+
+                        <div class="col-xs-2">
+                            <label>Conta</label>
+                            <div class="input-append">
+                                <select name="PlanoContas" id="PlanoContas" class="form-control" data-width="100%">
+                                    {% for key,val in plano %}
+                                        <option value="{{ val.plano }}"
+                                        {% if val.plano|trim == conta.plano|trim %} selected{% endif %}
+                                        >{{ val.plano | trans }} {{ val.descricao | trans }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row padding-top">
                         <div class="col-xs-2">
                             <label>Valor Total</label>
                             <div class="input-append">
-                                <input type="text" id="valorTotalDocumento" name="valorTotalDocumento" class="form-control" value="{{ conta.valorTotal }}"
+                                <input type="text" id="valorTotalDocumento" name="valorTotalDocumento" class="form-control" value="{{ conta.valorTotal|number_format(2, ',', '') }}"
                                        required="required" placeholder="0,00" style="text-align: right">
                             </div>
                         </div>
@@ -80,7 +93,7 @@
                         <div class="col-xs-2">
                             <label>Acréscimos</label>
                             <div class="input-append">
-                                <input type="text" id="acrescimos" name="acrescimos" class="form-control" value="{{ conta.acrescimos }}"
+                                <input type="text" id="acrescimos" name="acrescimos" class="form-control" value="{{ conta.acrescimos|number_format(2, ',', '') }}"
                                        placeholder="0,00" style="text-align: right">
                             </div>
                         </div>
@@ -88,7 +101,7 @@
                         <div class="col-xs-2">
                             <label>Descontos</label>
                             <div class="input-append">
-                                <input type="text" id="descontos" name="descontos" class="form-control" value="{{ conta.descontos }}"
+                                <input type="text" id="descontos" name="descontos" class="form-control" value="{{ conta.descontos|number_format(2, ',', '') }}"
                                        placeholder="0,00" style="text-align: right">
                             </div>
                         </div>
@@ -141,7 +154,7 @@
                     </div>
 
                     <div class="row padding-top">
-                        <label style="display: block" class="padding-left">Lançamentos</label>
+                        <label style="display: block" class="padding-left">Parcelas</label>
                         <div class="col-xs-10">
                             <table class="tabelaLancamentos table table-bordered" id="tabelaLancamentos">
                                 <thead>
@@ -164,13 +177,13 @@
                                                    value="{{ item.datavencimento|date('d/m/Y') }}" data-format="dd/MM/yyyy" required="required" placeholder="DD/MM/AAAA"></td>
 
                                         <td><input type="text" id="itemValor0" name="itemValor0" class="text-right ContaItem" required="required"
-                                                   value="{{ item.valor }}" placeholder="0,00"></td>
+                                                   value="{{ item.valor|number_format(2, ',', '') }}" placeholder="0,00"></td>
 
                                         <td><input type="text" id="itemAcrescimo0" name="itemAcrescimo0" class="text-right ContaItem"
-                                                   value="{{ item.acrescimo }}" placeholder="0,00"></td>
+                                                   value="{{ item.acrescimo|number_format(2, ',', '') }}" placeholder="0,00"></td>
 
                                         <td><input type="text" id="itemDesconto0" name="itemDescontol0" class="text-right ContaItem"
-                                                   value="{{ item.desconto }}" placeholder="0,00"></td>
+                                                   value="{{ item.desconto|number_format(2, ',', '') }}" placeholder="0,00"></td>
 
                                         <td><input type="text" id="itemHistorico0" name="itemHistorico0" class="text-center ContaItem"
                                                    value="{{ item.historico }}" ></td>
@@ -191,7 +204,7 @@
                         </div>
 
                         <div class="col-xs-1" style="padding-left: 50px">
-                            <a class="abuttonVoltar" href="{{ path('contas_index') }}">Voltar</a>
+                            <a class="abuttonVoltar" href="{{ path('contas_index', {'tipo' : conta.tipoConta}) }}">Voltar</a>
                         </div>
                     </div>
                 </div>

@@ -26,14 +26,22 @@ class ContasPagarReceberController extends Controller
      * @Route("/", name="contas_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $tipo = $request->query->get('tipo');
+
+        if($tipo != 'PAGAR' && $tipo != 'RECEBER'){
+            die(var_dump('Parametro inválido.'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $contas = $em->getRepository('AppBundle:ContasPagarReceber')->findBy(array('empresa' => $this->get('app.emp')->getIdEmpresa()));
+        $contas = $em->getRepository('AppBundle:ContasPagarReceber')->findBy(array('empresa' => $this->get('app.emp')->getIdEmpresa(),
+                                                                         'tipoConta' => $tipo));
 
         return $this->render('contas/index.html.twig', array(
             'contas' => $contas,
+            'tipoConta' => $tipo,
         ));
     }
 
@@ -45,6 +53,11 @@ class ContasPagarReceberController extends Controller
      */
     public function newAction(Request $request)
     {
+        $tipo = $request->query->get('tipo');
+        if($tipo != 'PAGAR' && $tipo != 'RECEBER'){
+            die(var_dump('Parametro inválido.'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $data       = date("d/m/Y");
@@ -54,13 +67,24 @@ class ContasPagarReceberController extends Controller
             ->where('c.empresa = :empresa')->setParameter('empresa', $this->get('app.emp')->getIdEmpresa())
             ->getQuery();
 
+        $tp = 'S';
+        if($tipo == 'PAGAR')
+            $tp = 'E';
+
+        $sql = "select plano, descricao from plano where empresa= :idemp and tipo = :tipo";
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['idemp'] = $this->get('app.emp')->getIdEmpresa();
+        $params['tipo'] = $tp;
+        $stmt->execute($params);
+        $plano = $stmt->fetchAll();
+
         $formValues = [
             'data'       => $data,
             'clientes'   => $clientes
-
         ];
 
-        return $this->render('contas/new.html.twig' , array('formValues' => $formValues,));
+        return $this->render('contas/new.html.twig' , array('formValues' => $formValues, 'tipoConta' => $tipo, 'plano' => $plano));
     }
 
     /**
@@ -76,10 +100,23 @@ class ContasPagarReceberController extends Controller
 
         $possuiLancamentos = $this->verificaLancamentosJaPagos($conta, $itens);
 
+        $tp = 'S';
+        if($conta->getTipoConta() == 'PAGAR')
+            $tp = 'E';
+
+        $sql = "select plano, descricao from plano where empresa= :idemp and tipo = :tipo";
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['idemp'] = $this->get('app.emp')->getIdEmpresa();
+        $params['tipo'] = $tp;
+        $stmt->execute($params);
+        $plano = $stmt->fetchAll();
+
         return $this->render('contas/edit.html.twig', array(
             'conta' => $conta,
             'itens' => $itens,
             'possuiLancamentos' => $possuiLancamentos,
+            'plano' => $plano,
         ));
 
     }
@@ -163,14 +200,15 @@ class ContasPagarReceberController extends Controller
         $conta->setNumeroDocumento($dados[3]['value']);
         $conta->setDataLancamento(new \DateTime(date('Y-m-d')));
         $conta->setDataVencimento(new \DateTime(date($this->inverteData($dados[2]['value']))));
-        $conta->setValorTotal($dados[4]['value']);
-        $conta->setAcrescimos($dados[5]['value']);
-        $conta->setDescontos($dados[6]['value']);
+        $conta->setPlano($dados[4]['value']);
+        $conta->setValorTotal($dados[5]['value']);
+        $conta->setAcrescimos($dados[6]['value']);
+        $conta->setDescontos($dados[7]['value']);
 //        $conta->setCredito();
 //        $conta->setDebito();
-//        $conta->setPlano();
-        $conta->setHistorico($dados[7]['value']);
-        $conta->setPagamento($dados[8]['value']);
+        $conta->setPlano($dados[4]['value']);
+        $conta->setHistorico($dados[8]['value']);
+        $conta->setPagamento($dados[9]['value']);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($conta);
@@ -178,7 +216,7 @@ class ContasPagarReceberController extends Controller
 
         //Cria o itens conta pagar receber
         foreach ($lancs as $lcto){
-            
+
             $itemConta = new ItensContaPagarReceber();
 
             $itemConta->setIdEmpresa($this->get('app.emp')->getIdEmpresa());
@@ -235,14 +273,15 @@ class ContasPagarReceberController extends Controller
         $conta->setNome($nome);
         $conta->setNumeroDocumento($dados[3]['value']);
         $conta->setDataVencimento(new \DateTime(date($this->inverteData($dados[2]['value']))));
-        $conta->setValorTotal($dados[4]['value']);
-        $conta->setAcrescimos($dados[5]['value']);
-        $conta->setDescontos($dados[6]['value']);
+        $conta->setPlano($dados[4]['value']);
+        $conta->setValorTotal($dados[5]['value']);
+        $conta->setAcrescimos($dados[6]['value']);
+        $conta->setDescontos($dados[7]['value']);
 //        $conta->setCredito();
 //        $conta->setDebito();
 //        $conta->setPlano();
-        $conta->setHistorico($dados[7]['value']);
-        $conta->setPagamento($dados[8]['value']);
+        $conta->setHistorico($dados[8]['value']);
+        $conta->setPagamento($dados[9]['value']);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($conta);

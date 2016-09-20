@@ -8,7 +8,7 @@
 
             <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
-                    <h1 class="padding-bottom">Baixa de Conta</h1>
+                    <h1 class="padding-bottom">Baixa de Conta a {% if conta.tipoConta == 'PAGAR' %}Pagar{% elseif conta.tipoConta == 'RECEBER' %}Receber{% endif %}</h1>
                 </div>
             </div>
 
@@ -158,7 +158,7 @@
                         {#</div>#}
 
                         <div class="col-xs-1">
-                            <a class="abuttonVoltar" href="{{ path('contas_index') }}">Voltar</a>
+                            <a class="abuttonVoltar" href="{{ path('contas_index', {'tipo' : conta.tipoConta}) }}">Voltar</a>
                         </div>
                     </div>
                 </div>
@@ -245,7 +245,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="cancelaModal" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-primary" id="FinalizarPagamento">Salvar</button>
                 </div>
             </div>
@@ -262,11 +262,6 @@
     <script src="{{ asset('assets/js/contas.js') }}"></script>
 
     <script>
-
-        $(function () {
-            $("[data-toggle='tooltip']").tooltip();
-        });
-
         $(document).on('blur', '.Calculos', function () {
             CalculaPgto();
         })
@@ -405,7 +400,7 @@
             totPago.value = soma.toFixed(2);
             desconto.value = desc.toFixed(2);
 
-            acrescimo.value = 0.0;
+            acrescimo.value = 0.00;
             if(parseFloat(totPago.value) > parseFloat(valorTot.value)){
                 acrescimo.value = (parseFloat(totPago.value) - parseFloat(valorTot.value)).toFixed(2);
             }
@@ -459,6 +454,8 @@
                 data: {lancamentos: lancs, idConta : idConta.value, acrescimoUtil : lancarRestanteProximaParcela, acresJuros : acrescimo.value},
                 success: function (data) {
                     alert("Salvo com sucesso!");
+                    $('#cancelaModal').trigger('click');
+                    location.reload();
                 }
             });
 
@@ -487,10 +484,6 @@
                 return false;
             };
         })(jQuery);
-
-        function RealizaLancamentoNovaConta(valor) {
-
-        }
 
     </script>
 

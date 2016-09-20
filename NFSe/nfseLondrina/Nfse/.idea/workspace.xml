@@ -24,68 +24,48 @@
       <file leaf-file-name="ContasPagarReceberController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ContasPagarReceberController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-8">
+              <caret line="63" column="36" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
               <folding>
                 <element signature="e#40#85#0#PHP" expanded="true" />
-                <marker date="1474310693854" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
-                <marker date="1474310693854" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
-                <marker date="1474310693854" expanded="true" signature="16900:17292" ph="select icp.i... itens_conta_pagar_receber" />
-                <marker date="1474310693854" expanded="true" signature="17929:18345" ph="select icp.v... itens_conta_pagar_receber" />
+                <element signature="e#1123#1153#1#PHP" expanded="true" />
+                <element signature="e#1348#1372#0#PHP" expanded="true" />
+                <element signature="e#2754#2776#0#PHP" expanded="true" />
+                <element signature="e#3193#3227#1#PHP" expanded="true" />
+                <element signature="e#3837#3860#0#PHP" expanded="true" />
+                <element signature="e#9619#9653#1#PHP" expanded="true" />
+                <element signature="e#10968#10991#1#PHP" expanded="true" />
+                <element signature="e#12790#12814#0#PHP" expanded="true" />
+                <element signature="e#14426#14471#1#PHP" expanded="true" />
+                <marker date="1474395253833" expanded="true" signature="2270:2343" ph="select plano... plano" />
+                <marker date="1474395253833" expanded="true" signature="3462:3535" ph="select plano... plano" />
+                <marker date="1474395253833" expanded="true" signature="11761:12473" ph="select icp.i... itens_conta_pagar_receber" />
+                <marker date="1474395253833" expanded="true" signature="13149:13337" ph="select id, v... recebimento_itens_conta_pagar_receber" />
+                <marker date="1474395253833" expanded="true" signature="18415:18807" ph="select icp.i... itens_conta_pagar_receber" />
+                <marker date="1474395253833" expanded="true" signature="19444:19860" ph="select icp.v... itens_conta_pagar_receber" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="baixa.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/baixa.html.twig">
+      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/new.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="133" column="61" selection-start-line="133" selection-start-column="61" selection-end-line="133" selection-end-column="61" />
+            <state relative-caret-position="466">
+              <caret line="208" column="14" selection-start-line="208" selection-start-column="14" selection-end-line="208" selection-end-column="14" />
               <folding>
-                <element signature="e#4312#4334#0#HTML" expanded="true" />
-                <element signature="e#4483#4505#0#HTML" expanded="true" />
-                <element signature="e#5095#5117#0#HTML" expanded="true" />
-                <element signature="e#5268#5290#0#HTML" expanded="true" />
-                <element signature="e#5873#5895#0#HTML" expanded="true" />
-                <element signature="e#6046#6068#0#HTML" expanded="true" />
-                <element signature="e#6691#6713#0#HTML" expanded="true" />
-                <element signature="e#6864#6886#0#HTML" expanded="true" />
-                <element signature="e#7425#7447#0#HTML" expanded="true" />
-                <element signature="e#7598#7620#0#HTML" expanded="true" />
+                <element signature="e#12#26#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/index.html.twig">
+      <file leaf-file-name="contas.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/js/contas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" column="113" selection-start-line="40" selection-start-column="113" selection-end-line="40" selection-end-column="124" />
+            <state relative-caret-position="-135">
+              <caret line="203" column="29" selection-start-line="203" selection-start-column="29" selection-end-line="203" selection-end-column="29" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sibrax_nota.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/assets/js/sibrax_nota.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="405" column="5" selection-start-line="400" selection-start-column="4" selection-end-line="405" selection-end-column="5" />
-              <folding>
-                <element signature="e#51#1932#0" expanded="false" />
-                <element signature="e#2010#2317#0" expanded="false" />
-                <element signature="e#2352#2426#0" expanded="false" />
-                <element signature="n#!!block;n#inserirLinhaTabela#0" expanded="false" />
-                <element signature="e#4461#4653#0" expanded="false" />
-                <element signature="e#4738#10419#0" expanded="false" />
-                <element signature="e#10498#10559#0" expanded="false" />
-                <element signature="n#!!block;n#totaliza#0" expanded="false" />
-                <element signature="n#!!block;n#subtotaliza#0" expanded="false" />
-                <element signature="n#!!block;n#reenviarNf#0" expanded="false" />
-                <element signature="n#!!block;n#ImprimirNf#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -93,14 +73,21 @@
       <file leaf-file-name="sibrax.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/css/sibrax.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5967">
-              <caret line="351" column="1" selection-start-line="351" selection-start-column="1" selection-end-line="351" selection-end-column="1" />
+            <state relative-caret-position="429">
+              <caret line="356" column="1" selection-start-line="356" selection-start-column="1" selection-end-line="356" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -111,10 +98,14 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/RecebimentoItensContaPagarReceber.orm.xml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/RecebimentoItensContaPagarReceber.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/contas/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ContasPagarReceberController.php" />
-        <option value="$PROJECT_DIR$/web/assets/css/sibrax.css" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/contas/baixa.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ContasPagarReceberController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/contas/edit.html.twig" />
+        <option value="$PROJECT_DIR$/web/assets/css/sibrax.css" />
+        <option value="$PROJECT_DIR$/web/assets/js/typeahead.bundle.js" />
+        <option value="$PROJECT_DIR$/web/assets/js/contas.js" />
+        <option value="$PROJECT_DIR$/app/Resources/views/contas/new.html.twig" />
       </list>
     </option>
   </component>
@@ -253,7 +244,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -399,36 +389,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doctrine" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nfse" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nfse" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Entity" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -443,28 +403,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nfse" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nfse" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -488,32 +426,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nfse" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nfse" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nota" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -545,6 +457,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -630,23 +543,25 @@
       <workItem from="1473938645939" duration="12991000" />
       <workItem from="1474024268778" duration="15579000" />
       <workItem from="1474283838506" duration="20140000" />
-      <workItem from="1474314964123" duration="3480000" />
+      <workItem from="1474314964123" duration="3563000" />
+      <workItem from="1474369161973" duration="24389000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63733000" />
+    <option name="totallyTimeSpent" value="88205000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22163388" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18078668" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16868381" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -655,7 +570,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -683,16 +597,63 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="113" selection-start-line="40" selection-start-column="113" selection-end-line="40" selection-end-column="124" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/js/sibrax_nota.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6885">
+          <caret line="405" column="5" selection-start-line="400" selection-start-column="4" selection-end-line="405" selection-end-column="5" />
+          <folding>
+            <element signature="e#51#1932#0" expanded="false" />
+            <element signature="e#2352#2426#0" expanded="false" />
+            <element signature="n#!!block;n#inserirLinhaTabela#0" expanded="false" />
+            <element signature="e#4461#4653#0" expanded="false" />
+            <element signature="e#4738#10419#0" expanded="false" />
+            <element signature="e#10498#10559#0" expanded="false" />
+            <element signature="n#!!block;n#totaliza#0" expanded="false" />
+            <element signature="n#!!block;n#subtotaliza#0" expanded="false" />
+            <element signature="n#!!block;n#reenviarNf#0" expanded="false" />
+            <element signature="n#!!block;n#ImprimirNf#0" expanded="false" />
+            <element signature="n#!!block;n#CancelarNf#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/css/sibrax.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5967">
+          <caret line="351" column="1" selection-start-line="351" selection-start-column="1" selection-end-line="351" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ContasPagarReceberController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#40#85#0#PHP" expanded="true" />
-            <marker date="1474310693854" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="16900:17292" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="17929:18345" ph="select icp.v... itens_conta_pagar_receber" />
+            <element signature="e#1123#1153#1#PHP" expanded="true" />
+            <element signature="e#1348#1372#0#PHP" expanded="true" />
+            <element signature="e#2754#2776#0#PHP" expanded="true" />
+            <element signature="e#3193#3227#1#PHP" expanded="true" />
+            <element signature="e#3837#3860#0#PHP" expanded="true" />
+            <element signature="e#9619#9653#1#PHP" expanded="true" />
+            <element signature="e#10968#10991#1#PHP" expanded="true" />
+            <element signature="e#12790#12814#0#PHP" expanded="true" />
+            <element signature="e#14426#14471#1#PHP" expanded="true" />
+            <marker date="1474395253833" expanded="true" signature="2270:2343" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="3462:3535" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="11761:12473" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="13149:13337" ph="select id, v... recebimento_itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="18415:18807" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="19444:19860" ph="select icp.v... itens_conta_pagar_receber" />
           </folding>
         </state>
       </provider>
@@ -701,18 +662,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding>
-            <element signature="e#4312#4334#0#HTML" expanded="true" />
-            <element signature="e#4483#4505#0#HTML" expanded="true" />
-            <element signature="e#5095#5117#0#HTML" expanded="true" />
-            <element signature="e#5268#5290#0#HTML" expanded="true" />
-            <element signature="e#5873#5895#0#HTML" expanded="true" />
-            <element signature="e#6046#6068#0#HTML" expanded="true" />
-            <element signature="e#6691#6713#0#HTML" expanded="true" />
-            <element signature="e#6864#6886#0#HTML" expanded="true" />
-            <element signature="e#7425#7447#0#HTML" expanded="true" />
-            <element signature="e#7598#7620#0#HTML" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -738,7 +688,6 @@
           <caret line="405" column="5" selection-start-line="400" selection-start-column="4" selection-end-line="405" selection-end-column="5" />
           <folding>
             <element signature="e#51#1932#0" expanded="false" />
-            <element signature="e#2010#2317#0" expanded="false" />
             <element signature="e#2352#2426#0" expanded="false" />
             <element signature="n#!!block;n#inserirLinhaTabela#0" expanded="false" />
             <element signature="e#4461#4653#0" expanded="false" />
@@ -748,6 +697,7 @@
             <element signature="n#!!block;n#subtotaliza#0" expanded="false" />
             <element signature="n#!!block;n#reenviarNf#0" expanded="false" />
             <element signature="n#!!block;n#ImprimirNf#0" expanded="false" />
+            <element signature="n#!!block;n#CancelarNf#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -766,10 +716,21 @@
           <caret line="393" column="12" selection-start-line="393" selection-start-column="12" selection-end-line="393" selection-end-column="47" />
           <folding>
             <element signature="e#40#85#0#PHP" expanded="true" />
-            <marker date="1474310693854" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="16900:17292" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="17929:18345" ph="select icp.v... itens_conta_pagar_receber" />
+            <element signature="e#1123#1153#1#PHP" expanded="true" />
+            <element signature="e#1348#1372#0#PHP" expanded="true" />
+            <element signature="e#2754#2776#0#PHP" expanded="true" />
+            <element signature="e#3193#3227#1#PHP" expanded="true" />
+            <element signature="e#3837#3860#0#PHP" expanded="true" />
+            <element signature="e#9619#9653#1#PHP" expanded="true" />
+            <element signature="e#10968#10991#1#PHP" expanded="true" />
+            <element signature="e#12790#12814#0#PHP" expanded="true" />
+            <element signature="e#14426#14471#1#PHP" expanded="true" />
+            <marker date="1474395253833" expanded="true" signature="2270:2343" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="3462:3535" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="11761:12473" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="13149:13337" ph="select id, v... recebimento_itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="18415:18807" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="19444:19860" ph="select icp.v... itens_conta_pagar_receber" />
           </folding>
         </state>
       </provider>
@@ -778,18 +739,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#4312#4334#0#HTML" expanded="true" />
-            <element signature="e#4483#4505#0#HTML" expanded="true" />
-            <element signature="e#5095#5117#0#HTML" expanded="true" />
-            <element signature="e#5268#5290#0#HTML" expanded="true" />
-            <element signature="e#5873#5895#0#HTML" expanded="true" />
-            <element signature="e#6046#6068#0#HTML" expanded="true" />
-            <element signature="e#6691#6713#0#HTML" expanded="true" />
-            <element signature="e#6864#6886#0#HTML" expanded="true" />
-            <element signature="e#7425#7447#0#HTML" expanded="true" />
-            <element signature="e#7598#7620#0#HTML" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -799,7 +749,6 @@
           <caret line="405" column="5" selection-start-line="400" selection-start-column="4" selection-end-line="405" selection-end-column="5" />
           <folding>
             <element signature="e#51#1932#0" expanded="false" />
-            <element signature="e#2010#2317#0" expanded="false" />
             <element signature="e#2352#2426#0" expanded="false" />
             <element signature="n#!!block;n#inserirLinhaTabela#0" expanded="false" />
             <element signature="e#4461#4653#0" expanded="false" />
@@ -809,6 +758,7 @@
             <element signature="n#!!block;n#subtotaliza#0" expanded="false" />
             <element signature="n#!!block;n#reenviarNf#0" expanded="false" />
             <element signature="n#!!block;n#ImprimirNf#0" expanded="false" />
+            <element signature="n#!!block;n#CancelarNf#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -827,10 +777,21 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#40#85#0#PHP" expanded="true" />
-            <marker date="1474310693854" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="16900:17292" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="17929:18345" ph="select icp.v... itens_conta_pagar_receber" />
+            <element signature="e#1123#1153#1#PHP" expanded="true" />
+            <element signature="e#1348#1372#0#PHP" expanded="true" />
+            <element signature="e#2754#2776#0#PHP" expanded="true" />
+            <element signature="e#3193#3227#1#PHP" expanded="true" />
+            <element signature="e#3837#3860#0#PHP" expanded="true" />
+            <element signature="e#9619#9653#1#PHP" expanded="true" />
+            <element signature="e#10968#10991#1#PHP" expanded="true" />
+            <element signature="e#12790#12814#0#PHP" expanded="true" />
+            <element signature="e#14426#14471#1#PHP" expanded="true" />
+            <marker date="1474395253833" expanded="true" signature="2270:2343" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="3462:3535" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="11761:12473" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="13149:13337" ph="select id, v... recebimento_itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="18415:18807" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="19444:19860" ph="select icp.v... itens_conta_pagar_receber" />
           </folding>
         </state>
       </provider>
@@ -839,18 +800,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5610">
           <caret line="330" column="43" selection-start-line="330" selection-start-column="43" selection-end-line="330" selection-end-column="43" />
-          <folding>
-            <element signature="e#4312#4334#0#HTML" expanded="true" />
-            <element signature="e#4483#4505#0#HTML" expanded="true" />
-            <element signature="e#5095#5117#0#HTML" expanded="true" />
-            <element signature="e#5268#5290#0#HTML" expanded="true" />
-            <element signature="e#5873#5895#0#HTML" expanded="true" />
-            <element signature="e#6046#6068#0#HTML" expanded="true" />
-            <element signature="e#6691#6713#0#HTML" expanded="true" />
-            <element signature="e#6864#6886#0#HTML" expanded="true" />
-            <element signature="e#7425#7447#0#HTML" expanded="true" />
-            <element signature="e#7598#7620#0#HTML" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -867,10 +817,21 @@
           <caret line="323" column="0" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
           <folding>
             <element signature="e#40#85#0#PHP" expanded="true" />
-            <marker date="1474310693854" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="16900:17292" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="17929:18345" ph="select icp.v... itens_conta_pagar_receber" />
+            <element signature="e#1123#1153#1#PHP" expanded="true" />
+            <element signature="e#1348#1372#0#PHP" expanded="true" />
+            <element signature="e#2754#2776#0#PHP" expanded="true" />
+            <element signature="e#3193#3227#1#PHP" expanded="true" />
+            <element signature="e#3837#3860#0#PHP" expanded="true" />
+            <element signature="e#9619#9653#1#PHP" expanded="true" />
+            <element signature="e#10968#10991#1#PHP" expanded="true" />
+            <element signature="e#12790#12814#0#PHP" expanded="true" />
+            <element signature="e#14426#14471#1#PHP" expanded="true" />
+            <marker date="1474395253833" expanded="true" signature="2270:2343" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="3462:3535" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="11761:12473" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="13149:13337" ph="select id, v... recebimento_itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="18415:18807" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="19444:19860" ph="select icp.v... itens_conta_pagar_receber" />
           </folding>
         </state>
       </provider>
@@ -879,18 +840,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#4312#4334#0#HTML" expanded="true" />
-            <element signature="e#4483#4505#0#HTML" expanded="true" />
-            <element signature="e#5095#5117#0#HTML" expanded="true" />
-            <element signature="e#5268#5290#0#HTML" expanded="true" />
-            <element signature="e#5873#5895#0#HTML" expanded="true" />
-            <element signature="e#6046#6068#0#HTML" expanded="true" />
-            <element signature="e#6691#6713#0#HTML" expanded="true" />
-            <element signature="e#6864#6886#0#HTML" expanded="true" />
-            <element signature="e#7425#7447#0#HTML" expanded="true" />
-            <element signature="e#7598#7620#0#HTML" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -900,10 +850,21 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#40#85#0#PHP" expanded="true" />
-            <marker date="1474310693854" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="16900:17292" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="17929:18345" ph="select icp.v... itens_conta_pagar_receber" />
+            <element signature="e#1123#1153#1#PHP" expanded="true" />
+            <element signature="e#1348#1372#0#PHP" expanded="true" />
+            <element signature="e#2754#2776#0#PHP" expanded="true" />
+            <element signature="e#3193#3227#1#PHP" expanded="true" />
+            <element signature="e#3837#3860#0#PHP" expanded="true" />
+            <element signature="e#9619#9653#1#PHP" expanded="true" />
+            <element signature="e#10968#10991#1#PHP" expanded="true" />
+            <element signature="e#12790#12814#0#PHP" expanded="true" />
+            <element signature="e#14426#14471#1#PHP" expanded="true" />
+            <marker date="1474395253833" expanded="true" signature="2270:2343" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="3462:3535" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="11761:12473" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="13149:13337" ph="select id, v... recebimento_itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="18415:18807" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="19444:19860" ph="select icp.v... itens_conta_pagar_receber" />
           </folding>
         </state>
       </provider>
@@ -953,21 +914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/js/contas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="243" column="47" selection-start-line="243" selection-start-column="47" selection-end-line="243" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Nota.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -979,13 +925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/NotaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="209" column="35" selection-start-line="209" selection-start-column="35" selection-end-line="209" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1021,21 +960,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/css/sibrax.css">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/BancosType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5967">
-          <caret line="351" column="1" selection-start-line="351" selection-start-column="1" selection-end-line="351" selection-end-column="1" />
+        <state relative-caret-position="153">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/var/cache/dev/appDevUrlMatcher.php.meta">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="2633" selection-start-line="0" selection-start-column="2633" selection-end-line="0" selection-end-column="2633" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config_prod.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config_dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-47">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/routing_dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="59" selection-start-line="1" selection-start-column="59" selection-end-line="1" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/NotaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/assets/js/sibrax_nota.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="405" column="5" selection-start-line="400" selection-start-column="4" selection-end-line="405" selection-end-column="5" />
+        <state relative-caret-position="153">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding>
             <element signature="e#51#1932#0" expanded="false" />
-            <element signature="e#2010#2317#0" expanded="false" />
             <element signature="e#2352#2426#0" expanded="false" />
             <element signature="n#!!block;n#inserirLinhaTabela#0" expanded="false" />
             <element signature="e#4461#4653#0" expanded="false" />
@@ -1045,55 +1039,118 @@
             <element signature="n#!!block;n#subtotaliza#0" expanded="false" />
             <element signature="n#!!block;n#reenviarNf#0" expanded="false" />
             <element signature="n#!!block;n#ImprimirNf#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="113" selection-start-line="40" selection-start-column="113" selection-end-line="40" selection-end-column="124" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ContasPagarReceberController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#85#0#PHP" expanded="true" />
-            <marker date="1474310693854" expanded="true" signature="10246:10958" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="11634:11822" ph="select id, v... recebimento_itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="16900:17292" ph="select icp.i... itens_conta_pagar_receber" />
-            <marker date="1474310693854" expanded="true" signature="17929:18345" ph="select icp.v... itens_conta_pagar_receber" />
+            <element signature="n#!!block;n#CancelarNf#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+        <state relative-caret-position="-204">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/baixa.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="133" column="61" selection-start-line="133" selection-start-column="61" selection-end-line="133" selection-end-column="61" />
+        <state relative-caret-position="417">
+          <caret line="457" column="38" selection-start-line="457" selection-start-column="38" selection-end-line="457" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Plano.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-510">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="39" column="62" selection-start-line="39" selection-start-column="62" selection-end-line="39" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
           <folding>
-            <element signature="e#4312#4334#0#HTML" expanded="true" />
-            <element signature="e#4483#4505#0#HTML" expanded="true" />
-            <element signature="e#5095#5117#0#HTML" expanded="true" />
-            <element signature="e#5268#5290#0#HTML" expanded="true" />
-            <element signature="e#5873#5895#0#HTML" expanded="true" />
-            <element signature="e#6046#6068#0#HTML" expanded="true" />
-            <element signature="e#6691#6713#0#HTML" expanded="true" />
-            <element signature="e#6864#6886#0#HTML" expanded="true" />
-            <element signature="e#7425#7447#0#HTML" expanded="true" />
-            <element signature="e#7598#7620#0#HTML" expanded="true" />
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ContasPagarReceber.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="116" column="30" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/js/typeahead.bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="2450" column="3" selection-start-line="2450" selection-start-column="3" selection-end-line="2450" selection-end-column="3" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ContasPagarReceberController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="63" column="36" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
+          <folding>
+            <element signature="e#40#85#0#PHP" expanded="true" />
+            <element signature="e#1123#1153#1#PHP" expanded="true" />
+            <element signature="e#1348#1372#0#PHP" expanded="true" />
+            <element signature="e#2754#2776#0#PHP" expanded="true" />
+            <element signature="e#3193#3227#1#PHP" expanded="true" />
+            <element signature="e#3837#3860#0#PHP" expanded="true" />
+            <element signature="e#9619#9653#1#PHP" expanded="true" />
+            <element signature="e#10968#10991#1#PHP" expanded="true" />
+            <element signature="e#12790#12814#0#PHP" expanded="true" />
+            <element signature="e#14426#14471#1#PHP" expanded="true" />
+            <marker date="1474395253833" expanded="true" signature="2270:2343" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="3462:3535" ph="select plano... plano" />
+            <marker date="1474395253833" expanded="true" signature="11761:12473" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="13149:13337" ph="select id, v... recebimento_itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="18415:18807" ph="select icp.i... itens_conta_pagar_receber" />
+            <marker date="1474395253833" expanded="true" signature="19444:19860" ph="select icp.v... itens_conta_pagar_receber" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/js/contas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="203" column="29" selection-start-line="203" selection-start-column="29" selection-end-line="203" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/css/sibrax.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="356" column="1" selection-start-line="356" selection-start-column="1" selection-end-line="356" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="208" column="14" selection-start-line="208" selection-start-column="14" selection-end-line="208" selection-end-column="14" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>

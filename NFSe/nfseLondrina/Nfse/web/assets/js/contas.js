@@ -201,8 +201,9 @@ function retornaProximoMes(dataVal) {
 }
 
 // {#Busca Clientes#}
-$(document).on('input', '.NomeCliente', function () {
+$(document).on('input', '.aaaNomeCliente', function () {
     var str = $(this).val(); // this.value
+
     $.ajax({
         url: 'carregaClientes',
         data: {str: str},

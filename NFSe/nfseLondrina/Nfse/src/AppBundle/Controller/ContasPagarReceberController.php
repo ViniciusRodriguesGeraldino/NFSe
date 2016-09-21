@@ -167,6 +167,33 @@ class ContasPagarReceberController extends Controller
         return $this->get('app.emp')->getClientes($valor);
     }
 
+
+    /**
+     *
+     * @Route("/carregaClientes2", name="carregaClientes2")
+     * @Method({"GET", "POST"})
+     */
+    public function carregaClientes2(Request $request){
+
+        $repo = $this->getDoctrine()
+            ->getRepository('AppBundle:Cliente');
+        $query = $repo->createQueryBuilder('a')
+            ->select('a.id,a.nome,a.cpfcnpj')
+            ->getQuery();
+        $result = $query->getArrayResult();
+
+        die(var_dump($result));
+
+//        $ret2 = [];
+//
+//        foreach ($result as $value) {
+//            $ret2[] = '('.$value['id'].') '.$value['nome'].' : '.$this->formataCpfCnpj($value['cpfcnpj']);
+//        }
+
+        return new JsonResponse($result);
+
+    }
+
     /**
      * @Route("/SalvarConta", name="SalvarConta")
      * @Method({"POST"})

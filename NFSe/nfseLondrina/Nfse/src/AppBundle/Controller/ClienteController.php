@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -26,13 +27,86 @@ class ClienteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $clientes = $em->getRepository('AppBundle:Cliente')->findBy(
-                                                array('empresa' => $this->get('app.emp')->getIdEmpresa(),
-                                                      'status'  => 1));
+//        $clientes = $em->getRepository('AppBundle:Cliente')->findBy(
+//            array('empresa' => $this->get('app.emp')->getIdEmpresa(), 'status'  => 1),
+//            array('id' => 'ASC'),
+//            10,
+//            0
+//        );
+//
+//        return $this->render('cliente/index.html.twig', array(
+//            'clientes' => $clientes,
+//        ));
+        return $this->render('cliente/index.html.twig', array());
+    }
 
-        return $this->render('cliente/index.html.twig', array(
-            'clientes' => $clientes,
-        ));
+
+    /**
+     * @Route("/paginate", name="cliente_paginate")
+     */
+    public function paginateAction(Request $request)
+    {
+        $length = $request->get('length');
+        $length = $length && ($length!=-1)?$length:0;
+
+        $start = $request->get('start');
+        $start = $length?($start && ($start!=-1)?$start:0)/$length:0;
+
+        $search = $request->get('search');
+        $filters = [
+            'query' => @$search['value']
+        ];
+
+        $clientes = $this->search(
+            $filters, $start, $length
+        );
+
+        $output = array(
+            'data' => array(),
+            'recordsFiltered' => count($this->search($filters, 0, false)),
+            'recordsTotal' => count($this->search(array(), 0, false))
+        );
+
+        foreach ($clientes as $cliente) {
+            $output['data'][] = [
+                'id' => $cliente->getId(),
+                'nome' => $cliente->getNome(),
+                'cpfcnpj' => $cliente->getCpfcnpj(),
+            ];
+        }
+
+        return new JsonResponse($output);
+//        return new Response(json_encode($output), 200, ['Content-Type' => 'application/json']);
+    }
+
+    public function search($data, $page = 0, $max = NULL, $getResult = true)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $query = isset($data['query']) && $data['query']?$data['query']:null;
+
+        $qb->select('u')
+           ->from('AppBundle:Cliente', 'u')
+           ->andWhere('u.empresa = :idemp')
+           ->setParameter('idemp', $this->get('app.emp')->getIdEmpresa())
+        ;
+
+        if ($query) {
+            $qb
+                ->andWhere('u.nome like :query')
+                ->setParameter('query', "%".$query."%")
+            ;
+        }
+
+        if ($max) {
+            $preparedQuery = $qb->getQuery()
+                ->setMaxResults($max)
+                ->setFirstResult($page * $max)
+            ;
+        } else {
+            $preparedQuery = $qb->getQuery();
+        }
+        return $getResult?$preparedQuery->getResult():$preparedQuery;
     }
 
     /**

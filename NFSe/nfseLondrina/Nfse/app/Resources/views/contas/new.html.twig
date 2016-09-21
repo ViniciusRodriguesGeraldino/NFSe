@@ -193,17 +193,6 @@
     <script src="{{ asset('assets/js/typeahead.bundle.js') }}"></script>
     <script>
 
-        var countries = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace,
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: 'https://raw.githubusercontent.com/twitter/typeahead.js/gh-pages/data/countries.json'
-        });
-
-        $('#scrollable-dropdown-menu .typeahead').typeahead(null, {
-            name: 'countries',
-            limit: 10,
-            source: countries
-        });
     </script>
 
 {% endblock %}

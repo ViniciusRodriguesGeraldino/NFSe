@@ -89,6 +89,30 @@
             <!-- /.container -->
         </nav>
 
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" />
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(function() {
+                $('#index_table').DataTable({
+//                    "sPaginationType": "bootstrap",
+                    "ordering": false,
+                    "info":     false,
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": "{{ path('cliente_paginate') }}",
+                    "sAjaxDataProp": "data",
+                    "pageLength": 10,
+                    "columns":[
+                        {"data": "id"},
+                        {"data": "nome"},
+                        {"data": "cpfcnpj"}
+                    ]
+                });
+            });
+        </script>
+
     </head>
     <body>
         {% block body %}{% endblock %}

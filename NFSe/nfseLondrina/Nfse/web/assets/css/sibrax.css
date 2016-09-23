@@ -1,8 +1,8 @@
 @charset"utf-8";
 
 * {
-    font-family : "proxima-nova",
-    sans-serif!important
+    /*font-family : "proxima-nova",*/
+    /*sans-serif!important*/
 }
 html, body {
     font-size : 14px;
@@ -20,9 +20,6 @@ html, body {
 }
 .float-right {
     float : right
-}
-a :hover {
-    color :  #2b542c !important;
 }
 .wrap {
     background-color :  #fff
@@ -257,12 +254,16 @@ table th {
     width: 100px;
     height: 30px;
     background: #5bc0de;
-    padding: 4px;
+    padding: 5px;
     text-align: center;
     border-radius: 5px;
     color: white;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
+.abuttonVoltar:hover {
+    border: 1px solid #5eb5e0;
+}
+
 .abuttonDelete {
     display: block;
     width: 100px;
@@ -356,4 +357,68 @@ table th {
 #scrollable-dropdown-menu .tt-dropdown-menu {
     max-height: 150px;
     overflow-y: auto;
+}
+
+#table_div_id.dataTables_filter {
+    float: right;
+    text-align: right;
+}
+
+.site-footer, .page-wrap:after {
+    height: 30px;
+}
+.site-footer {
+    background: #d58512;
+}
+
+.abuttonCadastrar {
+    display: block;
+    width: 100px;
+    height: 33px;
+    background: #0071BE;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    /*font-weight: bold;*/
+}
+
+.salvarBtn {
+    /*font-family: arial;*/
+    color: #FFFFFF !important;
+    /*font-size: 12px;*/
+    padding: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: #63B8EE;
+    width: 100px;
+    height: 30px;
+}
+
+.salvarBtn:hover {
+    border: 1px solid #2e6da4;
+}
+.div_clinica{
+    background-color: #99CDD8;
+    width: 600px;
+    padding-bottom: 15px;
+    border-radius: 15px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -webkit-box-shadow: 2px 2px 4px #888;
+    -moz-box-shadow: 2px 2px 4px #888;
+    box-shadow: 2px 2px 4px #888;
+}
+
+.cliente_extra{
+    background-color: oldlace;
+    border-radius: 15px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    max-width: 880px;
+    padding-bottom: 20px;
+}
+.min_height{
+    min-height: 550px;
 }

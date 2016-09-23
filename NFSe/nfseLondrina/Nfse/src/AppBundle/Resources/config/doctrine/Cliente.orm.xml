@@ -121,6 +121,36 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="nomeMae" type="string" column="NOME_MAE" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="convenio" type="integer" column="CONVENIO" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="indicacao" type="string" column="INDICACAO" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nomeTitular" type="string" column="NOME_TITULAR" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cpfTitular" type="string" column="CPF_TITULAR" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipoDependente" type="string" column="TIPO_DEPENDENTE" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="status" type="integer" column="STATUS" nullable="true"></field>
   </entity>
 </doctrine-mapping>

@@ -203,6 +203,47 @@ class Cliente
      */
     private $status;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOME_MAE", type="string", length=30, nullable=true)
+     */
+    private $nomeMae;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CONVENIO", type="integer", nullable=true)
+     */
+    private $convenio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="INDICACAO", type="string", length=30, nullable=true)
+     */
+    private $indicacao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOME_TITULAR", type="string", length=30, nullable=true)
+     */
+    private $nomeTitular;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CPF_TITULAR", type="string", length=20, nullable=true)
+     */
+    private $cpfTitular;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TIPO_DEPENDENTE", type="string", length=20, nullable=true)
+     */
+    private $tipoDependente;
 
     /**
      * Set empresa
@@ -837,6 +878,156 @@ class Cliente
         $this->status = $status;
 
         return $this;
+    }
+
+    /**
+     * Set nomeMae
+     *
+     * @param string $nomeMae
+     *
+     * @return Cliente
+     */
+    public function setNomeMae($nomeMae)
+    {
+        $this->nomeMae = $nomeMae;
+
+        return $this;
+    }
+
+
+    /**
+     * Get nomeMae
+     *
+     * @return string
+     */
+    public function getNomeMae()
+    {
+        return $this->nomeMae;
+    }
+
+    /**
+     * Set convenio
+     *
+     * @param string $convenio
+     *
+     * @return Cliente
+     */
+    public function setConvenio($convenio)
+    {
+        $this->convenio = $convenio;
+
+        return $this;
+    }
+
+
+    /**
+     * Get convenio
+     *
+     * @return string
+     */
+    public function getConvenio()
+    {
+        return $this->convenio;
+    }
+
+    /**
+     * Set indicacao
+     *
+     * @param string $indicacao
+     *
+     * @return Cliente
+     */
+    public function setIndicacao($indicacao)
+    {
+        $this->indicacao = $indicacao;
+
+        return $this;
+    }
+
+
+    /**
+     * Get indicacao
+     *
+     * @return string
+     */
+    public function getIndicacao()
+    {
+        return $this->indicacao;
+    }
+
+    /**
+     * Set nomeTitular
+     *
+     * @param string $nomeTitular
+     *
+     * @return Cliente
+     */
+    public function setNomeTitular($nomeTitular)
+    {
+        $this->nomeTitular = $nomeTitular;
+
+        return $this;
+    }
+
+
+    /**
+     * Get nomeTitular
+     *
+     * @return string
+     */
+    public function getNomeTitular()
+    {
+        return $this->nomeTitular;
+    }
+
+    /**
+     * Set cpfTitular
+     *
+     * @param string $cpfTitular
+     *
+     * @return Cliente
+     */
+    public function setCpfTitular($cpfTitular)
+    {
+        $this->cpfTitular = $cpfTitular;
+
+        return $this;
+    }
+
+
+    /**
+     * Get cpfTitular
+     *
+     * @return string
+     */
+    public function getCpfTitular()
+    {
+        return $this->cpfTitular;
+    }
+
+    /**
+     * Set tipoDependente
+     *
+     * @param string $tipoDependente
+     *
+     * @return Cliente
+     */
+    public function setTipoDependente($tipoDependente)
+    {
+        $this->tipoDependente = $tipoDependente;
+
+        return $this;
+    }
+
+
+    /**
+     * Get tipoDependente
+     *
+     * @return string
+     */
+    public function getTipoDependente()
+    {
+        return $this->tipoDependente;
     }
 
 }

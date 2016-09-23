@@ -169,10 +169,10 @@ function mascaraData(val) {
 
 $(document).ready(function(){
     $('#check_switch').click(function(){
-        var x = $("#dados_titular").is(":visible");
-        if(x == false){
+
+        if(document.getElementById('check_switch').checked) {
             $("#dados_titular").show();
-        }else{
+        } else {
             $("#dados_titular").hide();
         }
 

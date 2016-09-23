@@ -1,40 +1,268 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div class="container">
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
-                <h1 class="padding-bottom">Editar Cliente</h1>
+                <h1 class="pagination-centered">Novo Cliente</h1>
             </div>
         </div>
 
-        <div class="row row-centered">
-            <div class="col-xs-10 col-xs-offset-1">
-                {% form_theme edit_form 'bootstrap_3_horizontal_layout.html.twig' %}
-                {{ form_start(edit_form) }}
-                {{ form_widget(edit_form) }}
+        <form class="" method="post" action="" id="cliente_form">
+            <div class="row row-centered">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <div class="row padding-top">
 
-                <label></label>
-            </div>
-       </div>
-        <div class="row">
+                        <div class="col-xs-1 fix-padding">
+                            <div class="float-left no-padding-left col-xs-4">
+                                <label>{% if empresa_tipo == 'CLINICA' %}Ficha{% else %}#Cód.{% endif %}</label>
+                            </div>
+                            <div id="">
+                                <input type="text" id="cliente_codigo" name="cliente_codigo" class="CodigoCliente form-control" placeholder="#"
+                                      value="{{ cliente.codigoCliente }}">
+                            </div>
+                        </div>
 
-            <div class="col-xs-1 col-xs-offset-2">
-                <input class="abutton" type="submit" value="Salvar" />
-                {{ form_end(edit_form) }}
+                        <div class="col-xs-3">
+                            <div class="float-left no-padding-left col-xs-4">
+                                <label>Cliente</label>
+                            </div>
+                            <div id="">
+                                <input type="text" id="cliente_nome" name="cliente_nome" class="NomeCliente form-control" required="required"
+                                       placeholder="Digite o nome" value="{{ cliente.nome }}">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2 fix-padding">
+                            <label>CPF/CNPJ</label>
+                            <div class="">
+                                <input type="text" id="cliente_cpfcnpj" name="cliente_cpfcnpj" class="form-control" value="{{ cliente.cpfcnpj }}" required="required" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-3 fix-padding">
+                            <label>Email</label>
+                            <div class="input-append">
+                                <input type="text" id="cliente_email" name="cliente_email" class="form-control" value="{{ cliente.email }}" placeholder="exemplo@exemplo.com">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2 fix-padding">
+                            <label>Data Nasc.</label>
+                            <div class="input-append">
+                                <input type="text" class="form-control" placeholder="dd/mm/aaaa" name="cliente_nasc" id="cliente_nasc"
+                                       maxlength="10" onkeypress="mascaraData(this)" value="{{ cliente.datanasc|date('d/m/Y') }}" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
-            <div class="col-xs-1 padding-left padding-right">
-                {{ form_start(delete_form) }}
-                <input class="abuttonDelete" type="submit" value="Delete">
-                {{ form_end(delete_form) }}
+            <div class="row row-centered">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <div class="row padding-top">
+
+                        <div class="col-xs-2">
+                            <div class="float-left no-padding-left col-xs-4">
+                                <label>Telefone</label>
+                            </div>
+                            <div id="">
+                                <input type="text" value="{{ cliente.fone }}" id="cliente_fone" name="cliente_fone" class="form-control" placeholder="(xx)0000-0000">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2">
+                            <div class="float-left no-padding-left col-xs-4">
+                                <label>Celular</label>
+                            </div>
+                            <div id="">
+                                <input type="text" value="{{ cliente.celular }}" id="cliente_celular" name="cliente_celular" class="form-control" placeholder="(xx)0000-0000">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2 fix-padding">
+                            <label>Cep</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.cep }}" id="cliente_cep" name="cliente_cep" class="form-control" placeholder="12345678">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-3 fix-padding">
+                            <label>Endereço</label>
+                            <div class="">
+                                <input type="text" value="{{ cliente.endereco }}" id="cliente_endereco" name="cliente_endereco" class="form-control" placeholder="Digite o Endereço">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2 fix-padding">
+                            <label>Número</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.numero }}" id="cliente_numero_endereco" name="cliente_numero_endereco" class="form-control" placeholder="N° Rua">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
-            <div class="col-xs-1" style="padding-left: 25px">
-                <a class="abuttonVoltar" href="{{ path('cliente_index') }}">Voltar</a>
+            <div class="row row-centered padding-bottom">
+                <div class="col-xs-9 col-xs-offset-1">
+                    <div class="row padding-top">
+
+                        <div class="col-xs-3 fix-padding">
+                            <label>Bairro</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.bairro }}" id="cliente_bairro" name="cliente_bairro" class="form-control" placeholder="Bairro">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-3 fix-padding">
+                            <label>Complemento</label>
+                            <div class="">
+                                <input type="text" value="{{ cliente.complemento }}" id="cliente_complemento" name="cliente_complemento" class="form-control" placeholder="Endereço do Cliente">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2 fix-padding">
+                            <label>Cidade</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.cidade }}" id="cliente_cidade" name="cliente_cidade" class="form-control" placeholder="Cidade">
+                                <input type="hidden" value="{{ cliente.codcid }}" id="cliente_codCid" name="cliente_codCid" class="form-control" placeholder="Cidade">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-1 fix-padding">
+                            <label>UF</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.uf }}" id="cliente_uf" name="cliente_uf" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-1 fix-padding"></div>
+
+                        <div class="col-xs-1 fix-padding">
+                            <label>Sexo</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.sexo }}" id="cliente_sexo" name="cliente_sexo" class="form-control" placeholder="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="padding-top"></div>
+
+            {#Extras#}
+            <div class="row row-centered" style="padding-left: 15px">
+                <div class="col-xs-10 col-xs-offset-1 cliente_extra">
+                    <div class="row padding-top">
+
+                        <div class="col-xs-3 fix-padding">
+                            <label>Profissão</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.profissao }}" id="cliente_profissao" name="cliente_profissao" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2 fix-padding">
+                            <label>Estado Civil</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.estadocivil }}" id="cliente_estado_civil" name="cliente_estado_civil" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-3 fix-padding">
+                            <label>Nome Cônjuge</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.nomeConjuge }}" id="cliente_nome_conjuge" name="cliente_nome_conjuge" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-3 fix-padding">
+                            <label>Nome Mãe</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.nomeMae }}" id="cliente_nome_mae" name="cliente_nome_mae" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            {#Div de Clinica#}
+            <div class="Clinica row row-centered padding-bottom" {% if empresa_tipo == 'CLINICA' %}{% else %}hidden{% endif %}>
+                <div class="col-xs-10 col-xs-offset-1">
+                    <div class="row padding-top">
+
+                        <div class="col-xs-2 fix-padding">
+                            <label>Convênio</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.convenio }}" id="cliente_convenio" name="cliente_convenio" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-5">
+                            <div class="" style="float: left;padding-top: 20px;">
+                                <label>Paciente Dependente?</label>
+                            </div>
+                            <div class="" style="float: left;padding-left: 12px; padding-top: 18px">
+                                <label class="switch" id="switch">
+                                    <input type="checkbox" id="check_switch" name="check_switch" {% if cliente.tipoDependente is not null %} checked {% endif %} >
+                                    <div class="slider round"></div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <label>Indicação</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.indicacao }}" id="cliente_indicacao" name="cliente_indicacao" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-centered col-xs-offset-2 div_clinica" id="dados_titular" hidden>
+                <div class="col-xs-10 col-xs-offset-1">
+                    <div class="row padding-top">
+
+                        <div class="col-xs-4">
+                            <label>Nome Titular</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.nomeTitular }}" id="cliente_nome_titular" name="cliente_nome_titular" class="form-control" placeholder="Titular Cônvenio">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <label>CPF</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.cpfTitular }}" id="cliente_cpf_titular" name="cliente_cpf_titular" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <label>Tipo Dependente</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.tipoDependente }}" id="cliente_tipo_dependente" name="cliente_tipo_dependente" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row padding-top">
+                <div class="col-xs-1 col-xs-offset-1">
+                    <input class="salvarBtn" type="submit" value="Salvar" />
+                </div>
+
+                <div class="col-xs-1 padding-left">
+                    <a id="btn_voltar" class="abuttonVoltar" href="{{ path('cliente_index') }}">Voltar</a>
+                </div>
+            </div>
+        </form>
     </div>
 
 {% endblock %}
@@ -46,5 +274,70 @@
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script src="{{ asset('assets/js/jquery.mask.js') }}"></script>
     <script src="{{ asset('assets/js/sibrax_cliente.js') }}"></script>
+    <script>
+        {#var url = '{{ path("cliente_edit", {"id": '+data.id+'}) }}';#}
+        {#var url=  "{{ path('cliente_edit', {'id': data.id}) }}";#}
+        //        alert(url);
+    </script>
+    <style>
+        .form-control{max-height:30px;}
+
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 46px;
+            height: 26px;
+        }
+
+        .switch input {display:none;}
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(21px);
+            -ms-transform: translateX(21px);
+            transform: translateX(21px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 30px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
 
 {% endblock %}

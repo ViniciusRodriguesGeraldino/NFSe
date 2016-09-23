@@ -137,6 +137,7 @@ class ClienteController extends Controller
 
         $cliente = new Cliente();
 
+        $cliente->setCodigoCliente($dados[1]['value']);
         $cliente->setEmpresa($this->get('app.emp')->getIdEmpresa());
         $cliente->setNome($dados[1]['value']);
 
@@ -215,22 +216,25 @@ class ClienteController extends Controller
      */
     public function editAction(Request $request, Cliente $cliente)
     {
-        $deleteForm = $this->createDeleteForm($cliente);
-        $editForm = $this->createForm('AppBundle\Form\ClienteType', $cliente);
-        $editForm->handleRequest($request);
+//        $deleteForm = $this->createDeleteForm($cliente);
+//        $editForm = $this->createForm('AppBundle\Form\ClienteType', $cliente);
+//        $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($cliente);
-            $em->flush();
+//        if ($editForm->isSubmitted() && $editForm->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($cliente);
+//            $em->flush();
+//
+//            return $this->redirectToRoute('cliente_edit', array('id' => $cliente->getId()));
+//        }
 
-            return $this->redirectToRoute('cliente_edit', array('id' => $cliente->getId()));
-        }
+        $empresa_tipo = 'CLINICA';
 
         return $this->render('cliente/edit.html.twig', array(
             'cliente' => $cliente,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'empresa_tipo' => $empresa_tipo,
+//            'edit_form' => $editForm->createView(),
+//            'delete_form' => $deleteForm->createView(),
         ));
     }
 

@@ -246,6 +246,13 @@ class Cliente
     private $tipoDependente;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="CODIGO_CLIENTE", type="string", length=10, nullable=true)
+     */
+    private $codigoCliente;
+
+    /**
      * Set empresa
      *
      * @param integer $empresa
@@ -1028,6 +1035,31 @@ class Cliente
     public function getTipoDependente()
     {
         return $this->tipoDependente;
+    }
+
+    /**
+     * Set codigoCliente
+     *
+     * @param string $codigoCliente
+     *
+     * @return Cliente
+     */
+    public function setCodigoCliente($codigoCliente)
+    {
+        $this->codigoCliente = $codigoCliente;
+
+        return $this;
+    }
+
+
+    /**
+     * Get codigoCliente
+     *
+     * @return string
+     */
+    public function getCodigoCliente()
+    {
+        return $this->codigoCliente;
     }
 
 }

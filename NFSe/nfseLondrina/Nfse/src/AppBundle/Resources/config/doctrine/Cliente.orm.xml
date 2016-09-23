@@ -151,6 +151,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="codigoCliente" type="string" column="CODIGO_CLIENTE" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="status" type="integer" column="STATUS" nullable="true"></field>
   </entity>
 </doctrine-mapping>

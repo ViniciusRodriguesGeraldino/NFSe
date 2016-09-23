@@ -21,13 +21,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClienteController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ClienteController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="234" column="44" selection-start-line="234" selection-start-column="44" selection-end-line="234" selection-end-column="44" />
+              <folding>
+                <element signature="e#40#90#0#PHP" expanded="true" />
+                <marker date="1474660027290" expanded="false" signature="970:993" ph="cliente/index" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/cliente/new.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="208" column="52" selection-start-line="208" selection-start-column="52" selection-end-line="208" selection-end-column="52" />
+            <state relative-caret-position="174">
+              <caret line="190" column="30" selection-start-line="0" selection-start-column="0" selection-end-line="340" selection-end-column="14" />
               <folding>
                 <element signature="e#9748#9786#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/cliente/edit.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-527">
+              <caret line="210" column="36" selection-start-line="210" selection-start-column="36" selection-end-line="210" selection-end-column="36" />
+              <folding>
+                <element signature="e#10437#10475#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/edit.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="176" column="94" selection-start-line="176" selection-start-column="81" selection-end-line="176" selection-end-column="94" />
+              <folding>
+                <element signature="e#12#26#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -36,8 +73,8 @@
       <file leaf-file-name="sibrax_cliente.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/js/sibrax_cliente.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="169" column="28" selection-start-line="169" selection-start-column="28" selection-end-line="169" selection-end-column="28" />
+            <state relative-caret-position="404">
+              <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
               <folding>
                 <element signature="e#86#408#0" expanded="false" />
                 <element signature="e#503#825#0" expanded="false" />
@@ -46,7 +83,6 @@
                 <element signature="e#1271#2214#0" expanded="false" />
                 <element signature="e#2262#3030#0" expanded="false" />
                 <element signature="n#!!block;n#mascaraData#0" expanded="false" />
-                <element signature="e#5314#5623#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -78,9 +114,6 @@
         <option value="$PROJECT_DIR$/app/Resources/views/contas/new.html.twig" />
         <option value="$PROJECT_DIR$/web/assets/js/dataTable/dataTables.min.js" />
         <option value="$PROJECT_DIR$/web/assets/css/dataTable/dataTables.min.css" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Cliente.orm.xml" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Cliente.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ClienteController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/cliente/new.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/servico/index.html.twig" />
@@ -91,7 +124,11 @@
         <option value="$PROJECT_DIR$/app/Resources/views/contas/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/cliente/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/bancos/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Cliente.orm.xml" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Cliente.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ClienteController.php" />
         <option value="$PROJECT_DIR$/web/assets/js/sibrax_cliente.js" />
+        <option value="$PROJECT_DIR$/app/Resources/views/cliente/edit.html.twig" />
       </list>
     </option>
   </component>
@@ -377,6 +414,14 @@
               <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="doctrine" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -455,6 +500,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contas" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -578,12 +649,12 @@
       <workItem from="1474369161973" duration="24994000" />
       <workItem from="1474465364422" duration="17545000" />
       <workItem from="1474542074197" duration="29297000" />
-      <workItem from="1474629478512" duration="23514000" />
+      <workItem from="1474629478512" duration="25381000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159166000" />
+    <option name="totallyTimeSpent" value="161033000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -631,14 +702,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BancosController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -779,16 +842,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ContasPagarReceber.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -849,22 +902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="36" column="5233" selection-start-line="36" selection-start-column="5233" selection-end-line="36" selection-end-column="5233" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Cliente.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="1031" column="0" selection-start-line="1031" selection-start-column="0" selection-end-line="1031" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Cliente.orm.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="143" column="62" selection-start-line="143" selection-start-column="51" selection-end-line="143" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -933,17 +970,6 @@
           <caret line="38" column="40" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="40" />
           <folding>
             <element signature="e#2010#2317#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ClienteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="273" column="0" selection-start-line="273" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#90#0#PHP" expanded="true" />
-            <marker date="1474657185744" expanded="false" signature="970:993" ph="cliente/index" />
           </folding>
         </state>
       </provider>
@@ -1042,10 +1068,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Cliente.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="250" column="65" selection-start-line="250" selection-start-column="65" selection-end-line="250" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Cliente.orm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="153" column="68" selection-start-line="153" selection-start-column="54" selection-end-line="153" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/cliente/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="190" column="30" selection-start-line="0" selection-start-column="0" selection-end-line="340" selection-end-column="14" />
+          <folding>
+            <element signature="e#9748#9786#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ClienteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="234" column="44" selection-start-line="234" selection-start-column="44" selection-end-line="234" selection-end-column="44" />
+          <folding>
+            <element signature="e#40#90#0#PHP" expanded="true" />
+            <marker date="1474660027290" expanded="false" signature="970:993" ph="cliente/index" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="176" column="94" selection-start-line="176" selection-start-column="81" selection-end-line="176" selection-end-column="94" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/assets/js/sibrax_cliente.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="169" column="28" selection-start-line="169" selection-start-column="28" selection-end-line="169" selection-end-column="28" />
+        <state relative-caret-position="404">
+          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
           <folding>
             <element signature="e#86#408#0" expanded="false" />
             <element signature="e#503#825#0" expanded="false" />
@@ -1054,17 +1127,16 @@
             <element signature="e#1271#2214#0" expanded="false" />
             <element signature="e#2262#3030#0" expanded="false" />
             <element signature="n#!!block;n#mascaraData#0" expanded="false" />
-            <element signature="e#5314#5623#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/cliente/new.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/cliente/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="208" column="52" selection-start-line="208" selection-start-column="52" selection-end-line="208" selection-end-column="52" />
+        <state relative-caret-position="-527">
+          <caret line="210" column="36" selection-start-line="210" selection-start-column="36" selection-end-line="210" selection-end-column="36" />
           <folding>
-            <element signature="e#9748#9786#0#HTML" expanded="true" />
+            <element signature="e#10437#10475#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

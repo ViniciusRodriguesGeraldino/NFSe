@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container min_height">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <h1 class="pagination-centered">Lista de Convênios</h1>
+            </div>
+        </div>
+
+        <div class="row padding-top padding-bottom">
+            <div class="col-xs-1 col-xs-offset-1">
+                <a class="abutton" href="{{ path('convenio_new') }}">Cadastrar</a>
+            </div>
+        </div>
+
+        <div class="row row-centered">
+            <div class="col-xs-10 col-xs-offset-1">
+                <table class="table pagination-centered">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Cnpj</th>
+                    <th>Telefone</th>
+                    <th class="center">Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for convenio in convenios %}
+                <tr>
+                    <td>{{ convenio.nomeConvenio }}</td>
+                    <td>{{ convenio.cpfcnpj }}</td>
+                    <td>{{ convenio.fone }}</td>
+                    <td class="center"><a href="{{ path('convenio_edit', { 'id': convenio.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

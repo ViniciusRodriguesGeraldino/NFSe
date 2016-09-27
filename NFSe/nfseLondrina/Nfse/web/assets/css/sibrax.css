@@ -366,6 +366,9 @@ table th {
 
 .site-footer, .page-wrap:after {
     height: 30px;
+    /*position:absolute;*/
+    bottom:0;
+    width:100%;
 }
 .site-footer {
     background: #d58512;
@@ -422,3 +425,8 @@ table th {
 .min_height{
     min-height: 550px;
 }
+
+@media(max-width:767px){}
+@media(min-width:768px){}
+@media(min-width:992px){}
+@media(min-width:1200px){}

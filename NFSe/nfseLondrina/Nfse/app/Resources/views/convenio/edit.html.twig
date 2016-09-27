@@ -1,0 +1,196 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <h1 class="padding-bottom">Cadastro Convênio</h1>
+            </div>
+        </div>
+
+        <form class="" method="post" action="" id="convenio_form_edit" >
+            <div class="container" style="min-height: 463px">
+
+                <div class="row row-centered">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <div class="row padding-top">
+
+                            <div class="col-xs-1 fix-padding">
+                                <div class="float-left no-padding-left">
+                                    <label>#Cód.</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.id }}" id="convenio_id" name="convenio_id" class="form-control" disabled placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-xs-3 fix-padding">
+                                <div class="float-left no-padding-left col-xs-4">
+                                    <label>Nome</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.nomeConvenio }}" id="convenio_nome" name="convenio_nome" class="form-control" placeholder="Nome do Convênio" >
+                                </div>
+                            </div>
+
+                            <div class="col-xs-2 fix-padding">
+                                <div class="float-left no-padding-left">
+                                    <label>Cnpj</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.cpfCnpj }}" id="convenio_cnpj" name="convenio_cnpj" class="form-control" placeholder="##.###.###/####-##">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-2 fix-padding">
+                                <div class="no-padding-left">
+                                    <label>Insc. Municipal</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.inscricaoMun }}" id="convenio_inscricao_municipal" name="convenio_inscricao_municipal" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 fix-padding">
+                                <div class="no-padding-left">
+                                    <label>Insc. Estadual</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.inscricaoEst }}" id="convenio_inscricao_estadual" name="convenio_inscricao_estadual" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row row-centered">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <div class="row padding-top">
+
+                            <div class="col-xs-2 fix-padding">
+                                <div class="float-left no-padding-left col-xs-4">
+                                    <label>Cep</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.cep }}" id="convenio_cep" name="convenio_cep" class="form-control" placeholder="11111222" >
+                                </div>
+                            </div>
+
+                            <div class="col-xs-3 fix-padding">
+                                <div class="float-left no-padding-left col-xs-4">
+                                    <label>Endereço</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.endereco }}" id="convenio_endereco" name="convenio_endereco" class="form-control" placeholder="Digite o Endereço" >
+                                </div>
+                            </div>
+
+                            <div class="col-xs-1 fix-padding">
+                                <div class="float-left no-padding-left col-xs-4">
+                                    <label>Número</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.numero }}" id="convenio_numero" name="convenio_numero" class="form-control" placeholder="#" >
+                                </div>
+                            </div>
+
+                            <div class="col-xs-3 fix-padding">
+                                <div class="float-left no-padding-left col-xs-4">
+                                    <label>Cidade</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.cidade }}" id="convenio_cidade" name="convenio_cidade" class="form-control" placeholder="Ex: Casa" >
+                                    <input type="hidden" value="{{ convenio.codCid }}" id="convenio_cod_cidade" name="convenio_cod_cidade" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-1 fix-padding">
+                                <div class="float-left no-padding-left col-xs-4">
+                                    <label>UF</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.uf }}" id="convenio_uf" name="convenio_uf" class="form-control" placeholder="PR" >
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-centered">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <div class="row padding-top">
+
+                            <div class="col-xs-2 fix-padding">
+                                <div class="float-left no-padding-left col-xs-4">
+                                    <label>Bairro</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.bairro }}" id="convenio_bairro" name="convenio_bairro" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-3 fix-padding">
+                                <div class="float-left no-padding-left col-xs-4">
+                                    <label>Complemento</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.complemento }}" id="convenio_complemento" name="convenio_complemento" class="form-control" placeholder="Ex: Casa" >
+                                </div>
+                            </div>
+
+                            <div class="col-xs-3 fix-padding">
+                                <div class="float-left no-padding-left">
+                                    <label>Email</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.email }}" id="convenio_email" name="convenio_email" class="form-control" placeholder="convenio@email.com" >
+                                </div>
+                            </div>
+
+                            <div class="col-xs-2 fix-padding">
+                                <div class="float-left no-padding-left">
+                                    <label>Telefone</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ convenio.fone }}" id="convenio_telefone" name="convenio_telefone" class="form-control" placeholder="(xx)0000-0000" >
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row row-centered">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <div class="row padding-top">
+
+                            <div class="col-xs-1">
+                                <div class="">
+                                    <a class="abuttonVoltar" href="{{ path('convenio_index') }}">Voltar</a>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-1" style="padding-left: 40px">
+                                <div class="">
+                                    <input class="salvarBtn" type="submit" value="Salvar" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('assets/js/jquery.mask.js') }}"></script>
+    <script src="{{ asset('assets/js/convenio.js') }}"></script>
+{% endblock %}

@@ -15,6 +15,7 @@
             <div class="row row-centered">
                 <div class="col-xs-10 col-xs-offset-1">
                     <div class="row padding-top">
+
                         <div class="col-xs-2">
                             <label>Tipo de Conta: </label>
                             {% if conta.tipoConta == 'PAGAR' %}
@@ -50,6 +51,17 @@
                         </div>
                     </div>
 
+                    <div class="row padding-top">
+                        <div class="col-xs-8">
+                        </div>
+                        <div class="col-xs-2">
+                            <label>Total Desconto</label>
+                            <div class="input-append">
+                                <input type="text" disabled id="valorTotalDocumento" name="valorTotalDocumento" class="form-control" value="{{ conta.descontos|number_format(2, ',', '') }}"
+                                       required="required" placeholder="0,00" style="text-align: right">
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row padding-top">
                         <label style="display: block" class="padding-left">Parcelas</label>
@@ -71,59 +83,60 @@
                                 {% set count = 0 %}
                                 {% for item in items %}
                                     <tr>
+                                        {% set valor_a_pagar = item.valor-item.desconto+item.acrescimo %}
                                         <td><input type="text" id="itemVencimento{{ count }}" name="itemVencimento{{ count }}" class="text-center ContaItem"
                                                    value="{{ item.data_vencimento|date('d/m/Y') }}" data-format="dd/MM/yyyy" required="required" placeholder="DD/MM/AAAA"
-                                                   {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                   {% if item.valorPago < valor_a_pagar and date(item.data_vencimento) <  date()  %}
                                                        style="color: #ac2925"
-                                                   {% elseif item.valorPago == item.valor %}
+                                                   {% elseif item.valorPago == valor_a_pagar %}
                                                        style="color: #2e6da4"
                                                    {% endif %}
                                             ></td>
 
                                         <td><input type="text" id="itemValor{{ count }}" name="itemValor{{ count }}" class="text-right ContaItem" required="required"
-                                                   value="{{ item.valor|number_format(2, ',', '') }}" placeholder="0,00"
-                                                    {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                   value="{{ valor_a_pagar|number_format(2, ',', '') }}" placeholder="0,00"
+                                                    {% if item.valorPago < valor_a_pagar and date(item.data_vencimento) <  date()  %}
                                                         style="color: #ac2925"
-                                                    {% elseif item.valorPago == item.valor %}
+                                                    {% elseif item.valorPago == valor_a_pagar %}
                                                         style="color: #2e6da4"
                                                     {% endif %}
                                             ></td>
 
                                         <td><input type="text" id="itemValorPago{{ count }}" name="itemValorPago{{ count }}" class="text-right ContaItem"
                                                    value="{{ item.valorPago|number_format(2, ',', '') }}" placeholder="0,00"
-                                                    {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                    {% if item.valorPago < valor_a_pagar and date(item.data_vencimento) <  date()  %}
                                                         style="color: #ac2925"
-                                                    {% elseif item.valorPago == item.valor %}
+                                                    {% elseif item.valorPago == valor_a_pagar %}
                                                         style="color: #2e6da4"
                                                     {% endif %}
                                             ></td>
 
                                         <td><input type="text" id="itemSaldo{{ count }}" name="itemSaldo{{ count }}" class="text-right ContaItem"
                                                    value="{% if item.saldo >=0 %} {{ item.saldo|number_format(2, ',', '') }} {% else %} 0,00 {% endif %}" placeholder="0,00"
-                                                    {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                    {% if item.valorPago < valor_a_pagar and date(item.data_vencimento) <  date()  %}
                                                         style="color: #ac2925"
-                                                    {% elseif item.valorPago == item.valor %}
+                                                    {% elseif item.valorPago == valor_a_pagar %}
                                                         style="color: #2e6da4"
                                                     {% endif %}
                                             ></td>
 
                                         <td><input type="text" id="itemHistorico{{ count }}" name="itemHistorico{{ count }}" class="text-center ContaItem"
                                                    value="{{ item.historico }}"
-                                                    {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                    {% if item.valorPago < valor_a_pagar and date(item.data_vencimento) <  date()  %}
                                                         style="color: #ac2925"
-                                                    {% elseif item.valorPago == item.valor %}
+                                                    {% elseif item.valorPago == valor_a_pagar %}
                                                         style="color: #2e6da4"
                                                     {% endif %}
                                             ></td>
 
                                         {#<td href="#" id="btnRemoveLinha" class="sale-delete-row">×</td>#}
                                         <td class="center">
-                                                {% if item.valorPago < item.valor and date(item.data_vencimento) <  date()  %}
+                                                {% if item.valorPago < valor_a_pagar and date(item.data_vencimento) <  date()  %}
                                                     <button type="button" data-id="{{ count }}" id="{{ item.id }}"
                                                             class="btn btn-xs btn-danger open-Modal" data-toggle="modal" data-target="#myModal">
                                                        Atraso
                                                     </button>
-                                                {% elseif item.valorPago >= item.valor %}
+                                                {% elseif item.valorPago >= valor_a_pagar %}
                                                     <button type="button" data-id="{{ count }}" id="{{ item.id }}"
                                                             class="btn btn-xs btn-group open-Modal" data-toggle="modal" data-target="#myModal">
                                                         Pago

@@ -253,6 +253,13 @@ class Cliente
     private $codigoCliente;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="DEPENDENTE", type="boolean")
+     */
+    private $dependente;
+
+    /**
      * Set empresa
      *
      * @param integer $empresa
@@ -1060,6 +1067,31 @@ class Cliente
     public function getCodigoCliente()
     {
         return $this->codigoCliente;
+    }
+
+    /**
+     * Set dependente
+     *
+     * @param boolean $dependente
+     *
+     * @return Cliente
+     */
+    public function setDependente($dependente)
+    {
+        $this->dependente = $dependente;
+
+        return $this;
+    }
+
+
+    /**
+     * Get dependente
+     *
+     * @return boolean
+     */
+    public function getDependente()
+    {
+        return $this->dependente;
     }
 
 }

@@ -25,7 +25,7 @@ class ClienteController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+//        $em = $this->getDoctrine()->getManager();
 
 //        $clientes = $em->getRepository('AppBundle:Cliente')->findBy(
 //            array('empresa' => $this->get('app.emp')->getIdEmpresa(), 'status'  => 1),
@@ -120,11 +120,15 @@ class ClienteController extends Controller
     {
 
         $empresa_tipo = 'CLINICA';
-
-//        return $this->redirectToRoute('cliente_edit', array('id' => $cliente->getId()));
+        $em = $this->getDoctrine()->getManager();
+        $convenios = $em->getRepository('AppBundle:Convenio')->findBy(
+            array('idEmpresa' => $this->get('app.emp')->getIdEmpresa(),
+                  'status'  => 1)
+        );
 
         return $this->render('cliente/new.html.twig', array(
             'empresa_tipo' => $empresa_tipo,
+            'convenios' => $convenios,
         ));
     }
 
@@ -137,7 +141,7 @@ class ClienteController extends Controller
 
         $cliente = new Cliente();
 
-        $cliente->setCodigoCliente($dados[1]['value']);
+        $cliente->setCodigoCliente($dados[0]['value']);
         $cliente->setEmpresa($this->get('app.emp')->getIdEmpresa());
         $cliente->setNome($dados[1]['value']);
 
@@ -186,13 +190,81 @@ class ClienteController extends Controller
         }
     }
 
+    /**
+     * @Route("/{id}/EditarCliente", name="EditarCliente")
+     * @Method({"GET", "POST"})
+     */
+    public function EditarCliente(Request $request, Cliente $cliente){
+        $dados = $request->request->get('dados', null);
+
+        $cliente->setCodigoCliente($dados[0]['value']);
+        $cliente->setNome($dados[1]['value']);
+
+        $cpfcnpj = $dados[2]['value'];
+        if(strpos($cpfcnpj, '.') || strpos($cpfcnpj, '-') || strpos($cpfcnpj, '/'))
+            $cliente->setCpfcnpj(preg_replace("/\D+/", "", $cpfcnpj));
+        else
+            $cliente->setCpfcnpj($dados[2]['value']);
+
+        $cliente->setEMail($dados[3]['value']);
+        $cliente->setDataNasc(new \DateTime(date($this->inverteData($dados[4]['value']))));
+        $cliente->setFone($dados[5]['value']);
+        $cliente->setCelular($dados[6]['value']);
+        $cliente->setCep($dados[7]['value']);
+        $cliente->setEndereco($dados[8]['value']);
+        $cliente->setNumero($dados[9]['value']);
+        $cliente->setBairro($dados[10]['value']);
+        $cliente->setComplemento($dados[11]['value']);
+        $cliente->setCidade($dados[12]['value']);
+        $cliente->setCodCid($dados[13]['value']);
+        $cliente->setUf($dados[14]['value']);
+        $cliente->setSexo($dados[15]['value']);
+        $cliente->setProfissao($dados[16]['value']);
+        $cliente->setEstadoCivil($dados[17]['value']);
+        $cliente->setNomeConjuge($dados[18]['value']);
+        $cliente->setNomeMae($dados[19]['value']);
+        $cliente->setConvenio($dados[20]['value']);
+
+        if($dados[21]['value'] == 'on'){
+            $cliente->setDependente(true);
+
+            $cliente->setIndicacao($dados[22]['value']);
+            $cliente->setNomeTitular($dados[23]['value']);
+            $cliente->setCpfTitular($dados[24]['value']);
+            $cliente->setTipoDependente($dados[25]['value']);
+        }
+        else {
+            $cliente->setDependente(false);
+            $cliente->setIndicacao($dados[21]['value']);
+            $cliente->setNomeTitular('');
+            $cliente->setCpfTitular('');
+            $cliente->setTipoDependente('');
+        }
+
+
+        try{
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($cliente);
+            $em->flush();
+
+            $response['success'] = true;
+            $response['idCliente'] = $cliente->getId();
+
+            return new JsonResponse($response);
+
+        }catch (Exception $e){
+            $response['success'] = true;
+            $response['msg'] = $e;
+        }
+    }
+
     public function inverteData($data){
         $new_data = explode('/', $data);
         $data = $new_data[1]."/".$new_data[0]."/".$new_data[2];
         return $data;
     }
 
-        /**
+     /**
      * Finds and displays a Cliente entity.
      *
      * @Route("/{id}", name="cliente_show")
@@ -216,25 +288,18 @@ class ClienteController extends Controller
      */
     public function editAction(Request $request, Cliente $cliente)
     {
-//        $deleteForm = $this->createDeleteForm($cliente);
-//        $editForm = $this->createForm('AppBundle\Form\ClienteType', $cliente);
-//        $editForm->handleRequest($request);
-
-//        if ($editForm->isSubmitted() && $editForm->isValid()) {
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($cliente);
-//            $em->flush();
-//
-//            return $this->redirectToRoute('cliente_edit', array('id' => $cliente->getId()));
-//        }
-
         $empresa_tipo = 'CLINICA';
+
+        $em = $this->getDoctrine()->getManager();
+        $convenios = $em->getRepository('AppBundle:Convenio')->findBy(
+            array('idEmpresa' => $this->get('app.emp')->getIdEmpresa(),
+                'status'  => 1)
+        );
 
         return $this->render('cliente/edit.html.twig', array(
             'cliente' => $cliente,
             'empresa_tipo' => $empresa_tipo,
-//            'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
+            'convenios' => $convenios,
         ));
     }
 

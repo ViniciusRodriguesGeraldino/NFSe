@@ -31,7 +31,8 @@ class ContasPagarReceberController extends Controller
         $tipo = $request->query->get('tipo');
 
         if($tipo != 'PAGAR' && $tipo != 'RECEBER'){
-            die(var_dump('Parametro inválido.'));
+            //die(var_dump('Parametro inválido.'));
+            $tipo = 'PAGAR';
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -56,6 +57,7 @@ class ContasPagarReceberController extends Controller
         $tipo = $request->query->get('tipo');
         if($tipo != 'PAGAR' && $tipo != 'RECEBER'){
             die(var_dump('Parametro inválido.'));
+            $tipo = 'PAGAR';
         }
 
         $em = $this->getDoctrine()->getManager();

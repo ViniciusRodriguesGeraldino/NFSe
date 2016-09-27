@@ -96,6 +96,33 @@ jQuery(document).ready(function () {
     });
 });
 
+//Editar
+jQuery(document).ready(function () {
+    jQuery('#cliente_form_edit').submit(function () {
+
+        var dados = jQuery(this).serializeArray();
+        console.log(dados);
+        jQuery.ajax({
+            type: "POST",
+            url: "EditarCliente",
+            data: {dados: dados},
+            success: function (data) {
+                if (data.success == true){
+                    alert('Alterado com Sucesso!');
+                    // var url=  "{{ path('cliente_edit', {'id': valorID}) }}";
+                    // url = url.replace('valorID', data.idCliente);
+                    // window.location = url;
+                }
+                else if (data.success == false) {
+                    alert('Erro ao alterar cadastro. Erros: ' + data.msg);
+                }
+            }
+        });
+
+        return false;
+    });
+});
+
 function mascaraData(val) {
     var pass = val.value;
     var expr = /[0123456789]/;

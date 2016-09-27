@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Convenio" table="clinica_convenio">
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="cpfCnpj" type="string" column="CPFCNPJ" length="18" nullable="true"/>
+    <field name="inscricaoMun" type="string" column="INSCRICAO_MUN" length="20" nullable="true"/>
+    <field name="inscricaoEst" type="string" column="INSCRICAO_EST" length="20" nullable="true"/>
+    <field name="nomeConvenio" type="string" column="NOME_CONVENIO" length="40"/>
+    <field name="endereco" type="string" column="ENDERECO" length="40" nullable="true"/>
+    <field name="numero" type="string" column="NUMERO" length="6" nullable="true"/>
+    <field name="complemento" type="string" column="COMPLEMENTO" length="40" nullable="true"/>
+    <field name="bairro" type="string" column="BAIRRO" length="40" nullable="true"/>
+    <field name="cidade" type="string" column="CIDADE" length="40" nullable="true"/>
+    <field name="codCid" type="string" column="COD_CID" length="7" nullable="true"/>
+    <field name="uf" type="string" column="UF" length="2" nullable="true"/>
+    <field name="cep" type="string" column="CEP" length="9" nullable="true"/>
+    <field name="fone" type="string" column="FONE" length="15" nullable="true"/>
+    <field name="email" type="string" column="E_MAIL" length="60" nullable="true"/>
+    <field name="idEmpresa" type="integer" column="ID_EMPRESA" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="status" type="integer" column="STATUS" nullable="true"></field>
+  </entity>
+</doctrine-mapping>

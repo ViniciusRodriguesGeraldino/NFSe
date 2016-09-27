@@ -26,8 +26,8 @@
                     <th class="text-right">Valor</th>
                     <th class="text-center">Data Lançamento</th>
                     <th class="text-center">Data Vencimento</th>
-                    <th></th>
-                    <th></th>
+                    <th class="center">Editar</th>
+                    <th class="center">Baixar</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,8 +40,8 @@
                     <td class="text-right">{{ conta.valorTotal|number_format(2, ',', '') }}</td>
                     <td class="text-center">{% if conta.dataLancamento %}{{ conta.dataLancamento|date('d/m/Y') }}{% endif %}</td>
                     <td class="text-center">{% if conta.dataVencimento %}{{ conta.dataVencimento|date('d/m/Y') }}{% endif %}</td>
-                    <td><a href="{{ path('contas_edit', { 'id': conta.id }) }}">Editar</a></td>
-                    <td><a href="{{ path('contas_baixa', { 'id': conta.id }) }}">Baixar</a></td>
+                    <td class="center"><a href="{{ path('contas_edit', { 'id': conta.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    <td class="center"><a href="{{ path('contas_baixa', { 'id': conta.id }) }}"><span class="glyphicon glyphicon-usd" style="color: #0ccf4d"></span></a></td>
                 </tr>
             {% endfor %}
             </tbody>

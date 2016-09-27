@@ -9,7 +9,7 @@
             </div>
         </div>
 
-        <form class="" method="post" action="" id="cliente_form">
+        <form class="" method="post" action="" name="" id="cliente_form">
             <div class="row row-centered">
                 <div class="col-xs-10 col-xs-offset-1">
                     <div class="row padding-top">
@@ -123,7 +123,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-2 fix-padding">
+                        <div class="col-xs-3 fix-padding">
                             <label>Cidade</label>
                             <div class="input-append">
                                 <input type="text" id="cliente_cidade" name="cliente_cidade" class="form-control" placeholder="Cidade">
@@ -140,10 +140,14 @@
 
                         <div class="col-xs-1 fix-padding"></div>
 
-                        <div class="col-xs-1 fix-padding">
+                        <div class="col-xs-2 fix-padding">
                             <label>Sexo</label>
                             <div class="input-append">
-                                <input type="text" id="cliente_sexo" name="cliente_sexo" class="form-control" placeholder="">
+                                {#<input type="text" id="cliente_sexo" name="cliente_sexo" class="form-control" placeholder="">#}
+                                <select id="cliente_sexo" name="cliente_sexo" class="form-control">
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                </select>
                             </div>
                         </div>
 
@@ -196,7 +200,12 @@
                         <div class="col-xs-2 fix-padding">
                             <label>Convênio</label>
                             <div class="input-append">
-                                <input type="text" id="cliente_convenio" name="cliente_convenio" class="form-control">
+                                {#<input type="text" id="cliente_convenio" name="cliente_convenio" class="form-control">#}
+                                <select id="cliente_convenio" name="cliente_convenio" class="form-control">
+                                    {% for key,val in convenios %}
+                                        <option value="{{ val.id }}">{{ val.nomeConvenio | trans }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </div>
 
@@ -244,7 +253,14 @@
                         <div class="col-xs-4">
                             <label>Tipo Dependente</label>
                             <div class="input-append">
-                                <input type="text" id="cliente_tipo_dependente" name="cliente_tipo_dependente" class="form-control">
+                                {#<input type="text" id="cliente_tipo_dependente" name="cliente_tipo_dependente" class="form-control">#}
+                                <select class="form-control" id="cliente_tipo_dependente" name="cliente_tipo_dependente">
+                                    <option value="Cônjuge/Companheiro">Cônjuge/Companheiro</option>
+                                    <option value="Filho">Filho</option>
+                                    <option value="Enteado/Enteada">Enteado/Enteada</option>
+                                    <option value="Pai/Mãe">Pai/Mãe</option>
+                                    <option value="Agregado/Outros">Agregado/Outros</option>
+                                </select>
                             </div>
                         </div>
                     </div>

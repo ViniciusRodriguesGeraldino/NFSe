@@ -156,6 +156,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="dependente" type="boolean" column="DEPENDENTE">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="status" type="integer" column="STATUS" nullable="true"></field>
   </entity>
 </doctrine-mapping>

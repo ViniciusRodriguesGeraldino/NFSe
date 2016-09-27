@@ -9,12 +9,12 @@
                 <h1 class="pagination-centered">Lista de Clientes</h1>
             </div>
         </div>
-        <div class=" tabela row row-centered">
+        <div class="tabela display row row-centered">
             <div class="col-xs-10 col-xs-offset-1">
                 <table class="table table-striped" id="index_table">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th style="border-color: #c9d3dd">#</th>
                         <th>Nome/Razão Social</th>
                         <th>Cpf/Cnpj</th>
                         <th>Cidade</th>
@@ -30,14 +30,12 @@
         </div>
     </div>
 
-    <div style="padding-top: 50px "></div>
+    <div style="padding-top: 30px "></div>
 
 {% endblock %}
 
 {% block javascripts %}
-    {#<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />#}
     <link rel="stylesheet" href="{{ asset('assets/css/dataTable/dataTables.min.css') }}" />
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="{{ asset('assets/js/dataTable/dataTables.min.js') }}"></script>
     <script>
 

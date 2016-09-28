@@ -165,9 +165,9 @@ class ClienteController extends Controller
         $cliente->setUf($dados[14]['value']);
         $cliente->setSexo($dados[15]['value']);
         $cliente->setProfissao($dados[16]['value']);
-        $cliente->setEstadoCivil($dados[17]['value']);
-        $cliente->setNomeConjuge($dados[18]['value']);
-        $cliente->setNomeMae($dados[19]['value']);
+        $cliente->setNomeMae($dados[17]['value']);
+        $cliente->setEstadoCivil($dados[18]['value']);
+        $cliente->setNomeConjuge($dados[19]['value']);
         $cliente->setConvenio($dados[20]['value']);
         $cliente->setIndicacao($dados[21]['value']);
         $cliente->setNomeTitular($dados[22]['value']);
@@ -220,9 +220,11 @@ class ClienteController extends Controller
         $cliente->setUf($dados[14]['value']);
         $cliente->setSexo($dados[15]['value']);
         $cliente->setProfissao($dados[16]['value']);
-        $cliente->setEstadoCivil($dados[17]['value']);
-        $cliente->setNomeConjuge($dados[18]['value']);
-        $cliente->setNomeMae($dados[19]['value']);
+        $cliente->setNomeMae($dados[17]['value']);
+        $cliente->setEstadoCivil($dados[18]['value']);
+        $cliente->setNomeConjuge($dados[19]['value']);
+
+
         $cliente->setConvenio($dados[20]['value']);
 
         if($dados[21]['value'] == 'on'){
@@ -253,7 +255,7 @@ class ClienteController extends Controller
             return new JsonResponse($response);
 
         }catch (Exception $e){
-            $response['success'] = true;
+            $response['success'] = false;
             $response['msg'] = $e;
         }
     }
@@ -288,7 +290,7 @@ class ClienteController extends Controller
      */
     public function editAction(Request $request, Cliente $cliente)
     {
-        $empresa_tipo = 'CLINICA';
+        $empresa_tipo = $this->get('app.emp')->GetTipoEmpresa();
 
         $em = $this->getDoctrine()->getManager();
         $convenios = $em->getRepository('AppBundle:Convenio')->findBy(

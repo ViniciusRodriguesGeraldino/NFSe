@@ -430,3 +430,15 @@ table th {
 @media(min-width:768px){}
 @media(min-width:992px){}
 @media(min-width:1200px){}
+
+.EditEmp{
+    background-color: #ddddff;
+    border-radius: 12px;
+    border: 1px;
+    border-color: #d58512;
+    padding-bottom: 20px;
+}
+
+.aa{
+
+}

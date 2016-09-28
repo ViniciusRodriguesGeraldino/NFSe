@@ -43,7 +43,7 @@
                         <div class="col-xs-3 fix-padding">
                             <label>Email</label>
                             <div class="input-append">
-                                <input type="text" id="cliente_email" name="cliente_email" class="form-control" value="" placeholder="exemplo@exemplo.com">
+                                <input type="email" id="cliente_email" name="cliente_email" class="form-control" value="" placeholder="exemplo@exemplo.com">
                             </div>
                         </div>
 
@@ -119,7 +119,7 @@
                         <div class="col-xs-3 fix-padding">
                             <label>Complemento</label>
                             <div class="">
-                                <input type="text" id="cliente_complemento" name="cliente_complemento" class="form-control" placeholder="Endereço do Cliente">
+                                <input type="text" id="cliente_complemento" name="cliente_complemento" class="form-control" placeholder="Ex: Casa, Ap.">
                             </div>
                         </div>
 
@@ -167,24 +167,31 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-2 fix-padding">
-                            <label>Estado Civil</label>
-                            <div class="input-append">
-                                <input type="text" id="cliente_estado_civil" name="cliente_estado_civil" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-xs-3 fix-padding">
-                            <label>Nome Cônjuge</label>
-                            <div class="input-append">
-                                <input type="text" id="cliente_nome_conjuge" name="cliente_nome_conjuge" class="form-control">
-                            </div>
-                        </div>
-
                         <div class="col-xs-3 fix-padding">
                             <label>Nome Mãe</label>
                             <div class="input-append">
                                 <input type="text" id="cliente_nome_mae" name="cliente_nome_mae" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2 fix-padding">
+                            <label>Estado Civil</label>
+                            <div class="input-append">
+                                {#<input type="text" id="cliente_estado_civil" name="cliente_estado_civil" class="form-control">#}
+                                <select id="cliente_estado_civil" name="cliente_estado_civil" onchange="validaEst(this);" class="form-control">
+                                    <option value="Solteiro">Solteiro</option>
+                                    <option value="Casado">Casado</option>
+                                    <option value="Divorciado">Divorciado</option>
+                                    <option value="Viuvo">Viuvo</option>
+                                    <option value="Outros">Outros</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="NomeConj" class="col-xs-3 fix-padding" hidden>
+                            <label>Nome Cônjuge</label>
+                            <div class="input-append">
+                                <input type="text" id="cliente_nome_conjuge" name="cliente_nome_conjuge" class="form-control">
                             </div>
                         </div>
 

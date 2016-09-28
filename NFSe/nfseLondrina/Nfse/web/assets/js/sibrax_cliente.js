@@ -37,7 +37,7 @@ $("#cliente_cpfcnpj").keydown(function(){
 
     var tamanho = $("#cliente_cpfcnpj").val().length;
 
-    if(tamanho <= 11){
+    if(tamanho < 11){
         $("#cliente_cpfcnpj").mask("999.999.999-99");
     } else {
         $("#cliente_cpfcnpj").mask("99.999.999/9999-99");
@@ -82,9 +82,7 @@ jQuery(document).ready(function () {
             success: function (data) {
                 if (data.success == true){
                     alert('Cadastrado com Sucesso!');
-                    // var url=  "{{ path('cliente_edit', {'id': valorID}) }}";
-                    // url = url.replace('valorID', data.idCliente);
-                    // window.location = url;
+                    window.location.href = '../';
                 }
                 else if (data.success == false) {
                     alert('Erro ao salvar cadastro. Erros: ' + data.msg);
@@ -109,9 +107,7 @@ jQuery(document).ready(function () {
             success: function (data) {
                 if (data.success == true){
                     alert('Alterado com Sucesso!');
-                    // var url=  "{{ path('cliente_edit', {'id': valorID}) }}";
-                    // url = url.replace('valorID', data.idCliente);
-                    // window.location = url;
+                    window.location.href = '../';
                 }
                 else if (data.success == false) {
                     alert('Erro ao alterar cadastro. Erros: ' + data.msg);
@@ -207,3 +203,11 @@ $(document).ready(function(){
         $(window).scrollTop(y+150);
     });
 });
+
+function validaEst(valor) {
+    if(valor.value == 'Casado'){
+        $("#NomeConj").show();
+    }else{
+        $("#NomeConj").hide();
+    }
+}

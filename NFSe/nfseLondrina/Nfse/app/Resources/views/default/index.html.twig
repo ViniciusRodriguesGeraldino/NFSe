@@ -44,7 +44,7 @@
 
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="panel-sistema">R$ {{ valorTotalSaidas }}</div>
+                                <div class="panel-sistema">R$ {{ valorTotalSaidas|number_format(2, ',', '') }}</div>
                                 <div>A Receber</div>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                                 <i class="fa fa-pie-chart fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="panel-sistema">R$ {{ valorTotalEntradas }}</div>
+                                <div class="panel-sistema">R$ {{ valorTotalEntradas|number_format(2, ',', '') }}</div>
                                 <div>A Pagar</div>
                             </div>
                         </div>
@@ -91,8 +91,8 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="panel-sistema">Hoje!</div>
-                                <div>R$ {{ valorPagarHoje }} a pagar</div>
-                                <div>R$ {{ valorReceberHoje }} a receber</div>
+                                <div>R$ {{ valorPagarHoje|number_format(2, ',', '') }} a pagar</div>
+                                <div>R$ {{ valorReceberHoje|number_format(2, ',', '') }} a receber</div>
                             </div>
                         </div>
                     </div>

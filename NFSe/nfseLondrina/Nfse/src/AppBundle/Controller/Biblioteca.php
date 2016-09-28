@@ -20,7 +20,6 @@ class Biblioteca extends Controller
           return 1;
     }
 
-
     public function getClientes($valor){
 
         $repo = $this->getDoctrine()
@@ -69,6 +68,15 @@ class Biblioteca extends Controller
         }
 
         return $mask;
+    }
 
+    function GetTipoEmpresa(){
+
+        $em = $this->getDoctrine()->getManager();
+        $tipo = $em->getRepository('AppBundle:Empresa')->findOneBy(
+            array('id' => $this->getIdEmpresa(),
+                'status'  => 1)
+        );
+        return $tipo->getEmpresaTipo();
     }
 }

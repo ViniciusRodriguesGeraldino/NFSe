@@ -12,6 +12,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Empresa
 {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="STATUS", type="integer", nullable=true)
+     */
+    private $status;
+
+
     /**
      * @var string
      *
@@ -160,6 +169,13 @@ class Empresa
      * @ORM\Column(name="COD_CID", type="string", length=15, nullable=true)
      */
     private $codCid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="EMPRESA_TIPO", type="string", length=20, nullable=true)
+     */
+    private $empresaTipo;
 
 
 
@@ -620,6 +636,30 @@ class Empresa
     }
 
     /**
+     * Set empresaTipo
+     *
+     * @param string $empresaTipo
+     *
+     * @return Empresa
+     */
+    public function setEmpresaTipo($empresaTipo)
+    {
+        $this->empresaTipo = $empresaTipo;
+
+        return $this;
+    }
+
+    /**
+     * Get empresaTipo
+     *
+     * @return string
+     */
+    public function getEmpresaTipo()
+    {
+        return $this->empresaTipo;
+    }
+
+    /**
      * Set inicioAtividade
      *
      * @param \DateTime $inicioAtividade
@@ -651,5 +691,29 @@ class Empresa
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Cliente
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
     }
 }

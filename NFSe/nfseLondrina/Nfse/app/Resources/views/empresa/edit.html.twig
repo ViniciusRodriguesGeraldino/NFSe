@@ -1,32 +1,344 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <link href="{{ asset('assets/css/nfse_bootstrap.min.css') }}" rel="stylesheet" type="text/css" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"/>
-    <link href="{{ asset('assets/css/nfse.css') }}" rel="stylesheet" type="text/css"/>
+    <form action="" id="form_empresa_edit" autocomplete="off">
+        <div class="container min_height">
 
-    <h1 class="">Cadastro de Empresa</h1>
+            <div class="row">
+                <div class="col-md-10">
+                    <h1 class="pagination-centered">Minha Empresa</h1>
+                </div>
+            </div>
 
-    <div class="flat-theme">
-        <div class="row">
-            <div class="col-xs-3 col-xs-offset-1">
+            {#Dados Principais#}
+            <div class="container padding-top" style="font-size: 18px; padding-bottom: 5px">Dados</div>
+            <div class="container aa">
+                <div class="row padding-bottom">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
 
-                {{ form_start(edit_form) }}
-                    {{ form_widget(edit_form) }}
-                    <input type="submit" value="Alterar" />
-                {{ form_end(edit_form) }}
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Nome</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.nome }}" id="empresa_nome" name="empresa_nome" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>CNPJ</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.cpfcnpj }}" id="empresa_cpfcnpj" name="empresa_cpfcnpj" class="form-control" disabled placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Email</label>
+                                </div>
+                                <div>
+                                    <input type="email" value="{{ empresa.eMail }}" id="empresa_email" name="empresa_email" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Telefone</label>
+                                </div>
+                                <div>
+                                    <input type="tel" value="{{ empresa.fone }}" id="empresa_fone" name="empresa_fone" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Inicio Atividade</label>
+                                </div>
+                                <div>
+                                    <input type="date" value="{{ empresa.inicioAtividade|date('Y-m-d') }}" id="empresa_inicio_atividade" name="empresa_inicio_atividade" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row padding-bottom">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Empresa Simples?</label>
+                                </div>
+                                <div class="" style="padding-left: 12px; padding-top: 5px">
+                                    <label class="switch" id="switch">
+                                        <input type="checkbox" id="check_switch" name="check_switch" {% if empresa.simples == 'S' %}checked{% endif %}>
+                                        <div class="slider round"></div>
+                                    </label>
+                                    <label id="EmpresaSimples" style="float: right; padding-right: 60px">Não</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Tipo Empresa</label>
+                                </div>
+                                <div>
+                                    <select class="form-control" id="empresa_tipo" name="empresa_tipo">
+                                        <option {% if empresa.empresaTipo == 'COMERCIO' %}selected{% endif %} value="COMERCIO">Comércio</option>
+                                        <option {% if empresa.empresaTipo == 'CLINICA' %}selected{% endif %} value="CLINICA">Clinica Médica</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {#Endereço#}
+            <div class="container padding-top" style="font-size: 18px; padding-bottom: 5px">Endereço</div>
+            <div class="container EditEmp">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Cep</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.cep }}" id="empresa_cep" name="empresa_cep" class="form-control"  placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Endereço</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.endereco }}" id="empresa_endereco" name="empresa_endereco" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>Número</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.numero }}" id="empresa_numero" name="empresa_numero" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Bairro</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.bairro }}" id="empresa_bairro" name="empresa_bairro" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Complemento</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.complemento }}" id="empresa_complemento" name="empresa_complemento" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Cidade</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.cidade }}" id="empresa_cidade" name="empresa_cidade" class="form-control" placeholder="" >
+                                    <input type="hidden" value="{{ empresa.codCid }}" id="empresa_cod_cidade" name="empresa_cod_cidade" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>UF</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.uf }}" id="empresa_uf" name="empresa_uf" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-        </div>
-    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('empresa_index') }}">Voltar</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Apagar Empresa">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            {#Nota Serviço#}
+            <div class="container padding-top" style="font-size: 18px; padding-bottom: 5px">Nota Serviço</div>
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>CMC</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.cmc }}" id="empresa_cmc" name="empresa_cmc" class="form-control"  placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>CPF</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.cpfPrefeitura }}" id="empresa_cpf_prefeitura" name="empresa_cpf_prefeitura" class="form-control"  placeholder="" >
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Senha</label>
+                                </div>
+                                <div>
+                                    <input type="password" value="{{ empresa.senhaPrefeitura }}" id="empresa_senha_prefeitura" name="empresa_senha_prefeitura" class="form-control"  placeholder="" >
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Tipo Emissão</label>
+                                </div>
+                                <div>
+                                    <select class="form-control" id="empresa_tipo_emissao" name="empresa_tipo_emissao">
+                                        <option {% if empresa.producao == 'N' %}selected{% endif %} value="N">Homologação (Testes)</option>
+                                        <option {% if empresa.producao == 'S' %}selected{% endif %} value="S">Produção (Emissão Normal)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="" style="padding-left: 13px; padding-top: 20px">
+                <input class="salvarBtn" type="submit" value="Salvar" />
+            </div>
+
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('#check_switch').click(function(){
+
+                if(document.getElementById('check_switch').checked) {
+                    document.getElementById('EmpresaSimples').innerHTML = 'Sim';
+                } else {
+                    document.getElementById('EmpresaSimples').innerHTML = 'Não';
+                }
+            });
+        });
+
+        //Salvar
+        jQuery(document).ready(function () {
+            jQuery('#form_empresa_edit').submit(function () {
+
+                var dados = jQuery(this).serializeArray();
+                jQuery.ajax({
+                    type: "POST",
+                    url: "EditarEmpresa",
+                    data: {dados: dados},
+                    success: function (data) {
+                         if (data.success == false) {
+                            alert('Erro ao salvar cadastro. Erros: ' + data.msg);
+                        }else{
+                             window.location.href = '../';
+                         }
+                    }
+                });
+
+                return false;
+            });
+        });
+
+    </script>
+    <style>
+        .form-control{max-height:30px;}
+
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 46px;
+            height: 26px;
+        }
+
+        .switch input {display:none;}
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(21px);
+            -ms-transform: translateX(21px);
+            transform: translateX(21px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 30px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
 {% endblock %}

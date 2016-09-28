@@ -44,7 +44,7 @@
                         <div class="col-xs-3 fix-padding">
                             <label>Email</label>
                             <div class="input-append">
-                                <input type="text" id="cliente_email" name="cliente_email" class="form-control" value="{{ cliente.email }}" placeholder="exemplo@exemplo.com">
+                                <input type="email" id="cliente_email" name="cliente_email" class="form-control" value="{{ cliente.email }}" placeholder="exemplo@exemplo.com">
                             </div>
                         </div>
 
@@ -171,24 +171,31 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-2 fix-padding">
-                            <label>Estado Civil</label>
-                            <div class="input-append">
-                                <input type="text" value="{{ cliente.estadocivil }}" id="cliente_estado_civil" name="cliente_estado_civil" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-xs-3 fix-padding">
-                            <label>Nome Cônjuge</label>
-                            <div class="input-append">
-                                <input type="text" value="{{ cliente.nomeConjuge }}" id="cliente_nome_conjuge" name="cliente_nome_conjuge" class="form-control">
-                            </div>
-                        </div>
-
                         <div class="col-xs-3 fix-padding">
                             <label>Nome Mãe</label>
                             <div class="input-append">
                                 <input type="text" value="{{ cliente.nomeMae }}" id="cliente_nome_mae" name="cliente_nome_mae" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-2 fix-padding">
+                            <label>Estado Civil</label>
+                            <div class="input-append">
+                                {#<input type="text" value="{{ cliente.estadocivil }}" id="cliente_estado_civil" name="cliente_estado_civil" class="form-control">#}
+                                <select id="cliente_estado_civil" name="cliente_estado_civil" onchange="validaEst(this);" class="form-control">
+                                    <option {% if 'Solteiro' == cliente.sexo %}selected{% endif %} value="Solteiro">Solteiro</option>
+                                    <option {% if 'Casado' == cliente.sexo %}selected{% endif %} value="Casado">Casado</option>
+                                    <option {% if 'Divorciado' == cliente.sexo %}selected{% endif %} value="Divorciado">Divorciado</option>
+                                    <option {% if 'Viuvo' == cliente.sexo %}selected{% endif %} value="Viuvo">Viuvo</option>
+                                    <option {% if 'Outros' == cliente.sexo %}selected{% endif %} value="Outros">Outros</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-3 fix-padding" hidden>
+                            <label>Nome Cônjuge</label>
+                            <div class="input-append">
+                                <input type="text" value="{{ cliente.nomeConjuge }}" id="cliente_nome_conjuge" name="cliente_nome_conjuge" class="form-control">
                             </div>
                         </div>
 

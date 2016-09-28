@@ -42,47 +42,23 @@ class ServicoController extends Controller
      */
     public function newAction(Request $request)
     {
-//        $listaServicos = $this->getListaPrefeitura();
-        $servico = new Servico();
-        $form = $this->createForm('AppBundle\Form\ServicoType', $servico);
-        $form->handleRequest($request);
+        $sql = "select plano, descricao from plano where empresa= :idemp and tipo = :tipo";
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['idemp'] = $this->get('app.emp')->getIdEmpresa();
+        $params['tipo'] = 'S';
+        $stmt->execute($params);
+        $plano = $stmt->fetchAll();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $idAux = $servico->getCodSerPref();
-            $pos = strpos($idAux, ')');
-            $pos -= 1;
-            $idAux2 = substr($idAux, 1, $pos );
-            $servico->setCodSerPref($idAux2);
-
-            $servico->setidEmpresa($this->get('app.emp')->getIdEmpresa());
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($servico);
-            $em->flush();
-
-            return $this->redirectToRoute('servico_index', array('id' => $servico->getId()));
-        }
+        $sql = "select * from listaservico";
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        $listaServicos = $stmt->fetchAll();
 
         return $this->render('servico/new.html.twig', array(
-            'servico' => $servico,
-            'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Servico entity.
-     *
-     * @Route("/{id}", name="servico_show")
-     * @Method("GET")
-     */
-    public function showAction(Servico $servico)
-    {
-        $deleteForm = $this->createDeleteForm($servico);
-
-        return $this->render('servico/show.html.twig', array(
-            'servico' => $servico,
-            'delete_form' => $deleteForm->createView(),
+            'plano' => $plano,
+            'listaServicos' => $listaServicos,
         ));
     }
 
@@ -111,42 +87,6 @@ class ServicoController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }
-
-    /**
-     * Deletes a Servico entity.
-     *
-     * @Route("/{id}", name="servico_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, Servico $servico)
-    {
-        $form = $this->createDeleteForm($servico);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($servico);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('servico_index');
-    }
-
-    /**
-     * Creates a form to delete a Servico entity.
-     *
-     * @param Servico $servico The Servico entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Servico $servico)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('servico_delete', array('id' => $servico->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
     }
 
     private function getListaPrefeitura($desc) {
@@ -185,5 +125,40 @@ class ServicoController extends Controller
         $array = $this->getListaPrefeitura($valor);
 
         return new JsonResponse($array);
+    }
+
+    /**
+     * @Route("/SalvarServico", name="SalvarServico")
+     * @Method({"GET", "POST"})
+     */
+    public function SalvarServico(Request $request){
+
+        $dados = $request->request->get('dados', null);
+die(var_dump($dados));
+        $servico = new Servico();
+
+        $servico->setCodSerPref($dados[0]['value']);
+        $servico->setNome($dados[1]['value']);
+        $servico->setValor($dados[2]['value']);
+        $servico->setPlano($dados[3]['value']);
+        $servico->setPercIss($dados[4]['value']);
+        $servico->setPercIrrf($dados[5]['value']);
+        $servico->setPercCsl($dados[6]['value']);
+        $servico->setPercPis($dados[7]['value']);
+        $servico->setPercCofins($dados[8]['value']);
+
+        try{
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($empresa);
+            $em->flush();
+
+            $response['success'] = true;
+            return new JsonResponse($response);
+
+        }catch (Exception $e){
+            $response['success'] = false;
+            $response['msg'] = $e;
+            return new JsonResponse($response);
+        }
     }
 }

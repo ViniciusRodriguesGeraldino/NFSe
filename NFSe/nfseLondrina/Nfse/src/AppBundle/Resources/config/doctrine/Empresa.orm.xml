@@ -100,5 +100,7 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="empresaTipo" type="string" column="EMPRESA_TIPO" length="20" nullable="true"/>
+    <field name="status" type="integer" column="STATUS" nullable="true"></field>
   </entity>
 </doctrine-mapping>

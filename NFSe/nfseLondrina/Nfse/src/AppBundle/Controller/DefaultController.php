@@ -83,11 +83,37 @@ class DefaultController extends Controller
     }
 
     public function getMovimentacaoSaidaDiaria(){
+        $sql = "select 	(coalesce(sum(icp.valor),0) + coalesce(sum(icp.acrescimo),0)  - coalesce(sum(icp.desconto),0)  
+		- coalesce(sum(recicp.valor),0)  + coalesce(sum(recicp.acrescimo),0)  - coalesce(sum(recicp.desconto),0)) \"total\"
+        from itens_conta_pagar_receber icp
+        left join recebimento_itens_conta_pagar_receber recicp on recicp.id_empresa = icp.id_empresa and recicp.id_item_conta =icp.id
+        inner join contaspagarreceber cpr on cpr.empresa = icp.id_empresa and cpr.id = icp.id_conta
+        where icp.id_empresa = 1 and cpr.tipo_conta = 'RECEBER' and icp.data_vencimento = curdate()";
 
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['idemp'] = $this->get('app.emp')->getIdEmpresa();
+        $stmt->execute($params);
+        $items = $stmt->fetchAll();
+
+        return $items[0]['total'];
     }
 
     public function getMovimentacaoEntradaDiaria(){
+        $sql = "select 	(coalesce(sum(icp.valor),0) + coalesce(sum(icp.acrescimo),0)  - coalesce(sum(icp.desconto),0)  
+		- coalesce(sum(recicp.valor),0)  + coalesce(sum(recicp.acrescimo),0)  - coalesce(sum(recicp.desconto),0)) \"total\"
+        from itens_conta_pagar_receber icp
+        left join recebimento_itens_conta_pagar_receber recicp on recicp.id_empresa = icp.id_empresa and recicp.id_item_conta =icp.id
+        inner join contaspagarreceber cpr on cpr.empresa = icp.id_empresa and cpr.id = icp.id_conta
+        where icp.id_empresa = 1 and cpr.tipo_conta = 'PAGAR' and icp.data_vencimento = curdate()";
 
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['idemp'] = $this->get('app.emp')->getIdEmpresa();
+        $stmt->execute($params);
+        $items = $stmt->fetchAll();
+
+        return $items[0]['total'];
     }
 
     public function getMovimentacaoTotalEntrada(){

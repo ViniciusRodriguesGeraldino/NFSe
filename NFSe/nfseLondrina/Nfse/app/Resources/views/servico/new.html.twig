@@ -1,75 +1,222 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
-        <div class="col-xs-10 col-xs-offset-1">
-            <h1 class="padding-bottom">Cadastro Serviço</h1>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-10">
+                <h1 class="padding-bottom">Cadastro Serviço</h1>
+            </div>
+        </div>
+
+        <form class="" method="post" action="" id="servico_form" >
+
+            <div class="container min_height">
+
+                <div class="row">
+                    <div class="col-md-13">
+                        <div class="row padding-top">
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>#Cód.</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_id" name="servico_id" class="form-control" disabled placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-2" style="min-width: 120px">
+                                <div class="">
+                                    <label>#Cód.Serviço</label>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" id="servico_cod_pref" name="servico_cod_pref" class="form-control" placeholder="" >
+                                    <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-search"></span></button>
+
+                             </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="">
+                                    <label>Nome Serviço</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_nome" name="servico_nome" class="form-control" placeholder="Nome Exibido na Nota" required >
+                                </div>
+                            </div>
+
+                            <div class="col-md-1" style="min-width: 120px;">
+                                <div class="">
+                                    <label style="text-align: right">Valor</label>
+                                </div>
+                                <div>
+                                    <input style="text-align: right" type="text" id="servico_valor" name="servico_valor" class="form-control" placeholder="0,00" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Plano Contas</label>
+                                </div>
+                                <div>
+                                    {#<input type="text" id="servico_plano" name="servico_plano" class="form-control" placeholder="" >#}
+                                    <select name="servico_plano" id="servico_plano" class="form-control" data-width="100%">
+                                        {% for key,val in plano %}
+                                            <option value="{{ val.plano }}"
+                                                    {#{% if val.plano|trim == conta.plano|trim %} selected{% endif %}#}
+                                            >{{ val.plano | trans }} {{ val.descricao | trans }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row padding-top" style="font-size: 18px;">Impostos</div>
+                <div class="row padding-left">
+                    <div class="col-md-20 ">
+                        <div class="row padding-top">
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>%ISS</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_iss" name="servico_iss" class="form-control" placeholder="0,00" value="0,00" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>%IRRF</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_irrf" name="servico_irrf" class="form-control" placeholder="0,00" value="0,00">
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>%CSL</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_csl" name="servico_csl" class="form-control" placeholder="0,00" value="0,00">
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>%PIS</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_pis" name="servico_pis" class="form-control" placeholder="0,00" value="0,00">
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>%COFINS</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_cofins" name="servico_cofins" class="form-control" placeholder="0,00" value="0,00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-13">
+                        <div class="row" style="padding-top: 50px">
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <a class="abuttonVoltar" href="{{ path('convenio_index') }}">Voltar</a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1" style="padding-left: 20px">
+                                <div class="">
+                                    <input class="salvarBtn" type="submit" value="Salvar" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Lista de Serviços</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descrição</th>
+                                <th>Aliquota</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in listaServicos %}
+                                <tr>
+                                    <td>{{ item.codigo }}</td>
+                                    <td>{{ item.descricao }}</td>
+                                    <td>{{ item.aliquota }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="row row-centered">
-        <div class="col-xs-10 col-xs-offset-1">
-            {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
-            {{ form_start(form) }}
-                {{ form_widget(form) }}
-
-        </div>
-    </div>
-
-    <div class="row padding-top">
-
-        <div class="col-xs-1 col-xs-offset-2">
-            <input class="abutton" type="submit" value="Salvar" />
-            {{ form_end(form) }}
-        </div>
-
-        <div class="col-xs-1 padding-left">
-            <a class="abuttonVoltar" href="{{ path('servico_index') }}">Voltar</a>
-        </div>
-    </div>
-
-</div>
 
 {% endblock %}
-
 {% block javascripts %}
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script>
-//        $("#servico_codSerPref").click(function() {
-//
-//            if ($(this).find("option").size() == 0) {
-//
-//                $.ajax({
-//                    url: 'loadListaServicos',
-//                    data: {str: ''},
-//                    type: 'post',
-//                    success: function (data) {
-//                        $.each(data, function(key,value){
-//                            $("#servico_codSerPref").append("<option value="+value.codigo+">"+value.codigo+ ' '+ value.descricao+"</option>");
-//                        });
-//                    }
-//                });
-//            }
-//        });
+        //Salvar
+        jQuery(document).ready(function () {
+            jQuery('#servico_form').submit(function () {
 
-        $(document).on('input', '#servico_codSerPref', function () {
-            var str = $(this).val(); // this.value
-            $.ajax({
-                url: 'loadListaServicos',
-                data: {str: str},
-                type: 'post',
-                success: function (data) {
-                    $("#servico_codSerPref").autocomplete({
-                        source: data,
-                        delay: 200
-                    });
-                }
+                var dados = jQuery(this).serializeArray();
+                jQuery.ajax({
+                    type: "POST",
+                    url: "SalvarServico",
+                    data: {dados: dados},
+                    success: function (data) {
+                        if (data.success == false) {
+                            alert('Erro ao salvar cadastro. Erros: ' + data.msg);
+                        }else{
+                            window.location.href = '../';
+                        }
+                    }
+                });
+
+                return false;
             });
-        })
+        });
+
     </script>
 
 {% endblock %}

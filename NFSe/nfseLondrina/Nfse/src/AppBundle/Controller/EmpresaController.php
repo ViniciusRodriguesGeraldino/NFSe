@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -16,125 +17,86 @@ use AppBundle\Form\EmpresaType;
  */
 class EmpresaController extends Controller
 {
-    /**
-     * Lists all Empresa entities.
-     *
-     * @Route("/", name="empresa_index")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $empresas = $em->getRepository('AppBundle:Empresa')->findAll();
-
-        return $this->render('empresa/index.html.twig', array(
-            'empresas' => $empresas,
-        ));
-    }
-
-    /**
-     * Creates a new Empresa entity.
-     *
-     * @Route("/new", name="empresa_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $empresa = new Empresa();
-        $form = $this->createForm('AppBundle\Form\EmpresaType', $empresa);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($empresa);
-            $em->flush();
-
-            return $this->redirectToRoute('empresa_show', array('id' => $empresa->getId()));
-        }
-
-        return $this->render('empresa/new.html.twig', array(
-            'empresa' => $empresa,
-            'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Empresa entity.
-     *
-     * @Route("/{id}", name="empresa_show")
-     * @Method("GET")
-     */
-    public function showAction(Empresa $empresa)
-    {
-        $deleteForm = $this->createDeleteForm($empresa);
-
-        return $this->render('empresa/show.html.twig', array(
-            'empresa' => $empresa,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Displays a form to edit an existing Empresa entity.
      *
-     * @Route("/{id}/edit", name="empresa_edit")
+     * @Route("/edit", name="empresa_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Empresa $empresa)
+    public function editAction(Request $request)
     {
-        $deleteForm = $this->createDeleteForm($empresa);
-        $editForm = $this->createForm('AppBundle\Form\EmpresaType', $empresa);
-        $editForm->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $empresa = $em->getRepository('AppBundle:Empresa')->findOneBy(
+            array('id' => $this->get('app.emp')->getIdEmpresa())
+        );
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($empresa);
-            $em->flush();
-
-            return $this->redirectToRoute('empresa_edit', array('id' => $empresa->getId()));
-        }
+//        die(var_dump($empresa));
 
         return $this->render('empresa/edit.html.twig', array(
             'empresa' => $empresa,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Deletes a Empresa entity.
-     *
-     * @Route("/{id}", name="empresa_delete")
-     * @Method("DELETE")
+     * @Route("/EditarEmpresa", name="EditarEmpresa")
+     * @Method({"GET", "POST"})
      */
-    public function deleteAction(Request $request, Empresa $empresa)
-    {
-        $form = $this->createDeleteForm($empresa);
-        $form->handleRequest($request);
+    public function EditarCliente(Request $request){
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $dados = $request->request->get('dados', null);
+
+        $em = $this->getDoctrine()->getManager();
+        $empresa = $em->getRepository('AppBundle:Empresa')->findOneBy(
+            array('id' => $this->get('app.emp')->getIdEmpresa())
+        );
+
+        $empresa->setNome($dados[0]['value']);
+        $empresa->setEMail($dados[1]['value']);
+        $empresa->setFone($dados[2]['value']);
+        $empresa->setInicioAtividade(new \DateTime(date($dados[3]['value'])));
+
+        if($dados[4]['value'] == 'on')
+            $empresa->setSimples('S');
+        else
+            $empresa->setSimples('N');
+
+        $empresa->setEmpresaTipo($dados[5]['value']);
+        $empresa->setCep($dados[6]['value']);
+        $empresa->setEndereco($dados[7]['value']);
+        $empresa->setNumero($dados[8]['value']);
+        $empresa->setBairro($dados[9]['value']);
+        $empresa->setComplemento($dados[10]['value']);
+        $empresa->setCidade($dados[11]['value']);
+        $empresa->setCodCid($dados[12]['value']);
+        $empresa->setUf($dados[13]['value']);
+        $empresa->setCmc($dados[14]['value']);
+        $empresa->setCpfcnpj($dados[15]['value']);
+        $empresa->setCpfPrefeitura($dados[15]['value']);
+        $empresa->setSenhaPrefeitura($dados[16]['value']);
+        $empresa->setProducao($dados[17]['value']);
+
+        try{
             $em = $this->getDoctrine()->getManager();
-            $em->remove($empresa);
+            $em->persist($empresa);
             $em->flush();
+
+//            return $this->redirectToRoute('homepage');
+
+            $response['success'] = true;
+            return new JsonResponse($response);
+
+        }catch (Exception $e){
+            $response['success'] = false;
+            $response['msg'] = $e;
+            return new JsonResponse($response);
         }
-
-        return $this->redirectToRoute('empresa_index');
     }
 
-    /**
-     * Creates a form to delete a Empresa entity.
-     *
-     * @param Empresa $empresa The Empresa entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Empresa $empresa)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('empresa_delete', array('id' => $empresa->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
+    public function inverteData($data){
+        $new_data = explode('/', $data);
+        $data = $new_data[1]."/".$new_data[0]."/".$new_data[2];
+        return $data;
     }
+
 }

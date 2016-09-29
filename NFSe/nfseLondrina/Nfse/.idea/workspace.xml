@@ -24,28 +24,28 @@
       <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/servico/new.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="178" column="54" selection-start-line="178" selection-start-column="54" selection-end-line="178" selection-end-column="54" />
+            <state relative-caret-position="279">
+              <caret line="169" column="70" selection-start-line="169" selection-start-column="70" selection-end-line="169" selection-end-column="70" />
               <folding>
                 <element signature="e#12#26#0#Twig" expanded="true" />
                 <element signature="e#982#1006#0#HTML" expanded="true" />
-                <element signature="e#2240#2265#0#HTML" expanded="true" />
-                <element signature="e#2357#2382#0#HTML" expanded="true" />
-                <element signature="e#2517#2542#0#HTML" expanded="true" />
-                <element signature="e#3890#3914#0#HTML" expanded="true" />
-                <element signature="e#6545#6570#0#HTML" expanded="true" />
-                <element signature="e#6904#6930#0#HTML" expanded="true" />
-                <element signature="e#7652#7659#0#HTML" expanded="true" />
+                <element signature="e#2246#2271#0#HTML" expanded="true" />
+                <element signature="e#2363#2388#0#HTML" expanded="true" />
+                <element signature="e#2523#2548#0#HTML" expanded="true" />
+                <element signature="e#3896#3920#0#HTML" expanded="true" />
+                <element signature="e#6551#6576#0#HTML" expanded="true" />
+                <element signature="e#6910#6936#0#HTML" expanded="true" />
+                <element signature="e#7649#7656#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/index.html.twig">
+      <file leaf-file-name="sibrax.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/css/sibrax.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="24" />
+            <state relative-caret-position="264">
+              <caret line="344" column="43" selection-start-line="344" selection-start-column="43" selection-end-line="344" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -134,7 +134,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Cliente.orm.xml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/Convenio.php" />
         <option value="$PROJECT_DIR$/web/assets/js/convenio.js" />
-        <option value="$PROJECT_DIR$/app/Resources/views/plano/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/servico/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/bancos/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/cliente/index.html.twig" />
@@ -151,7 +150,6 @@
         <option value="$PROJECT_DIR$/app/Resources/views/convenio/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/convenio/edit.html.twig" />
-        <option value="$PROJECT_DIR$/web/assets/css/sibrax.css" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/EmpresaController.php" />
         <option value="$PROJECT_DIR$/web/assets/js/sibrax_cliente.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
@@ -163,6 +161,8 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ClienteController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/empresa/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ServicoController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/plano/index.html.twig" />
+        <option value="$PROJECT_DIR$/web/assets/css/sibrax.css" />
         <option value="$PROJECT_DIR$/app/Resources/views/servico/new.html.twig" />
       </list>
     </option>
@@ -384,6 +384,28 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -516,6 +538,32 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nfse" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plano" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -616,15 +664,15 @@
       <workItem from="1474542074197" duration="29297000" />
       <workItem from="1474629478512" duration="25649000" />
       <workItem from="1474897542049" duration="38464000" />
-      <workItem from="1475061037858" duration="26223000" />
+      <workItem from="1475061037858" duration="33771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225988000" />
+    <option name="totallyTimeSpent" value="233536000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19515885" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -758,16 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-30">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/plano/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
           <folding>
             <element signature="e#12#26#0#Twig" expanded="true" />
           </folding>
@@ -982,14 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/css/sibrax.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="444" column="0" selection-start-line="444" selection-start-column="0" selection-end-line="444" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Empresa.orm.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -1109,14 +1139,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="78" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="531">
@@ -1127,26 +1149,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
+        <state relative-caret-position="765">
           <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/plano/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="12" selection-end-column="12" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/contas/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="78" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/css/sibrax.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="344" column="43" selection-start-line="344" selection-start-column="43" selection-end-line="344" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/servico/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="178" column="54" selection-start-line="178" selection-start-column="54" selection-end-line="178" selection-end-column="54" />
+        <state relative-caret-position="279">
+          <caret line="169" column="70" selection-start-line="169" selection-start-column="70" selection-end-line="169" selection-end-column="70" />
           <folding>
             <element signature="e#12#26#0#Twig" expanded="true" />
             <element signature="e#982#1006#0#HTML" expanded="true" />
-            <element signature="e#2240#2265#0#HTML" expanded="true" />
-            <element signature="e#2357#2382#0#HTML" expanded="true" />
-            <element signature="e#2517#2542#0#HTML" expanded="true" />
-            <element signature="e#3890#3914#0#HTML" expanded="true" />
-            <element signature="e#6545#6570#0#HTML" expanded="true" />
-            <element signature="e#6904#6930#0#HTML" expanded="true" />
-            <element signature="e#7652#7659#0#HTML" expanded="true" />
+            <element signature="e#2246#2271#0#HTML" expanded="true" />
+            <element signature="e#2363#2388#0#HTML" expanded="true" />
+            <element signature="e#2523#2548#0#HTML" expanded="true" />
+            <element signature="e#3896#3920#0#HTML" expanded="true" />
+            <element signature="e#6551#6576#0#HTML" expanded="true" />
+            <element signature="e#6910#6936#0#HTML" expanded="true" />
+            <element signature="e#7649#7656#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

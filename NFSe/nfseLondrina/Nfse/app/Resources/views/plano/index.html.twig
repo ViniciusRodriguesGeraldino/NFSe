@@ -35,33 +35,33 @@
         <div class="col-xs-10 col-xs-offset-1">
             <table class="table pagination-centered results">
                 <thead>
-            <tr>
-                <th>#</th>
-                <th class="left">Código Plano</th>
-                <th class="left">Descrição</th>
-                <th class="center">Tipo</th>
-                <th class="center">Editar</th>
-            </tr>
-        </thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="left">Código Plano</th>
+                        <th class="left">Descrição</th>
+                        <th class="center">Tipo</th>
+                        <th class="center">Editar</th>
+                    </tr>
+                </thead>
                 <tbody>
-        {% for plano in planos %}
-            <tr>
-                {#<td><a href="{{ path('plano_show', { 'id': plano.id }) }}">{{ plano.id }}</a></td>#}
-                <td>{{ plano.id }}</td>
-                <td class="left">{{ plano.plano }}</td>
-                <td class="left">{{ plano.descricao }}</td>
+                {% for plano in planos %}
+                    <tr>
+                        {#<td><a href="{{ path('plano_show', { 'id': plano.id }) }}">{{ plano.id }}</a></td>#}
+                        <td>{{ plano.id }}</td>
+                        <td class="left">{{ plano.plano }}</td>
+                        <td class="left">{{ plano.descricao }}</td>
 
-                {% if plano.tipo == 'E' %}
-                    <td class="center">Entrada</td>
-                {% else %}
-                    <td class="center">Saída</td>
-                {% endif %}
+                        {% if plano.tipo == 'E' %}
+                            <td class="center">Entrada</td>
+                        {% else %}
+                            <td class="center">Saída</td>
+                        {% endif %}
 
-                <td class="center">
-                    <a href="{{ path('plano_edit', { 'id': plano.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
-                </td>
-            </tr>
-        {% endfor %}
+                        <td class="center">
+                            <a href="{{ path('plano_edit', { 'id': plano.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
         </tbody>
             </table>
         </div>

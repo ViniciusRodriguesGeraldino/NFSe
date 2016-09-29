@@ -342,6 +342,7 @@ table th {
 
 @media screen and (min-width: 550px) {
     #myModal .modal-dialog  {width:550px;}
+    #modalServicos .modal-dialog  {width:870px;}
 }
 
 .modal.fade:not(.in) .modal-dialog {

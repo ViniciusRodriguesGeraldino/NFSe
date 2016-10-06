@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\DateTime;
+use SoapClient;
 
 
 /**
@@ -259,6 +260,7 @@ class NotaController extends Controller
             $itemNota = new NotaItens();
 
             $itemNota->setIdNota($nota->getId());
+
             $itemNota->setCodServico($prod[0]);
             $itemNota->setDescricao($prod[1]);
             $itemNota->setQuantidade($prod[2]);
@@ -275,7 +277,7 @@ class NotaController extends Controller
 
         //Transmite a nota
         $retorno = $this->enviarNotaLondrina($nota->getId());
-        $resultado     = $retorno['RetornoNota']->Resultado;
+        $resultado = $retorno['RetornoNota']->Resultado;
 
         if($resultado == 1){
             $nota->setNumeroNota($retorno['RetornoNota']->Nota);
@@ -391,7 +393,7 @@ class NotaController extends Controller
         $nota = $em->getRepository('AppBundle:Nota')->find($id);
 
 //        require_once '../../vendor/autoload.php';
-        require_once 'C:\xampp\htdocs\NFSE\nfseLondrina\Nfse\vendor\autoload.php';
+        require_once 'D:\web\NFSe\nfseLondrina\Nfse\vendor\autoload.php';
 
         $cliente = $this->getCliente($nota->getCliente());
         $empresa = $this->getEmpresaValues();

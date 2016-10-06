@@ -134,11 +134,11 @@ class ServicoController extends Controller
     public function SalvarServico(Request $request){
 
         $dados = $request->request->get('dados', null);
-die(var_dump($dados));
+
         $servico = new Servico();
 
         $servico->setCodSerPref($dados[0]['value']);
-        $servico->setNome($dados[1]['value']);
+        $servico->setDescricao($dados[1]['value']);
         $servico->setValor($dados[2]['value']);
         $servico->setPlano($dados[3]['value']);
         $servico->setPercIss($dados[4]['value']);
@@ -146,10 +146,11 @@ die(var_dump($dados));
         $servico->setPercCsl($dados[6]['value']);
         $servico->setPercPis($dados[7]['value']);
         $servico->setPercCofins($dados[8]['value']);
+        $servico->setidEmpresa($this->get('app.emp')->getIdEmpresa());
 
         try{
             $em = $this->getDoctrine()->getManager();
-            $em->persist($empresa);
+            $em->persist($servico);
             $em->flush();
 
             $response['success'] = true;

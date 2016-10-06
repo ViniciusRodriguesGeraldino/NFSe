@@ -28,6 +28,7 @@ class Biblioteca extends Controller
             ->select('a.id,a.nome,a.cpfcnpj')
             ->where('a.nome LIKE :val')
             ->andWhere('a.empresa = :emp')
+            ->andWhere('a.status = 1')
             ->setParameter('val', '%'.$valor.'%')
             ->setParameter('emp', $this->getIdEmpresa())
             ->getQuery();
@@ -37,6 +38,32 @@ class Biblioteca extends Controller
 
         foreach ($result as $value) {
             $ret2[] = '('.$value['id'].') '.$value['nome'].' : '.$this->formataCpfCnpj($value['cpfcnpj']);
+        }
+
+        return new JsonResponse($ret2);
+    }
+
+    public function getListaClientes(){
+
+        $repo = $this->getDoctrine()
+            ->getRepository('AppBundle:Cliente');
+        $query = $repo->createQueryBuilder('a')
+            ->select('a.id,a.nome,a.cpfcnpj,a.codigoCliente')
+            ->where('a.status = 1')
+            ->andWhere('a.empresa = :emp')
+            ->setParameter('emp', $this->getIdEmpresa())
+            ->getQuery();
+        $result = $query->getArrayResult();
+
+        $ret2 = [];
+
+        foreach ($result as $value) {
+            $ret2[] = array(
+                    'id' => $value['id'],
+                    'nome' => $value['nome'],
+                    'cnpj' => $this->formataCpfCnpj($value['cpfcnpj']),
+                    'codigoCliente' => $value['codigoCliente']
+                );
         }
 
         return new JsonResponse($ret2);

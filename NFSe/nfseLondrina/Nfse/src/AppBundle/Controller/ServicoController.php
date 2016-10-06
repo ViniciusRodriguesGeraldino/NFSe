@@ -70,22 +70,24 @@ class ServicoController extends Controller
      */
     public function editAction(Request $request, Servico $servico)
     {
-        $deleteForm = $this->createDeleteForm($servico);
-        $editForm = $this->createForm('AppBundle\Form\ServicoType', $servico);
-        $editForm->handleRequest($request);
+        $sql = "select plano, descricao from plano where empresa= :idemp and tipo = :tipo";
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['idemp'] = $this->get('app.emp')->getIdEmpresa();
+        $params['tipo'] = 'S';
+        $stmt->execute($params);
+        $plano = $stmt->fetchAll();
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($servico);
-            $em->flush();
-
-            return $this->redirectToRoute('servico_edit', array('id' => $servico->getId()));
-        }
+        $sql = "select * from listaservico";
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        $listaServicos = $stmt->fetchAll();
 
         return $this->render('servico/edit.html.twig', array(
             'servico' => $servico,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'plano' => $plano,
+            'listaServicos' => $listaServicos,
         ));
     }
 
@@ -147,6 +149,39 @@ class ServicoController extends Controller
         $servico->setPercPis($dados[7]['value']);
         $servico->setPercCofins($dados[8]['value']);
         $servico->setidEmpresa($this->get('app.emp')->getIdEmpresa());
+
+        try{
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($servico);
+            $em->flush();
+
+            $response['success'] = true;
+            return new JsonResponse($response);
+
+        }catch (Exception $e){
+            $response['success'] = false;
+            $response['msg'] = $e;
+            return new JsonResponse($response);
+        }
+    }
+
+    /**
+     * @Route("/{id}/EditarServico", name="EditarServico")
+     * @Method({"GET", "POST"})
+     */
+    public function EditarServico(Request $request, Servico $servico){
+
+        $dados = $request->request->get('dados', null);
+
+        $servico->setCodSerPref($dados[0]['value']);
+        $servico->setDescricao($dados[1]['value']);
+        $servico->setValor($dados[2]['value']);
+        $servico->setPlano($dados[3]['value']);
+        $servico->setPercIss($dados[4]['value']);
+        $servico->setPercIrrf($dados[5]['value']);
+        $servico->setPercCsl($dados[6]['value']);
+        $servico->setPercPis($dados[7]['value']);
+        $servico->setPercCofins($dados[8]['value']);
 
         try{
             $em = $this->getDoctrine()->getManager();

@@ -2,40 +2,297 @@
 
 {% block body %}
     <div class="container">
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
-                <h1 class="pagination-centered">Editar Serviço</h1>
-            </div>
-        </div>
-
-        <div class="row row-centered">
-            <div class="col-xs-10 col-xs-offset-1">
-                {% form_theme edit_form 'bootstrap_3_horizontal_layout.html.twig' %}
-                {{ form_start(edit_form) }}
-                    {{ form_widget(edit_form) }}
-                <label></label>
-            </div>
-        </div>
 
         <div class="row">
-
-            <div class="col-xs-1 col-xs-offset-2">
-                <input class="abutton" type="submit" value="Salvar" />
-                {{ form_end(edit_form) }}
-            </div>
-
-            <div class="col-xs-1 padding-left padding-right">
-                {{ form_start(delete_form) }}
-                <input class="abuttonDelete" type="submit" value="Delete">
-                {{ form_end(delete_form) }}
-            </div>
-
-            <div class="col-xs-1" style="padding-left: 25px">
-                <a class="abuttonVoltar" href="{{ path('servico_index') }}">Voltar</a>
+            <div class="col-md-10">
+                <h1 class="padding-bottom">Edição de Serviço</h1>
             </div>
         </div>
-        <div class="padding-top"></div>
 
+        <form class="" method="post" action="" id="servico_form" >
+
+            <div class="container min_height">
+
+                <div class="row">
+                    <div class="col-md-13">
+                        <div class="row padding-top">
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>#Cód.</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ servico.id }}" id="servico_id" name="servico_id" class="form-control" disabled placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-2" style="min-width: 120px">
+                                <div class="">
+                                    <label>#Cód.Serviço</label>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" value="{{ servico.codSerPref }}" id="servico_cod_pref" name="servico_cod_pref" class="form-control" placeholder="" >
+                                    <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalServicos"><span class="glyphicon glyphicon-search"></span></button>
+
+                             </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="">
+                                    <label>Nome Serviço</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ servico.descricao }}" id="servico_nome" name="servico_nome" class="form-control" placeholder="Nome Exibido na Nota" required >
+                                </div>
+                            </div>
+
+                            <div class="col-md-1" style="min-width: 120px;">
+                                <div class="">
+                                    <label style="text-align: right">Valor</label>
+                                </div>
+                                <div>
+                                    <input style="text-align: right" type="text" value="{{ servico.valor }}" id="servico_valor" name="servico_valor" class="form-control" placeholder="0,00" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Plano Contas</label>
+                                </div>
+                                <div>
+                                    {#<input type="text" id="servico_plano" name="servico_plano" class="form-control" placeholder="" >#}
+                                    <select name="servico_plano" id="servico_plano" class="form-control" data-width="100%">
+                                        {% for key,val in plano %}
+                                            <option value="{{ val.plano }}"
+                                                    {% if val.plano|trim == servico.plano|trim %} selected{% endif %}
+                                            >{{ val.plano | trans }} {{ val.descricao | trans }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row padding-top" style="font-size: 18px;">Impostos</div>
+                <div class="row padding-left">
+                    <div class="col-md-20 ">
+                        <div class="row padding-top">
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>%ISS</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_iss" name="servico_iss" class="form-control" placeholder="0,00" value="{{ servico.percIss }}" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>%IRRF</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_irrf" name="servico_irrf" class="form-control" placeholder="0,00" value="{{ servico.percIrrf }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>%CSL</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_csl" name="servico_csl" class="form-control" placeholder="0,00" value="{{ servico.percCsl }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>%PIS</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_pis" name="servico_pis" class="form-control" placeholder="0,00" value="{{ servico.percPis }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>%COFINS</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="servico_cofins" name="servico_cofins" class="form-control" placeholder="0,00" value="{{ servico.percCofins }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-13">
+                        <div class="row" style="padding-top: 50px">
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <a class="abuttonVoltar" href="{{ path('convenio_index') }}">Voltar</a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1" style="padding-left: 20px">
+                                <div class="">
+                                    <input class="salvarBtn" type="submit" value="Salvar" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
 
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalServicos" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Lista de Serviços</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="padding-bottom">
+                        <input type="text" class="search form-control" placeholder="Procurar">
+                    </div>
+                    <div class="tabela_servicos">
+                        <table class="table table-bordered table-hover results" id="table_search">
+                            <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descrição</th>
+                                <th>Aliquota</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in listaServicos %}
+                                <tr>
+                                    <td class="lista_codigo">{{ item.CODIGO }}</td>
+                                    <td class="lista_descricao">{{ item.DESCRICAO }}</td>
+                                    <td class="lista_aliquota">{{ item.ALIQUOTA }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+                    <button type="button" class="btn btn-primary">Selecionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+
+    <style>
+        .results tr[visible='false'],
+        .no-result{
+            display:none;
+        }
+
+        .results tr[visible='true']{
+            display:table-row;
+        }
+        .tabela_servicos{
+            height: 380px !important;
+            overflow: scroll;
+        }
+
+        .tabela_servicos tr {
+            cursor: pointer;
+        }
+
+        .table-striped tbody tr:nth-child(odd) td {
+            background-color: green;
+        }
+
+        .table-striped tbody tr.highlight td {
+            background-color: red;
+        }
+
+    </style>
+
+    <script>
+        //Salvar
+        jQuery(document).ready(function () {
+            jQuery('#servico_form').submit(function () {
+
+                var dados = jQuery(this).serializeArray();
+                jQuery.ajax({
+                    type: "POST",
+                    url: "EditarServico",
+                    data: {dados: dados},
+                    success: function (data) {
+                        if (data.success == false) {
+                            alert('Erro ao salvar cadastro. Erros: ' + data.msg);
+                        }else{
+                            alert('Salvo com Sucesso.');
+                            window.location.href = '../';
+                        }
+                    }
+                });
+
+                return false;
+            });
+        });
+
+        $(document).ready(function() {
+            $(".search").keyup(function () {
+                var searchTerm = $(".search").val();
+                var listItem = $('.results tbody').children('tr');
+                var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+
+                $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+                    return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+                }
+                });
+
+                $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+                    $(this).attr('visible','false');
+                });
+
+                $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+                    $(this).attr('visible','true');
+                });
+                var jobCount = $('.results tbody tr[visible="true"]').length;
+                $('.counter').text(jobCount + ' item');
+
+                if(jobCount == '0') {
+                    $('.no-result').show();
+                }else {
+                    $('.no-result').hide();
+                }
+            });
+        });
+
+
+        $('#table_search > tbody > tr').dblclick(function () {
+            $('#modalServicos').modal('toggle');
+
+            var inputCodigo = document.getElementById('servico_cod_pref');
+            var inputNome   = document.getElementById('servico_nome');
+            var inputISS = document.getElementById('servico_iss');
+
+            inputCodigo.value = $(this).find(".lista_codigo").text();
+            inputISS.value = $(this).find(".lista_aliquota").text();
+            inputNome.value = $(this).find(".lista_descricao").text();
+        });
+
+    </script>
+
 {% endblock %}

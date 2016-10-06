@@ -27,7 +27,7 @@
                 <th>Plano</th>
                 <th>Código Serviço</th>
                 <th>Valor</th>
-                <th></th>
+                <th>Editar</th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +42,7 @@
                 <td>R$ {{ servico.valor|number_format(2, ',', '') }}</td>
 
                 <td>
-                    <a href="{{ path('servico_edit', { 'id': servico.id }) }}">Editar</a>
+                    <a href="{{ path('servico_edit', { 'id': servico.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
                 </td>
             </tr>
         {% endfor %}

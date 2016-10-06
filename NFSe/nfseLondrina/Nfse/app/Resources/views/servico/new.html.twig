@@ -33,9 +33,8 @@
                                 <div class="input-group">
                                     <input type="text" id="servico_cod_pref" name="servico_cod_pref" class="form-control" placeholder="" >
                                     <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalServicos"><span class="glyphicon glyphicon-search"></span></button>
-
-                             </span>
+                                        <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalServicos"><span class="glyphicon glyphicon-search"></span></button>
+                                    </span>
                                 </div>
                             </div>
 
@@ -241,7 +240,8 @@
                         if (data.success == false) {
                             alert('Erro ao salvar cadastro. Erros: ' + data.msg);
                         }else{
-                            window.location.href = '../';
+                            alert('Salvo com Sucesso.');
+                            window.location.href = '../servico';
                         }
                     }
                 });

@@ -548,7 +548,11 @@ class NotaController extends Controller
      */
     public function loadClientes(Request $request){
         $valor = $request->request->get('str', null);
-        return $this->get('app.emp')->getClientes($valor);
+
+        if($valor != "")
+            return $this->get('app.emp')->getClientes($valor);
+        else
+            return $this->get('app.emp')->getListaClientes();
     }
 
     /**
@@ -675,7 +679,8 @@ class NotaController extends Controller
         $cliente = $this->getCliente($nota->getCliente());
 
 //        require_once '../../vendor/autoload.php';
-        require_once 'C:\xampp\htdocs\NFSE\nfseLondrina\Nfse\vendor\autoload.php';
+//        require_once 'C:\xampp\htdocs\NFSE\nfseLondrina\Nfse\vendor\autoload.php';
+        require_once 'D:\web\NFSe\nfseLondrina\Nfse\vendor\autoload.php';
 
         $empresa = $this->getEmpresaValues();
 

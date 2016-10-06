@@ -34,15 +34,26 @@
                         <label>Cliente</label>
                     </div>
                     <div class="float-right text-right col-xs-8">
-                        <a href="" class="customer-edit-link">
+                        <a href="#" data-toggle="modal" data-target="#modalClientes" class="customer-edit-link">
                             Perfil do cliente
                         </a>
                     </div>
-                    {#<input type="text" style="display:none" id="idCliente" name="idCliente">#}
-
                     <input type="text" id="NomeCliente" name="NomeCliente" class="NomeCliente form-control" required="required"
                            placeholder="Digite o nome do cliente" onchange="">
                 </div>
+
+                {#<div class="col-xs-offset-1 col-xs-3">#}
+                    {#<div class="float-left no-padding-left col-xs-4">#}
+                        {#<label>Cliente</label>#}
+                    {#</div>#}
+                    {#<div class="input-group">#}
+                        {#<input type="text" id="NomeCliente" name="NomeCliente" class="NomeCliente form-control" required="required"#}
+                               {#placeholder="Digite o nome do cliente" onchange="">#}
+                        {#<span class="input-group-btn">#}
+                                            {#<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalServicos"><span class="glyphicon glyphicon-search"></span></button>#}
+                        {#</span>#}
+                    {#</div>#}
+                {#</div>#}
 
                 <div class="col-xs-1">
                     <label>Número</label>
@@ -245,12 +256,58 @@
 
     </form>
 
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalClientes" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Lista de Clientes</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="padding-bottom">
+                        <input type="text" class="search form-control" placeholder="Procurar">
+                    </div>
+                    <div class="tabela_servicos">
+                        <table class="table table-bordered table-hover results" id="table_search">
+                            <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nome</th>
+                                <th>CPF/CNPJ</th>
+                                <th>Cidade</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {#{% for item in listaServicos %}#}
+                                <tr>
+                                    {#<td class="lista_codigo">{{ item.CODIGO }}</td>#}
+                                    {#<td class="lista_descricao">{{ item.DESCRICAO }}</td>#}
+                                    {#<td class="lista_aliquota">{{ item.ALIQUOTA }}</td>#}
+                                </tr>
+                            {#{% endfor %}#}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+                    <button type="button" class="btn btn-primary">Selecionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
 
 {% block javascripts %}
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    {#<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>#}
+    {#<script src="https://code.jquery.com/jquery-1.12.4.js"></script>#}
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script src="{{ asset('assets/js/sibrax_nota.js') }}"></script>
 

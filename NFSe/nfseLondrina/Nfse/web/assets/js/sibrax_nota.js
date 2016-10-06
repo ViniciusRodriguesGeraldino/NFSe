@@ -423,4 +423,21 @@ function CancelarNf(obj) {
     });
 }
 
-
+//Carrega Clientes no Modal
+$("#modalClientes").on("show.bs.modal", function(e) {
+    $.ajax({
+        url: 'loadClientes',
+        data: {str: ''},
+        type: 'post',
+        success: function (data) {
+            var table = document.getElementById('table_search');
+            for(var dado in data){
+                console.log(dado.nome, data);
+                // table.childNodes[0].value = data.codigo_cliente;
+                // table.childNodes[1].value = data.nome;
+                // table.childNodes[2].value = data.cpfcnpj;
+                // table.childNodes[3].value = data.cidade;
+            }
+        }
+    });
+});

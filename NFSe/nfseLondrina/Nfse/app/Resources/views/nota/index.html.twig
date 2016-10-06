@@ -26,7 +26,7 @@
                     <th class="text-center">Status</th>
                     <th class="text-right">Total</th>
                     {#<th></th>#}{#Visualizar#}
-                    <th></th>{#Cancelar#}
+                    <th class=""></th>{#Cancelar#}
                     <th></th>{#Imprimir#}
                 </tr>
                 </thead>
@@ -50,28 +50,23 @@
                         {% endif %}
 
                         <td class="text-right">R$ {{ notum.total|number_format(2, ',', '') }}</td>
-                        {#<td>#}
-                            {#{% if notum.status == 'Enviada' %}#}
-                                {#<a href="{{ path('nota_show', { 'id': notum.id }) }}"><span>Visualizar</span></a>#}
-                            {#{% elseif notum.status == 'Não Enviada' %}#}
-                                {#<a id="reenviarNota" onclick="reenviarNf({{ notum.id }})" href="#"><span>Reenviar Nota</span></a>#}
-                            {#{% else %}#}
 
-                            {#{% endif %}#}
-                        {#</td>#}
-
-                        <td>
+                        <td class="right">
                             {% if notum.status == 'Enviada' %}
-                                <a id="cancelarNota" onclick="CancelarNf({{ notum.id }})" href="#"><span>Cancelar NF</span></a>
+                                <a id="cancelarNota" onclick="CancelarNf({{ notum.id }})" href="#"><span class="glyphicon glyphicon-remove"></span></a>
                             {% elseif notum.status == 'Cancelada' %}
-                                <span>Nota já cancelada</span>
+                                <span class="glyphicon glyphicon-minus"></span>
+                            {% elseif notum.status == 'Não Enviada' %}
                             {% else %}
+                                <a id="cancelarNota" onclick="DeletarNotaInvalida({{ notum.id }})" href="#"><span class="glyphicon glyphicon-trash"></span></a>
                             {% endif %}
                         </td>
 
-                        <td>
+                        <td class="center">
                             {% if (notum.status == 'Enviada') or (notum.status == 'Cancelada') %}
-                                <a id="imprimirNota" onclick="ImprimirNf({{ notum.id }})" href="#"><span>Imprimir</span></a>
+                                <a id="imprimirNota" onclick="ImprimirNf({{ notum.id }})" href="#"><span class="glyphicon glyphicon-eye-open"></span></a>
+                            {% elseif notum.status == 'Não Enviada' %}
+                                <a id="reenviarNota" onclick="reenviarNf({{ notum.id }})" href="#"><span class="glyphicon glyphicon-play-circle"></span></a>
                             {% endif %}
                         </td>
 

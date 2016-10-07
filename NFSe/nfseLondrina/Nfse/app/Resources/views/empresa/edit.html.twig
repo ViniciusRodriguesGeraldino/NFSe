@@ -78,7 +78,9 @@
                                         <input type="checkbox" id="check_switch" name="check_switch" {% if empresa.simples == 'S' %}checked{% endif %}>
                                         <div class="slider round"></div>
                                     </label>
-                                    <label id="EmpresaSimples" style="float: right; padding-right: 60px">Não</label>
+                                    <label id="EmpresaSimples" style="float: right; padding-right: 60px">
+                                        {% if empresa.simples == 'S' %}Sim{% else %}Não{% endif %}
+                                    </label>
                                 </div>
                             </div>
 

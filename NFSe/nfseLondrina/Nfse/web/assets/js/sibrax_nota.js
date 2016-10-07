@@ -53,17 +53,53 @@ jQuery(document).ready(function () {
     });
 });
 
+function formataClientes(data) {
+    var rows = [];
+    var rowData = null;
+    var dataLength = data.length;
+    for (var i = 0; i < dataLength; i++) {
+        rowData = data[i];
+        rows[i] = {
+            label: rowData.nome + ' (' + rowData.cpfcnpj + ')',
+            value: rowData.id
+        };
+    }
+    return rows;
+}
+
 // {#Busca Clientes#}
 $(document).on('input', '.NomeCliente', function () {
-    var str = $(this).val(); // this.value
+    var str = $(this).val();
     $.ajax({
         url: 'loadClientes',
         data: {str: str},
         type: 'post',
         success: function (data) {
             $("#NomeCliente").autocomplete({
-                source: data,
-                delay: 200
+
+                source: function(request, response) {
+                    var rows = formataClientes(data);
+                    return response(rows);
+                },
+
+                delay: 200,
+
+                select: function(event, ui) {
+                    var hasValue = (ui.item.value != undefined && ui.item.value != "" && ui.item.value != null);
+                    if (hasValue) {
+                        var focusedElement = $(this);
+                        focusedElement.val(ui.item.label);
+
+                        document.getElementById('NomeCliente').value = ui.item.label;
+                        document.getElementById('idCliente').value = ui.item.value;
+
+                        return false;
+                    }
+                    else {
+                        return false;
+                    }
+                },
+
             });
         }
     });
@@ -424,20 +460,90 @@ function CancelarNf(obj) {
 }
 
 //Carrega Clientes no Modal
-$("#modalClientes").on("show.bs.modal", function(e) {
+$(document).on('show.bs.modal','#modalClientes', function () {
+// $("#modalClientes").on("show.bs.modal", function(e) {
+    var table = document.getElementById('table_search');
+    var numOfRows = table.rows.length;
+    if(numOfRows > 2)
+        return;
+
     $.ajax({
         url: 'loadClientes',
         data: {str: ''},
         type: 'post',
         success: function (data) {
-            var table = document.getElementById('table_search');
-            for(var dado in data){
-                console.log(dado.nome, data);
-                // table.childNodes[0].value = data.codigo_cliente;
-                // table.childNodes[1].value = data.nome;
-                // table.childNodes[2].value = data.cpfcnpj;
-                // table.childNodes[3].value = data.cidade;
+
+            for(var i=0; i<= data.length-1; i++){
+
+                var newRow = table.insertRow(numOfRows);
+
+                newCell = newRow.insertCell(0);
+                newCell.innerHTML = data[i].codigoCliente;
+                newCell.setAttribute('class', 'lista_codigo_cliente');
+
+                newCell = newRow.insertCell(1);
+                newCell.innerHTML = data[i].nome;
+                newCell.setAttribute('class', 'lista_nome');
+
+                newCell = newRow.insertCell(2);
+                newCell.innerHTML = data[i].cnpj;
+                newCell.setAttribute('class', 'lista_cnpj');
+
+                newCell = newRow.insertCell(3);
+                newCell.innerHTML = data[i].id;
+                newCell.setAttribute('class', 'lista_id');
+
+                numOfRows++;
             }
+
+            //Atribui valor do Modal para o campo do form
+            $('#table_search > tbody > tr').dblclick(function () {
+                $('#modalClientes').modal('toggle');
+
+                var inputNome   = document.getElementById('NomeCliente');
+                inputNome.value = $(this).find(".lista_nome").text() + ' (' + $(this).find(".lista_cnpj").text() + ')';
+
+                var inputIdCliente = document.getElementById('idCliente');
+                inputIdCliente.value = $(this).find(".lista_id").text();
+            });
+
+        }
+    });
+
+
+
+
+});
+
+//Busca Clientes no Modal
+$(document).ready(function() {
+    $(".search").keyup(function () {
+        var searchTerm = $(".search").val();
+        var listItem = $('.results tbody').children('tr');
+        var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+
+        $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+            return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+        }
+        });
+
+        $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+            $(this).attr('visible','false');
+        });
+
+        $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+            $(this).attr('visible','true');
+        });
+        var jobCount = $('.results tbody tr[visible="true"]').length;
+        $('.counter').text(jobCount + ' item');
+
+        if(jobCount == '0') {
+            $('.no-result').show();
+        }else {
+            $('.no-result').hide();
         }
     });
 });
+
+
+

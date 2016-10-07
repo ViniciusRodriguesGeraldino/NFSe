@@ -251,8 +251,7 @@
             </div>
         </div>
 
-        {#Modal#}
-        <div id="dialog" title="Nota Fiscal de Serviço" style="display:none">Abriu!</div>
+        <input type="hidden" id="idCliente" class="idCliente" name="idCliente" value=""/>
 
     </form>
 
@@ -271,30 +270,25 @@
                     <div class="padding-bottom">
                         <input type="text" class="search form-control" placeholder="Procurar">
                     </div>
-                    <div class="tabela_servicos">
+                    <div class="tabela_clientes">
                         <table class="table table-bordered table-hover results" id="table_search">
                             <thead>
                             <tr>
                                 <th>Código</th>
                                 <th>Nome</th>
                                 <th>CPF/CNPJ</th>
-                                <th>Cidade</th>
+                                <th>#</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {#{% for item in listaServicos %}#}
                                 <tr>
-                                    {#<td class="lista_codigo">{{ item.CODIGO }}</td>#}
-                                    {#<td class="lista_descricao">{{ item.DESCRICAO }}</td>#}
-                                    {#<td class="lista_aliquota">{{ item.ALIQUOTA }}</td>#}
                                 </tr>
-                            {#{% endfor %}#}
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
                     <button type="button" class="btn btn-primary">Selecionar</button>
                 </div>
             </div>
@@ -311,4 +305,32 @@
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script src="{{ asset('assets/js/sibrax_nota.js') }}"></script>
 
+
+    <style>
+        .results tr[visible='false'],
+        .no-result{
+            display:none;
+        }
+
+        .results tr[visible='true']{
+            display:table-row;
+        }
+        .tabela_clientes{
+            height: 380px !important;
+            overflow: scroll;
+        }
+
+        .tabela_clientes tr {
+            cursor: pointer;
+        }
+
+        .table-striped tbody tr:nth-child(odd) td {
+            background-color: green;
+        }
+
+        .table-striped tbody tr.highlight td {
+            background-color: red;
+        }
+
+    </style>
 {% endblock %}

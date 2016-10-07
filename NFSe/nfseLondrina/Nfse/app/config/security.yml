@@ -31,6 +31,14 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            logout:
+                path:   /logout
+                target: /
             guard:
                 authenticators:
-                    - app.token_authenticator
+                    - form_authenticator
+
+
+    access_control:
+            - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/, roles: ROLE_ADMIN }

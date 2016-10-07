@@ -205,14 +205,17 @@ class NotaController extends Controller
             $totalDescontos += $prod[4];
         }
 
+
         $nota->setEmpresa($this->get('app.emp')->getIdEmpresa());
 
-        $idAux = $dados[1]['value']; //Pega o id cliente aqui
-        $pos = strpos($idAux, ')');
-        $pos -= 1;
-        $idAux2 = substr($idAux, 1, $pos );
-        $idCliente = trim($idAux2);
-        $nota->setCliente($idCliente);
+//        $idAux = $dados[1]['value']; //Pega o id cliente aqui
+//        $pos = strpos($idAux, ')');
+//        $pos -= 1;
+//        $idAux2 = substr($idAux, 1, $pos );
+//        $idCliente = trim($idAux2);
+//        $nota->setCliente($idCliente);
+
+        $nota->setCliente($dados[25]['value']);
 
         $nota->setTotal($dados[22]['value']);
         $nota->setDesconto($totalDescontos);

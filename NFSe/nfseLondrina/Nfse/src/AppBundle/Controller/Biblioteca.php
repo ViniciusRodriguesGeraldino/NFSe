@@ -37,7 +37,7 @@ class Biblioteca extends Controller
         $ret2 = [];
 
         foreach ($result as $value) {
-            $ret2[] = '('.$value['id'].') '.$value['nome'].' : '.$this->formataCpfCnpj($value['cpfcnpj']);
+            $ret2[] = array('id' => $value['id'], 'nome' => $value['nome'], 'cpfcnpj' => $this->formataCpfCnpj($value['cpfcnpj']));
         }
 
         return new JsonResponse($ret2);

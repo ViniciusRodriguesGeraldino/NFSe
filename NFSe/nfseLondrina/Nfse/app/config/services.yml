@@ -9,9 +9,9 @@ services:
         calls:
                     - [setContainer, ["@service_container"]]
 
-    app.token_authenticator:
-        class: AppBundle\Security\TokenAuthenticator
-        arguments: ['@doctrine.orm.entity_manager']
+    form_authenticator:
+          class: AppBundle\Controller\FormAuthenticator
+          arguments: ['@doctrine.orm.entity_manager', '@router']
 
     app.lancamento:
         class: AppBundle\Controller\LancamentosController

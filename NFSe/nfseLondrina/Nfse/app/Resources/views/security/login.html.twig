@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ error }}
+
+    <form action="{{ path('login') }}" method="POST">
+        <label for="username">Username</label>
+        <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control"
+               id="password" placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+
+
+    {#<form action="{{ path('login') }}" method="POST">#}
+
+        {#<label for="exampleInputEmail1">Username</label>#}
+        {#<input type="text" name="_username" class="form-control" id="exampleInputEmail1" placeholder="Username">#}
+
+        {#<label for="exampleInputPassword1">Password</label>#}
+        {#<input type="password" name="_password" class="form-control"#}
+               {#id="exampleInputPassword1" placeholder="Password">#}
+
+        {#<label for="the-answer">The answer to life the universe and everything</label>#}
+        {#<input type="text" name="the_answer" class="form-control" id="the-answer">#}
+
+        {#<input type="checkbox" name="terms"> I agree to want to be logged in#}
+
+        {#<button type="submit" class="btn btn-default">Login</button>#}
+    {#</form>#}
+
+{% endblock %}

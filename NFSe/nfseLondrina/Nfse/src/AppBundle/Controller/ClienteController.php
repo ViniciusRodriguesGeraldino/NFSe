@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Cliente;
 use AppBundle\Form\ClienteType;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Cliente controller.
@@ -17,6 +18,13 @@ use AppBundle\Form\ClienteType;
  */
 class ClienteController extends Controller
 {
+    private $session;
+
+    public function __construct() {
+        $this->session=new Session();
+//        die(var_dump($this->session));
+    }
+
     /**
      * Lists all Cliente entities.
      *

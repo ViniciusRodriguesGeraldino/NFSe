@@ -4,27 +4,36 @@
     <id name="id" type="integer" column="ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="username" type="string" column="USERNAME" length="25">
+    <field name="role" type="string" column="role" length="20" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="password" type="string" column="PASSWORD" length="64">
+    <field name="name" type="string" column="name" length="255" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="email" type="string" column="EMAIL" length="60">
+    <field name="surname" type="string" column="surname" length="255" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="isActive" type="boolean" column="ISACTIVE">
+    <field name="email" type="string" column="email" length="255" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-
+    <field name="password" type="string" column="password" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imagen" type="string" column="imagen" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
 
   </entity>
 </doctrine-mapping>

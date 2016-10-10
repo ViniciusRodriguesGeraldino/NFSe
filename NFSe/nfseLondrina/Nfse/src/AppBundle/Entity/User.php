@@ -1,126 +1,149 @@
 <?php
 
 namespace AppBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
- * @ORM\Table(name="users")
- * @ORM\Entity(repositoryClass="AppBundle\Entity\User")
+ * User
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface
 {
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var integer
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
+     * @var string
      */
-    private $username;
+    private $role;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @var string
      */
-    private $password;
+    private $name;
 
     /**
-     * @ORM\Column(type="string", length=60, unique=true)
+     * @var string
+     */
+    private $surname;
+
+    /**
+     * @var string
      */
     private $email;
 
     /**
-     * @ORM\Column(name="is_active", type="boolean")
+     * @var string
      */
-    private $isActive;
+    private $password;
 
-    public function __construct()
-    {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid(null, true));
+    /**
+     * @var string
+     */
+    private $imagen;
+
+
+    // AUTH
+
+    public function getUsername() {
+        return $this->email;
     }
 
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    public function getSalt()
-    {
-        // you *may* need a real salt depending on your encoder
-        // see section on salt below
+    public function getSalt() {
         return null;
     }
 
-    public function getPassword()
-    {
-        return $this->password;
+    public function getRoles() {
+        return array($this->getRole());
     }
 
-    public function getRoles()
-    {
-        return array('ROLE_USER');
+    public function eraseCredentials() {
+
     }
 
-    public function eraseCredentials()
-    {
-    }
+    // END AUTH
 
-    /** @see \Serializable::serialize() */
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt,
-        ));
-    }
 
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
     {
-        list (
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt
-            ) = unserialize($serialized);
+        return $this->id;
     }
 
     /**
-     * Set username
+     * Set role
      *
-     * @param string $username
+     * @param string $role
      *
      * @return User
      */
-    public function setUsername($username)
+    public function setRole($role)
     {
-        $this->username = $username;
+        $this->role = $role;
 
         return $this;
     }
 
     /**
-     * Set password
+     * Get role
      *
-     * @param string $password
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
      *
      * @return User
      */
-    public function setPassword($password)
+    public function setName($name)
     {
-        $this->password = $password;
+        $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set surname
+     *
+     * @param string $surname
+     *
+     * @return User
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * Get surname
+     *
+     * @return string
+     */
+    public function getSurname()
+    {
+        return $this->surname;
     }
 
     /**
@@ -148,36 +171,51 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Set isActive
+     * Set password
      *
-     * @param boolean $isActive
+     * @param string $password
      *
      * @return User
      */
-    public function setIsActive($isActive)
+    public function setPassword($password)
     {
-        $this->isActive = $isActive;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get isActive
+     * Get password
      *
-     * @return boolean
+     * @return string
      */
-    public function getIsActive()
+    public function getPassword()
     {
-        return $this->isActive;
+        return $this->password;
     }
 
     /**
-     * Get id
+     * Set imagen
      *
-     * @return integer
+     * @param string $imagen
+     *
+     * @return User
      */
-    public function getId()
+    public function setImagen($imagen)
     {
-        return $this->id;
+        $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    /**
+     * Get imagen
+     *
+     * @return string
+     */
+    public function getImagen()
+    {
+        return $this->imagen;
     }
 }
+

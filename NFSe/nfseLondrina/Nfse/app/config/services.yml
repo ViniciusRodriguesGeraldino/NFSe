@@ -9,9 +9,11 @@ services:
         calls:
                     - [setContainer, ["@service_container"]]
 
-    form_authenticator:
-          class: AppBundle\Controller\FormAuthenticator
-          arguments: ['@doctrine.orm.entity_manager', '@router']
+    app.locale_listener:
+        class: AppBundle\EventListener\LocaleListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }
 
     app.lancamento:
         class: AppBundle\Controller\LancamentosController

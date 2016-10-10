@@ -42,26 +42,6 @@ class DefaultController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/login", name="login")
-     */
-    public function loginAction(Request $request)
-    {
-        $user = $this->getUser();
-
-        if ($user instanceof UserInterface) {
-            return $this->redirectToRoute('homepage');
-        }
-
-        /** @var AuthenticationException $exception */
-        $exception = $this->get('security.authentication_utils')
-            ->getLastAuthenticationError();
-
-        return $this->render('login/login.html.twig', [
-            'error' => $exception ? $exception->getMessage() : NULL,
-        ]);
-    }
-
     public function getTotalNFesEmitidas(){
 
         $idEmp = $this->get('app.emp')->getIdEmpresa();

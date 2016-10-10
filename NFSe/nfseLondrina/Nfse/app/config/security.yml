@@ -9,9 +9,8 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
-
+#        in_memory:
+#            memory: ~
         emissor:
             entity:
                 class: AppBundle:User
@@ -28,15 +27,11 @@ security:
             provider: emissor
             form_login:
                 login_path: /login
-                check_path: /login_check
+                check_path: /login
             logout:
                 path: /logout
-                target: /login
-#            guard:
-#                authenticators:
-#                    - form_authenticator
-
+                target: /
 
     access_control:
-        - { path: ^/tags, roles: [ROLE_ADMIN, ROLE_USER]}
-        - { path: ^/categories, roles: ROLE_ADMIN}
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: [ROLE_ADMIN, ROLE_USER] }

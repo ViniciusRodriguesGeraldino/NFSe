@@ -10,11 +10,7 @@ use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-/**
- * User controller.
- *
- * @Route("/login")
- */
+
 class UserController extends Controller
 {
     private $session;
@@ -24,7 +20,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/", name="login_check")
+     * @Route("/login", name="login")
      */
     public function loginAction(Request $request){
         $authenticationUtils = $this->get("security.authentication_utils");
@@ -64,20 +60,27 @@ class UserController extends Controller
                         $status = "Erro ao Cadastrar.#1";
                     }
                 }else{
-                    $status = "Usuario já existe!";
+                    $status = "Email já está cadastrado!";
                 }
             }else{
                 $status = "Erro ao Cadastrar.#2";
             }
 
             $this->session->getFlashBag()->add("status",$status);
+
         }
 
-//        return $this->render("AppBundle:User:security/login.html.twig", array(
         return $this->render("security/login.html.twig", array(
             "error" => $error,
             "last_username" => $lastUsername,
-            "form" => $form->createView()
+            "form" => $form->createView(),
         ));
+    }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logoutAction(Request $request){
+
     }
 }

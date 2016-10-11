@@ -33,18 +33,6 @@ class ClienteController extends Controller
      */
     public function indexAction()
     {
-//        $em = $this->getDoctrine()->getManager();
-
-//        $clientes = $em->getRepository('AppBundle:Cliente')->findBy(
-//            array('empresa' => $this->get('app.emp')->getIdEmpresa(), 'status'  => 1),
-//            array('id' => 'ASC'),
-//            10,
-//            0
-//        );
-//
-//        return $this->render('cliente/index.html.twig', array(
-//            'clientes' => $clientes,
-//        ));
         return $this->render('cliente/index.html.twig', array());
     }
 

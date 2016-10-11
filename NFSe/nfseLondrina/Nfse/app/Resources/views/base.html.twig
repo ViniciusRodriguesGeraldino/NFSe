@@ -19,7 +19,6 @@
 
         <script src="{{ asset('assets/js/jquery.js') }}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -58,7 +57,7 @@
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
+                        <ul class="nav navbar-nav navbar-left">
                             {#<li>#}
                                 {#<a href="{{ path('homepage') }}">Home</a>#}
                             {#</li>#}
@@ -91,8 +90,21 @@
                                 </ul>
                             </li>
 
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bar-chart "></span> Relatórios<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><span class="fa fa-circle-o"></span> Clientes</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><span class="fa fa-circle-o"></span> Notas Emitidas</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><span class="fa fa-circle-o"></span> Contas a Pagar</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><span class="fa fa-circle-o"></span> Contas a Receber</a></li>
+                                </ul>
+                            </li>
 
-                            <li class="dropdown" style="float: right">
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     {% if app.user == null%}
@@ -106,7 +118,6 @@
                                     <li><a href="#">Ajuda</a></li>
                                 </ul>
                             </li>
-
                         </ul>
                     </div>
 

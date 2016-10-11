@@ -4,28 +4,28 @@
 
     <div class="container min_height">
         <div class="row">
-            <div class="col-xs-10">
+            <div class="col-md-10">
                 <h1 class="pagination-centered">Notas Fiscais de Serviço</h1>
                 <hr/>
             </div>
         </div>
 
         <div class="row padding-top padding-bottom">
-            <div class="col-xs-1">
+            <div class="col-md-1">
                 <a class="abuttonCadastrar" href="{{ path('nota_new') }}">Emitir nota</a>
             </div>
         </div>
         <div class="row row-centered">
-            <div class="col-xs-10">
+            <div class="col-md-10">
             <table class="table pagination-centered" style="text-align: center">
                 <thead>
                 <tr class="table tabelaNota">
                     {#<th>ID</th>#}
-                    <th class="center">Número NFSe</th>
-                    <th class="text-center">Cliente</th>
+                    <th class="left">Número NFSe</th>
+                    <th class="left">Cliente</th>
                     <th class="center">Data</th>
-                    <th class="text-center">Status</th>
-                    <th class="text-right">Total</th>
+                    <th class="center">Status</th>
+                    <th class="right">Total</th>
                     {#<th></th>#}{#Visualizar#}
                     <th class=""></th>{#Cancelar#}
                     <th></th>{#Imprimir#}
@@ -36,8 +36,8 @@
                 {% for notum in notas %}
                     <tr>
                         {#<td><a href="{{ path('nota_show', { 'id': notum.id }) }}">{{ notum.id }}</td>#}
-                        <td class="center">{{ notum.numeroNota }}</td>
-                        <td>{{ notum.nome }}</td>
+                        <td class="left">{{ notum.numeroNota }}</td>
+                        <td class="left">{{ notum.nome }}</td>
                         <td class="center">{% if notum.data %}{{ notum.data|date('d/m/Y') }}{% endif %}</td>
 
                         {% if notum.status == 'Enviada' %}

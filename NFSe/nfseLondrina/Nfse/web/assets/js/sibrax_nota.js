@@ -106,11 +106,11 @@ $(document).on('input', '.NomeCliente', function () {
 })
 
 // {#DatePicker#}
-$(function () {
-    $('#datetimepicker4').datepicker({
-        pickTime: false
-    });
-});
+// $(function () {
+//     $('#datetimepicker4').datepicker({
+//         pickTime: false
+//     });
+// });
 
 // {#Insere Linha#}
 function inserirLinhaTabela() {
@@ -544,6 +544,3 @@ $(document).ready(function() {
         }
     });
 });
-
-
-

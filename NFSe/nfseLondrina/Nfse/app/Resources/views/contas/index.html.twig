@@ -15,37 +15,37 @@
         </div>
 
         <div class="row row-centered">
-            <div class="col-md-10">
+            <div class="col-md-10" id="tableview">
                 <table class="table pagination-centered">
-            <thead>
-                <tr>
-                    {#<th>Conta</th>#}
-                    <th class="text-left">Tipo Conta</th>
-                    <th class="text-left">Nome</th>
-                    <th class="text-right">Documento</th>
-                    <th class="text-right">Valor</th>
-                    <th class="text-center">Data Lançamento</th>
-                    <th class="text-center">Data Vencimento</th>
-                    <th class="center">Editar</th>
-                    <th class="center">Baixar</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for conta in contas %}
-                <tr>
-                    {#<td>{{ conta.id }}</td>#}
-                    <td class="text-left">{{ conta.tipoConta }}</td>
-                    <td class="text-left">{{ conta.nome }}</td>
-                    <td class="text-right">{{ conta.numeroDocumento }}</td>
-                    <td class="text-right">{{ conta.valorTotal|number_format(2, ',', '') }}</td>
-                    <td class="text-center">{% if conta.dataLancamento %}{{ conta.dataLancamento|date('d/m/Y') }}{% endif %}</td>
-                    <td class="text-center">{% if conta.dataVencimento %}{{ conta.dataVencimento|date('d/m/Y') }}{% endif %}</td>
-                    <td class="center"><a href="{{ path('contas_edit', { 'id': conta.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                    <td class="center"><a href="{{ path('contas_baixa', { 'id': conta.id }) }}"><span class="glyphicon glyphicon-usd" style="color: #0ccf4d"></span></a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                    <thead>
+                        <tr>
+                            {#<th>Conta</th>#}
+                            <th class="text-left">Tipo Conta</th>
+                            <th class="text-left">Nome</th>
+                            <th class="text-right">Documento</th>
+                            <th class="text-right">Valor</th>
+                            <th class="text-center">Data Lançamento</th>
+                            <th class="text-center">Data Vencimento</th>
+                            <th class="center">Editar</th>
+                            <th class="center">Baixar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for conta in contas %}
+                        <tr>
+                            {#<td>{{ conta.id }}</td>#}
+                            <td class="text-left">{{ conta.tipoConta }}</td>
+                            <td class="text-left">{{ conta.nome }}</td>
+                            <td class="text-right">{{ conta.numeroDocumento }}</td>
+                            <td class="text-right">{{ conta.valorTotal|number_format(2, ',', '') }}</td>
+                            <td class="text-center">{% if conta.dataLancamento %}{{ conta.dataLancamento|date('d/m/Y') }}{% endif %}</td>
+                            <td class="text-center">{% if conta.dataVencimento %}{{ conta.dataVencimento|date('d/m/Y') }}{% endif %}</td>
+                            <td class="center"><a href="{{ path('contas_edit', { 'id': conta.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                            <td class="center"><a href="{{ path('contas_baixa', { 'id': conta.id }) }}"><span class="glyphicon glyphicon-usd" style="color: #0ccf4d"></span></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

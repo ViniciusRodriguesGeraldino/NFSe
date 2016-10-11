@@ -250,6 +250,7 @@
             });
         });
 
+        //Filtra a table no modal
         $(document).ready(function() {
             $(".search").keyup(function () {
                 var searchTerm = $(".search").val();
@@ -279,7 +280,7 @@
             });
         });
 
-
+        //Seleciona o serviço no modal
         $('#table_search > tbody > tr').dblclick(function () {
             $('#modalServicos').modal('toggle');
 

@@ -5,14 +5,15 @@
 
     <div class="container min_height">
         <div class="row">
-            <div class="col-xs-10">
+            <div class="col-md-13">
                 <h1 class="pagination-centered">Lista de Clientes</h1>
                 <hr/>
             </div>
         </div>
+
         <div class="tabela display row row-centered">
-            <div class="col-xs-10">
-                <table class="table table-striped" id="index_table">
+            <div class="col-md-13" id="tableView">
+                <table class="table" id="index_table">
                 <thead>
                     <tr>
                         <th style="border-color: #c9d3dd">#</th>
@@ -125,4 +126,11 @@
 
     </script>
 
+    <style>
+        #tableview {
+            width: 100%;
+            /*height: 400px;*/
+            /*overflow-y: scroll;*/
+        }
+    </style>
 {% endblock %}

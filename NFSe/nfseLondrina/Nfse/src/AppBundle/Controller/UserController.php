@@ -67,7 +67,6 @@ class UserController extends Controller
             }
 
             $this->session->getFlashBag()->add("status",$status);
-
         }
 
         return $this->render("security/login.html.twig", array(

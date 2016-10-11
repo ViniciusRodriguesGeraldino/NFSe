@@ -1,24 +1,31 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-    <div class="modal show" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    {% if app.user != null%}
+        <meta http-equiv="refresh" content="0; url={{ path('homepage') }}" />
+    {% endif %}
+
+
+    <div class="modal {% if app.user == null%}show{% endif %}" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="loginmodal-container">
 
-                <h1>Login - Sibrax Admin</h1><br>
+                <h1 class="tituloLogin">Login - Sibrax Admin</h1><br>
 
-                <form action="{{path("login")}}" method="post" hidden>
-                    <label>Email:</label>
-                    <input type="email" id="username" name="_username" value="{{ last_username }}" class="form-control" />
-                    <br/>
-                    <label>Senha:</label>
-                    <input type="password" id="password" name="_password" class="form-control" />
-                    <br/>
-                    <input type="submit" value="Entrar" class="btn btn-success"/>
-                    <input type="hidden" name="_target_path" value="/login" />
-                </form>
+                <div class="DivLogin">
+                    <form action="{{path("login")}}" method="post">
+                        <label>Email:</label>
+                        <input type="email" id="username" name="_username" value="{{ last_username }}" class="form-control" />
+                        <br/>
+                        <label>Senha:</label>
+                        <input type="password" id="password" name="_password" class="form-control" />
+                        <br/>
+                        <input type="submit" value="Entrar" class="btn btn-success"/>
+                        <input type="hidden" name="_target_path" value="/login" />
+                    </form>
+                </div>
 
-                <div class="">
+                <div class="DivRegistro" hidden>
                     {% for message in app.session.flashbag().get('status') %}
                         <div class="alert alert-success">{{ message }}</div>
                     {% endfor %}
@@ -27,7 +34,11 @@
                 </div>
 
                 <div class="login-help">
-                    <a href="#">Register</a> - <a href="#">Forgot Password</a>
+                    <a href="#" id="RegistrarClick">Registrar</a> - <a href="#">Esqueci a Senha</a>
+                </div>
+
+                <div class="login-back" hidden>
+                    <a href="#" id="LoginVoltar">Voltar</a>
                 </div>
             </div>
         </div>
@@ -38,7 +49,20 @@
 
 {% block javascripts %}
     <script>
-        
+        $('#RegistrarClick').click(function () {
+            $(".DivLogin").hide();
+            $(".DivRegistro").show();
+            $(".login-help").hide();
+            $(".login-back").show();
+        });
+
+        $('#LoginVoltar').click(function () {
+            $(".DivLogin").show();
+            $(".DivRegistro").hide();
+            $(".login-help").show();
+            $(".login-back").hide();
+        });
+
     </script>
 
     <style>
@@ -71,7 +95,7 @@
         }
 
         .loginmodal-container input[type=text], input[type=password] {
-            height: 44px;
+            height: 34px;
             font-size: 16px;
             width: 100%;
             margin-bottom: 10px;
@@ -137,6 +161,10 @@
 
         .login-help{
             font-size: 12px;
+        }
+        .login-back{
+            font-size: 12px;
+            padding-top: 10px;
         }
     </style>
 {% endblock %}

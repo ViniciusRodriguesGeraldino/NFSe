@@ -98,6 +98,7 @@
                                     {% if app.user == null%}
                                         <li><a href='{{path("login")}}'>Entrar</a></li>
                                     {%else%}
+                                        <li><a href='#'>Configurações</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="{{path("logout")}}">Sair</a></li>
                                     {% endif%}

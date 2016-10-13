@@ -7,6 +7,9 @@
         <div class="row">
             <div class="col-md-13">
                 <h1 class="pagination-centered">Lista de Clientes</h1>
+                <div style="padding-top: 5px">
+                    <a class="abuttonCadastrar" href="{{ path('nota_new') }}">Emitir nota</a>
+                </div>
                 <hr/>
             </div>
         </div>
@@ -16,7 +19,7 @@
                 <table class="table" id="index_table">
                 <thead>
                     <tr>
-                        <th style="border-color: #c9d3dd">#</th>
+                        <th style="border-color: #e3e3e3">#</th>
                         <th>Nome/Razão Social</th>
                         <th>Cpf/Cnpj</th>
                         <th>Cidade</th>
@@ -45,13 +48,13 @@
             $(function() {
                 $('#index_table').DataTable({
                     "ordering": false,
-                    "info":     false,
+//                    "info":     false,
                     "processing": true,
                     "serverSide": true,
                     "ajax": "{{ path('cliente_paginate') }}",
                     "sAjaxDataProp": "data",
                     "pageLength": 10,
-                    "dom": '<"pull-left"f><"pull-left"l>tip',
+//                    "dom": '<"pull-left"f><"pull-left"l>tip',
                     "searchDelay": 350,
                     "columns":[
                         {"data": "id"},
@@ -75,20 +78,22 @@
                         $(".dataTables_length select").addClass("form-control");
                         $(".dataTables_filter input").addClass("form-control");
 
-                        var pull = document.getElementsByClassName('pull-left');
+                        //Adiciona Button Cadastrar
+                        {#var pull = document.getElementsByClassName('pull-left');#}
+                        {#var createA = document.createElement('a');#}
+                        {#var createAText = document.createTextNode('Cadastrar');#}
+                        {#createA.setAttribute('href', "{{ path('cliente_new') }}");#}
+                        {#createA.appendChild(createAText);#}
+                        {#createA.setAttribute('class', 'abuttonCadastrar');#}
+                        {#var div = document.createElement('div');#}
+                        {#div.setAttribute('class', 'padding-left padding-top');#}
+                        {#div.appendChild(createA);#}
+                        {#pull[1].appendChild(div);#}
 
-                        var createA = document.createElement('a');
-                        var createAText = document.createTextNode('Cadastrar');
-                        createA.setAttribute('href', "{{ path('cliente_new') }}");
-                        createA.appendChild(createAText);
-                        createA.setAttribute('class', 'abuttonCadastrar');
-
-                        var div = document.createElement('div');
-                        div.setAttribute('class', 'padding-left padding-top');
-//                        div.setAttribute('style', 'display: inline-block');
-
-                        div.appendChild(createA);
-                        pull[1].appendChild(div);
+                        var div1 = document.getElementById('index_table_filter');
+                        var lbl = div1.childNodes[0];
+                        console.log(lbl.innerHTML);
+                        lbl.innerHTML = '<label><input style="font-weight: normal;" type="search" class="form-control" placeholder="Procurar" aria-controls="index_table"></label>';
 
                     },
                     "bLengthChange": false,
@@ -97,8 +102,8 @@
                         "sLengthMenu":    "Mostrar _MENU_ registros",
                         "sZeroRecords":   "Não há resultados",
                         "sEmptyTable":    "Dados indisponiveis",
-                        "sInfo":          "Mostrando registros _START_ de _END_ de _TOTAL_ registros",
-                        "sInfoEmpty":     "Mostrando registros 0 de 0 de 0 registros",
+                        "sInfo":          "Exibindo _START_ - _END_ de _TOTAL_ registros",
+                        "sInfoEmpty":     "Exibindo registros 0 de 0 de 0 registros",
                         "sInfoFiltered":  "(_MAX_ registros filtrados)",
                         "sInfoPostFix":   "",
                         "sSearch":        "Procurar:",
@@ -106,10 +111,10 @@
                         "sInfoThousands":  ",",
                         "sLoadingRecords": "Carregando...",
                         "oPaginate": {
-                            "sFirst":   "Primeiro",
-                            "sLast":    "Último",
-                            "sNext":    "Próximo",
-                            "sPrevious": "Anterior"
+                            "sFirst":   "››",
+                            "sLast":    "‹‹",
+                            "sNext":    "›",
+                            "sPrevious": "‹"
                         },
                         "oAria": {
                             "sSortAscending":  ": Ordenar",

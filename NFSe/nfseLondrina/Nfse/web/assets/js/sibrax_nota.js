@@ -26,7 +26,6 @@ jQuery(document).ready(function () {
             url: "SalvarNota",
             data: {dados: dados, produtos: prods},
             success: function (data) {
-                console.log();
 
                 if (data.success == true){
                     var numeroNota = document.getElementById("numeroNota");
@@ -385,14 +384,12 @@ function subtotaliza(obj) {
 
 //tenta retransmitir nota
 function reenviarNf(obj) {
-    console.log(obj);
     var dados = obj;
     jQuery.ajax({
         type: "POST",
         url: "reenviarNota",
         data: {id: dados},
         success: function (data) {
-            console.log();
 
             if (data.success == true){
                 alert('Nota N° ' + data.retorno.RetornoNota.Nota + ' emitida com sucesso! Protocolo de autenticidade: ' + data.retorno.RetornoNota.autenticidade);
@@ -409,7 +406,6 @@ function reenviarNf(obj) {
 
 //Imprime NFSE
 function ImprimirNf(obj) {
-    console.log(obj);
     var dados = obj;
     jQuery.ajax({
         type: "POST",
@@ -431,7 +427,6 @@ function ImprimirNf(obj) {
 
 //Cancela NFSE
 function CancelarNf(obj) {
-    console.log(obj);
     var dados = obj;
 
     var codcancelamento = prompt("Por favor informe o motivo do cancelamento : \n (2) – Serviço não prestado \n (4) – Duplicidade da nota", "");
@@ -515,8 +510,8 @@ $(document).on('show.bs.modal','#modalClientes', function () {
 
 });
 
-//Busca Clientes no Modal
 $(document).ready(function() {
+    //Busca Clientes no Modal
     $(".search").keyup(function () {
         var searchTerm = $(".search").val();
         var listItem = $('.results tbody').children('tr');
@@ -543,4 +538,6 @@ $(document).ready(function() {
             $('.no-result').hide();
         }
     });
+
 });
+

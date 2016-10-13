@@ -29,7 +29,8 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "besimple/soap-wsdl": "^0.2.6",
-        "besimple/soap-client": "0.2.*@dev"
+        "besimple/soap-client": "0.2.*@dev",
+        "ob/highcharts-bundle": "^1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<div class="container-fluid min_height">
+
+    {% include [':reports:navegador.html.twig'] %}
+
+
+
+    <div class="col-md-9">
+
+        {#Relatorio aqui#}
+        <page size="A4">
+
+            <div class="tituloRelatorio padding-top"><h2>Lista de Clientes</h2></div>
+
+            <div class="divRelatorio">
+                <table class="detalhesRelatorio" align="center">
+                    <thead>
+                    <tr class="table">
+                        <th class="left">Cód.Cliente</th>
+                        <th class="left"> Nome</th>
+                        <th class="right"> Cpf/Cnpj</th>
+                        <th class="center"> Telfone</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cliente in clientes %}
+                        <tr>
+                            <td class="center"> {{ cliente.codigoCliente }} </td>
+                            <td class="left"> {{ cliente.nome }}</td>
+                            <td class="right">{{ cliente.cpfcnpj }}</td>
+                            <td class="center">{{ cliente.fone }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </page>
+
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <link rel="stylesheet" href="{{ asset('assets/css/reports/BaseRelatorios.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/reports/clientes.css') }}">
+{% endblock %}
+

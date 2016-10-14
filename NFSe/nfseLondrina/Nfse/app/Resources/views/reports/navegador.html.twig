@@ -1,0 +1,27 @@
+<div class="row left">
+    <div class="col-md-10">
+        <h1 class="pagination-centered">Relatórios</h1>
+    </div>
+</div>
+
+<div class="col-md-2" style="height: 100%; min-height: 400px; border-right: 1px solid #ddd;">
+    <ul class="nav nav-pills nav-stacked left-menu" id="stacked-menu">
+        <li>
+            <a href="#" data-target="#item1" data-toggle="collapse" data-parent="#stacked-menu">Cadastros<span class="caret arrow"></span></a>
+            <ul class="nav nav-stacked collapse left-submenu" id="item1">
+                <li><a href="{{ path('relclientes') }}">Clientes</a></li>
+                <li><a href="#">Serviços</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" data-target="#item2" data-toggle="collapse" data-parent="#stacked-menu">Financeiro<span class="caret arrow"></span></a>
+            <ul class="nav nav-pills nav-stacked collapse" id="item2">
+                <li><a href="#">Vendas</a></li>
+                <li><a href="#">Contas a Pagar</a></li>
+                <li><a href="#">Contas a Receber</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Agenda</a></li>
+        <li><a href="#">Indicações</a></li>
+    </ul>
+</div>

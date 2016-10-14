@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -19,7 +20,7 @@ class RelatoriosController extends Controller
 
         // Chart
         $series = array(
-            array("name" => "Data Serie Name",    "data" => array(1,2,4,5,6,3,8))
+            array("name" => "Data Serie Name", "data" => array(1,2,4,2,5,6,3,8))
         );
 
         $ob = new Highchart();
@@ -32,6 +33,26 @@ class RelatoriosController extends Controller
         return $this->render("reports/index.html.twig", array(
             'chart' => $ob,
         ));
+    }
+
+    /**
+     * @Route("/reports/relclientes", name="relclientes")
+     */
+    public function relatorioClientes(){
+        $em = $this->getDoctrine()->getManager();
+
+        $clientes = $em->getRepository('AppBundle:Cliente')->findBy(array('empresa' => $this->get('app.emp')->getIdEmpresa(), )
+                                                            );
+
+//        $arr = [];
+//        foreach ($clientes as $cliente){
+//            $arr[] = array('codigoCliente' => $cliente->getCodigoCliente(), 'nomeCliente' => $cliente->getNome());
+//        }
+
+        return $this->render("reports/clientes.html.twig", array(
+            'clientes' => $clientes,
+        ));
+
     }
 
 }

@@ -233,6 +233,16 @@
             jQuery('#servico_form').submit(function () {
 
                 var dados = jQuery(this).serializeArray();
+
+//                var result = { };
+//                $.each(dados, function(i, field){
+//                    result[field.name] = field.value;
+//                });
+//                console.log(dados);
+//                console.log(result);
+//
+//                return false;
+
                 jQuery.ajax({
                     type: "POST",
                     url: "EditarServico",

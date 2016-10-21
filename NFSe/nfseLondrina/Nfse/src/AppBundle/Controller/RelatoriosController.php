@@ -41,16 +41,36 @@ class RelatoriosController extends Controller
     public function relatorioClientes(){
         $em = $this->getDoctrine()->getManager();
 
-        $clientes = $em->getRepository('AppBundle:Cliente')->findBy(array('empresa' => $this->get('app.emp')->getIdEmpresa(), )
-                                                            );
+        $clientes = $em->getRepository('AppBundle:Cliente')->findBy(array('empresa' => $this->get('app.emp')->getIdEmpresa(),
+//            'status' => 1
+            )
+        );
 
-//        $arr = [];
-//        foreach ($clientes as $cliente){
-//            $arr[] = array('codigoCliente' => $cliente->getCodigoCliente(), 'nomeCliente' => $cliente->getNome());
-//        }
+        $arrayGeral = [];
+        $arrayClientes = [];
+        $contador = 0;
+
+        foreach ($clientes as $cliente){
+            $arrayClientes[] = array('id' => $cliente->getId(), 'codigoCliente' => $cliente->getCodigoCliente(),
+                            'nome' => $cliente->getNome(), 'cpfcnpj' => $cliente->getCpfcnpj(), 'fone' => $cliente->getFone()
+                    );
+
+            $contador++;
+
+            if($contador == 42){
+                $arrayGeral[] = $arrayClientes;
+                unset($arrayClientes);
+                $arrayClientes = [];
+                $contador = 0;
+            }
+        }
+
+        $arrayGeral[] = $arrayClientes;
+
+//        die(var_dump($arrayGeral));
 
         return $this->render("reports/clientes.html.twig", array(
-            'clientes' => $clientes,
+            'clientes' => $arrayGeral,
         ));
 
     }

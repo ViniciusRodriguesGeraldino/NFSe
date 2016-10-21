@@ -16,10 +16,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-
-//        $valor = $this->get('app.token_authenticator')->start($request);
-//        $valor2 = $this->get('app.token_authenticator')->getCredentials($request);
-
         $totalNotas  = $this->getTotalNFesEmitidas();
         $valorReceberHoje = $this->getMovimentacaoSaidaDiaria();
         $valorPagarHoje  = $this->getMovimentacaoEntradaDiaria();
@@ -44,8 +40,6 @@ class DefaultController extends Controller
 
     public function getTotalNFesEmitidas(){
 
-        $idEmp = $this->get('app.emp')->getIdEmpresa();
-
         $em = $this->getDoctrine()->getManager();
 
         $qb = $em->createQueryBuilder();
@@ -54,7 +48,7 @@ class DefaultController extends Controller
             ->from('AppBundle:Nota', 'n')
             ->where('n.empresa = :emp')
             ->andWhere('n.data = :dataHoje')
-            ->setParameter('emp', $idEmp)
+            ->setParameter('emp', $this->get('app.emp')->getIdEmpresa())
             ->setParameter('dataHoje', date('Y-m-d'));
 
         $result = $qb->getQuery()->getResult();
@@ -68,7 +62,7 @@ class DefaultController extends Controller
         from itens_conta_pagar_receber icp
         left join recebimento_itens_conta_pagar_receber recicp on recicp.id_empresa = icp.id_empresa and recicp.id_item_conta =icp.id
         inner join contaspagarreceber cpr on cpr.empresa = icp.id_empresa and cpr.id = icp.id_conta
-        where icp.id_empresa = 1 and cpr.tipo_conta = 'RECEBER' and icp.data_vencimento = curdate()";
+        where icp.id_empresa = :idemp and cpr.tipo_conta = 'RECEBER' and icp.data_vencimento = curdate()";
 
         $em = $this->getDoctrine()->getManager();
         $stmt = $em->getConnection()->prepare($sql);
@@ -85,7 +79,7 @@ class DefaultController extends Controller
         from itens_conta_pagar_receber icp
         left join recebimento_itens_conta_pagar_receber recicp on recicp.id_empresa = icp.id_empresa and recicp.id_item_conta =icp.id
         inner join contaspagarreceber cpr on cpr.empresa = icp.id_empresa and cpr.id = icp.id_conta
-        where icp.id_empresa = 1 and cpr.tipo_conta = 'PAGAR' and icp.data_vencimento = curdate()";
+        where icp.id_empresa = :idemp and cpr.tipo_conta = 'PAGAR' and icp.data_vencimento = curdate()";
 
         $em = $this->getDoctrine()->getManager();
         $stmt = $em->getConnection()->prepare($sql);
@@ -103,7 +97,7 @@ class DefaultController extends Controller
         from itens_conta_pagar_receber icp
         left join recebimento_itens_conta_pagar_receber recicp on recicp.id_empresa = icp.id_empresa and recicp.id_item_conta =icp.id
         inner join contaspagarreceber cpr on cpr.empresa = icp.id_empresa and cpr.id = icp.id_conta
-        where icp.id_empresa = 1 and cpr.tipo_conta = 'PAGAR'";
+        where icp.id_empresa = :idemp and cpr.tipo_conta = 'PAGAR'";
 
         $em = $this->getDoctrine()->getManager();
         $stmt = $em->getConnection()->prepare($sql);
@@ -120,7 +114,7 @@ class DefaultController extends Controller
         from itens_conta_pagar_receber icp
         left join recebimento_itens_conta_pagar_receber recicp on recicp.id_empresa = icp.id_empresa and recicp.id_item_conta =icp.id
         inner join contaspagarreceber cpr on cpr.empresa = icp.id_empresa and cpr.id = icp.id_conta
-        where icp.id_empresa = 1 and cpr.tipo_conta = 'RECEBER'";
+        where icp.id_empresa = :idemp and cpr.tipo_conta = 'RECEBER'";
 
         $em = $this->getDoctrine()->getManager();
         $stmt = $em->getConnection()->prepare($sql);

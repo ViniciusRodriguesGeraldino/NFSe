@@ -31,8 +31,6 @@ class EmpresaController extends Controller
             array('id' => $this->get('app.emp')->getIdEmpresa())
         );
 
-//        die(var_dump($empresa));
-
         return $this->render('empresa/edit.html.twig', array(
             'empresa' => $empresa,
         ));
@@ -42,7 +40,7 @@ class EmpresaController extends Controller
      * @Route("/EditarEmpresa", name="EditarEmpresa")
      * @Method({"GET", "POST"})
      */
-    public function EditarCliente(Request $request){
+    public function EditarEmpresa(Request $request){
 
         $dados = $request->request->get('dados', null);
 
@@ -51,37 +49,39 @@ class EmpresaController extends Controller
             array('id' => $this->get('app.emp')->getIdEmpresa())
         );
 
-        $empresa->setNome($dados[0]['value']);
-        $empresa->setEMail($dados[1]['value']);
-        $empresa->setFone($dados[2]['value']);
-        $empresa->setInicioAtividade(new \DateTime(date($dados[3]['value'])));
+        $empresa->setNome($dados['empresa_nome']);
+        $empresa->setEMail($dados['empresa_email']);
+        $empresa->setFone($dados['empresa_fone']);
 
-        if($dados[4]['value'] == 'on')
-            $empresa->setSimples('S');
-        else
-            $empresa->setSimples('N');
+        $empresa->setInicioAtividade(new \DateTime(date($dados['empresa_inicio_atividade'])));
 
-        $empresa->setEmpresaTipo($dados[5]['value']);
-        $empresa->setCep($dados[6]['value']);
-        $empresa->setEndereco($dados[7]['value']);
-        $empresa->setNumero($dados[8]['value']);
-        $empresa->setBairro($dados[9]['value']);
-        $empresa->setComplemento($dados[10]['value']);
-        $empresa->setCidade($dados[11]['value']);
-        $empresa->setCodCid($dados[12]['value']);
-        $empresa->setUf($dados[13]['value']);
-        $empresa->setCmc($dados[14]['value']);
-        $empresa->setCpfcnpj($dados[15]['value']);
-        $empresa->setCpfPrefeitura($dados[15]['value']);
-        $empresa->setSenhaPrefeitura($dados[16]['value']);
-        $empresa->setProducao($dados[17]['value']);
+        if (array_key_exists("check_switch", $dados)) {
+            $simples = 'S';
+        }else{
+            $simples = 'N';
+        }
+        $empresa->setSimples($simples);
+
+        $empresa->setEmpresaTipo($dados['empresa_tipo']);
+        $empresa->setCep($dados['empresa_cep']);
+        $empresa->setEndereco($dados['empresa_endereco']);
+        $empresa->setNumero($dados['empresa_numero']);
+        $empresa->setBairro($dados['empresa_bairro']);
+        $empresa->setComplemento($dados['empresa_complemento']);
+        $empresa->setCidade($dados['empresa_cidade']);
+        $empresa->setCodCid($dados['empresa_cod_cidade']);
+        $empresa->setUf($dados['empresa_uf']);
+
+        $empresa->setCmc($dados['empresa_cmc']);
+        $empresa->setCpfcnpj($dados['empresa_cpf_prefeitura']);
+        $empresa->setCpfPrefeitura($dados['empresa_cpf_prefeitura']);
+        $empresa->setSenhaPrefeitura($dados['empresa_senha_prefeitura']);
+        $empresa->setProducao($dados['empresa_tipo_emissao']);
 
         try{
             $em = $this->getDoctrine()->getManager();
             $em->persist($empresa);
             $em->flush();
-
-//            return $this->redirectToRoute('homepage');
 
             $response['success'] = true;
             return new JsonResponse($response);
@@ -97,6 +97,34 @@ class EmpresaController extends Controller
         $new_data = explode('/', $data);
         $data = $new_data[1]."/".$new_data[0]."/".$new_data[2];
         return $data;
+    }
+
+    /**
+     * @Route("/completa_cadastro", name="completa_cadastro")
+     * @Method({"GET", "POST"})
+     */
+    public function completa_cadastro(){
+
+        $idEmpresa = $this->get('app.emp')->getIdEmpresa();
+
+        $em = $this->getDoctrine()->getManager();
+        $empresa= $em->getRepository('AppBundle:Empresa')->findOneBy(
+            array('id' => $idEmpresa,
+                'status'  => 1)
+        );
+
+        $sql = "select id from cliente where empresa= :idemp limit 1";
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['idemp'] = $idEmpresa;
+        $stmt->execute($params);
+        $cliente = $stmt->fetchAll();
+
+        return $this->render('empresa/cadastro.html.twig', array(
+            'empresa' => $empresa,
+            'cliente' => $cliente,
+        ));
+
     }
 
 }

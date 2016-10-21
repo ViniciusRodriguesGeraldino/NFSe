@@ -60,8 +60,11 @@ class NotaController extends Controller
      */
     public function newAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        if(!$this->get('app.emp')->validaCadastro()){
+            return $this->redirectToRoute('completa_cadastro', [] , 301);
+        }
 
+        $em = $this->getDoctrine()->getManager();
         $id         = $this->getNewId();
         $data       = date("d/m/Y");
         $clientes   = $em->createQueryBuilder()

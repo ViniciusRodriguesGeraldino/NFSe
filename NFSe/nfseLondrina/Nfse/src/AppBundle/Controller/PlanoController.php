@@ -46,11 +46,14 @@ class PlanoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $plano->setEmpresa($this->get('app.emp')->getIdEmpresa());
+            $plano->setStatus(1);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($plano);
             $em->flush();
 
-            return $this->redirectToRoute('plano_show', array('id' => $plano->getId()));
+            return $this->redirectToRoute('plano_edit', array('id' => $plano->getId()));
         }
 
         return $this->render('plano/new.html.twig', array(

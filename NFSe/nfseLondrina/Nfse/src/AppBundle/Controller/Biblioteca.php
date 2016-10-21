@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * GetEmpresa controller.
@@ -17,7 +18,8 @@ class Biblioteca extends Controller
 
     public function getIdEmpresa()
     {
-          return 1;
+        $user = $this->getUser();
+        return $user->getEmpresa();
     }
 
     public function getClientes($valor){
@@ -105,5 +107,47 @@ class Biblioteca extends Controller
                 'status'  => 1)
         );
         return $tipo->getEmpresaTipo();
+    }
+
+
+    public function validaCadastro(){
+
+        $idEmpresa = $this->getIdEmpresa();
+
+        $sql = "select e.uf, e.fone, e.e_mail, e.endereco, e.numero, e.bairro, e.cidade, e.cep,
+              e.cpfcnpj, e.cmc, e.cpf_prefeitura, e.senha_prefeitura from empresa e where e.id = :idemp";
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['idemp'] = $idEmpresa;
+        $stmt->execute($params);
+        $empresa = $stmt->fetchAll();
+
+        $sql = "select id from cliente where empresa= :idemp limit 1";
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $params['idemp'] = $idEmpresa;
+        $stmt->execute($params);
+        $cliente = $stmt->fetchAll();
+
+        if( !isset($empresa[0]['uf']) || trim($empresa[0]['uf'])==='' ||
+            !isset($empresa[0]['fone']) || trim($empresa[0]['fone'])==='' ||
+            !isset($empresa[0]['e_mail']) || trim($empresa[0]['e_mail'])==='' ||
+            !isset($empresa[0]['endereco']) || trim($empresa[0]['endereco'])==='' ||
+            !isset($empresa[0]['numero']) || trim($empresa[0]['numero'])==='' ||
+            !isset($empresa[0]['bairro']) || trim($empresa[0]['bairro'])==='' ||
+            !isset($empresa[0]['cidade']) || trim($empresa[0]['cidade'])==='' ||
+            !isset($empresa[0]['cep']) || trim($empresa[0]['cep'])==='' ||
+            !isset($empresa[0]['cpfcnpj']) || trim($empresa[0]['cpfcnpj'])==='' ||
+            !isset($empresa[0]['cmc']) || trim($empresa[0]['cmc'])==='' ||
+            !isset($empresa[0]['cpf_prefeitura']) || trim($empresa[0]['cpf_prefeitura'])==='' ||
+            !isset($empresa[0]['senha_prefeitura']) || trim($empresa[0]['senha_prefeitura'])==='' ||
+            sizeof($cliente) == 0){
+
+                return false;
+
+        }else{
+                return true;
+        }
     }
 }

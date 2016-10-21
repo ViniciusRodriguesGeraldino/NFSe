@@ -42,6 +42,11 @@ class User implements UserInterface
      */
     private $imagen;
 
+    /**
+     * @var integer
+     */
+    private $empresa;
+
 
     // AUTH
 
@@ -72,6 +77,30 @@ class User implements UserInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set empresa
+     *
+     * @param integer $empresa
+     *
+     * @return User
+     */
+    public function setEmpresa($empresa)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return integer
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
     }
 
     /**

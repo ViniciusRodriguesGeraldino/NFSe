@@ -232,6 +232,7 @@
             jQuery('#servico_form').submit(function () {
 
                 var dados = jQuery(this).serializeArray();
+
                 jQuery.ajax({
                     type: "POST",
                     url: "SalvarServico",

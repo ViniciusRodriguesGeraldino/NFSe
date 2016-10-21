@@ -164,11 +164,29 @@ class ClienteController extends Controller
         $cliente->setNomeMae($dados[17]['value']);
         $cliente->setEstadoCivil($dados[18]['value']);
         $cliente->setNomeConjuge($dados[19]['value']);
+//        $cliente->setConvenio($dados[20]['value']);
+//        $cliente->setIndicacao($dados[21]['value']);
+//        $cliente->setNomeTitular($dados[22]['value']);
+//        $cliente->setCpfTitular($dados[23]['value']);
+//        $cliente->setTipoDependente($dados[24]['value']);
+
         $cliente->setConvenio($dados[20]['value']);
-        $cliente->setIndicacao($dados[21]['value']);
-        $cliente->setNomeTitular($dados[22]['value']);
-        $cliente->setCpfTitular($dados[23]['value']);
-        $cliente->setTipoDependente($dados[24]['value']);
+
+        if($dados[21]['value'] == 'on'){
+            $cliente->setDependente(true);
+
+            $cliente->setIndicacao($dados[22]['value']);
+            $cliente->setNomeTitular($dados[23]['value']);
+            $cliente->setCpfTitular($dados[24]['value']);
+            $cliente->setTipoDependente($dados[25]['value']);
+        }
+        else {
+            $cliente->setDependente(false);
+            $cliente->setIndicacao($dados[21]['value']);
+            $cliente->setNomeTitular('');
+            $cliente->setCpfTitular('');
+            $cliente->setTipoDependente('');
+        }
 
         try{
             $em = $this->getDoctrine()->getManager();

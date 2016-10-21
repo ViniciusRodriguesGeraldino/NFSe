@@ -9,10 +9,13 @@ page {
 page[size="A4"] {
     width: 21cm;
     height: 29.7cm;
+    /*height: 100%;*/
+    /*margin: 30mm 45mm 30mm 45mm;*/
 }
 page[size="A4"][layout="portrait"] {
     width: 29.7cm;
     height: 21cm;
+    /*margin: 30mm 45mm 30mm 45mm;*/
 }
 page[size="A3"] {
     width: 29.7cm;
@@ -38,13 +41,21 @@ page[size="A5"][layout="portrait"] {
 }
 
 .detalhesRelatorio{
-    margin-left: 2cm;
-    margin-right: 2cm;
-    margin-bottom: 2cm;
+    /*margin-left: 2cm;*/
+    /*margin-right: 2cm;*/
+    /*margin-bottom: 2cm;*/
     text-decoration: none;
     /*font-family: Consolas; !important;*/
     font-family: SansSerif; !important;
     width: 80%;
+
+    page-break-inside:auto; !important;
+}
+
+
+.detalhesRelatorio>tr   {
+    page-break-inside:avoid; !important;
+    page-break-after:always; !important;
 }
 
 .divRelatorio{
@@ -56,4 +67,39 @@ page[size="A5"][layout="portrait"] {
     padding-top: 5px;
     text-align: center;
     width: 100%;
+}
+
+.quebrapagina {
+    page-break-before: always;
+}
+
+
+.controladorRelatorio{
+    text-align: center;
+    float: left;
+    width: 150px;
+    height: 50px;
+    border: 1px solid #ddd;
+    padding: 10px 5px 0px 5px;
+    cursor: move;
+}
+
+
+/*Esconde tudo e mostra somente o que deve ser impresso*/
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #RelatorioGeral * {
+        visibility: visible;
+    }
+    #RelatorioGeral {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .paginacao{
+        visibility: visible;
+        display: inline-block;
+    }
 }

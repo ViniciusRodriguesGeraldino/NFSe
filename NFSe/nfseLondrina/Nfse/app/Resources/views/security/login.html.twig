@@ -10,6 +10,10 @@
         <div class="modal-dialog">
             <div class="loginmodal-container">
 
+                {% for message in app.session.flashbag().get('status') %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+
                 <h1 class="tituloLogin">Login - Sibrax Admin</h1><br>
 
                 <div class="DivLogin">
@@ -26,11 +30,31 @@
                 </div>
 
                 <div class="DivRegistro" hidden>
-                    {% for message in app.session.flashbag().get('status') %}
-                        <div class="alert alert-success">{{ message }}</div>
-                    {% endfor %}
-                    {{form_start(form, {'action':'', 'method':'POST'})}}
-                    {{form_end(form)}}
+
+                    <form action="{{path("login_cadastro")}}" method="post">
+
+                        <div class="DivRegistroParte1">
+                            <label>Nome Completo:</label>
+                            <input type="text" id="name" name="_name" class="form-control" required/>
+                            <label>Nome Empresa:</label>
+                            <input type="text" id="name_emp" name="_name_emp" class="form-control" required/>
+                            <label>CNPJ:</label>
+                            <input type="text" id="cnpj_emp" name="_cnpj_emp" class="form-control" required/>
+
+                            <input type="button" class="btn btn-success" id="ContinuarRegistro" value="Continuar"/>
+                        </div>
+
+                        <div class="DivRegistroParte2" hidden>
+                            <label>Email:</label>
+                            <input type="email" id="email" name="_email" value="{{ last_username }}" class="form-control" required />
+                            <label>Senha:</label>
+                            <input type="password" id="password_reg" name="_password" class="form-control" required/>
+
+                            <input type="submit" value="Registrar" class="btn btn-success"/>
+                        </div>
+
+                    </form>
+
                 </div>
 
                 <div class="login-help">
@@ -54,13 +78,37 @@
             $(".DivRegistro").show();
             $(".login-help").hide();
             $(".login-back").show();
+            $(".tituloLogin").text("Registrar - Sibrax Admin");
+
+            $(".DivRegistroParte2").hide();
+            $(".DivRegistroParte1").show();
         });
 
         $('#LoginVoltar').click(function () {
-            $(".DivLogin").show();
-            $(".DivRegistro").hide();
-            $(".login-help").show();
-            $(".login-back").hide();
+
+            if($('.DivRegistroParte1').is(':hidden'))
+            {
+                $(".DivRegistroParte2").hide();
+                $(".DivRegistroParte1").show();
+            }else
+            {
+                $(".DivLogin").show();
+                $(".DivRegistro").hide();
+                $(".login-help").show();
+                $(".login-back").hide();
+                $(".tituloLogin").text("Login - Sibrax Admin");
+            }
+        });
+
+        $('#ContinuarRegistro').click(function () {
+
+            if($('#name').val().length == 0 || $('#name_emp').val().length == 0 || $('#cnpj_emp').val().length == 0){
+                alert('Preencha todos os campos por favor.');
+                return;
+            }
+
+            $(".DivRegistroParte2").show();
+            $(".DivRegistroParte1").hide();
         });
 
     </script>
@@ -94,7 +142,7 @@
             position: relative;
         }
 
-        .loginmodal-container input[type=text], input[type=password] {
+        .loginmodal-container input[type=text], input[type=password], input[type=email] {
             height: 34px;
             font-size: 16px;
             width: 100%;
@@ -109,7 +157,7 @@
             -moz-box-sizing: border-box;
         }
 
-        .loginmodal-container input[type=text]:hover, input[type=password]:hover {
+        .loginmodal-container input[type=text]:hover, input[type=password]:hover, input[type=email]:hover {
             border: 1px solid #b9b9b9;
             border-top: 1px solid #a0a0a0;
             -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);

@@ -7,39 +7,59 @@
 
     {% include [':reports:navegador.html.twig'] %}
 
+    {#Div Controle do Relatorio#}
+    <div class="controladorRelatorio" id="controladorRelatorio">
+        <label id="lblRel">1 de {{ clientes|length }}</label>
+        <button id="voltarPagina" class="btn-default" onclick="controlaPag(this);"><</button>
+        <button id="imprimirPagina" class="btn-default" onclick="ImprimirRelatorio();"><span class="glyphicon glyphicon-print"></span></button>
+        <button id="avancarPagina" class="btn-default" onclick="controlaPag(this);">></button>
+        <input id="paginaAtual" type="hidden" value="1">
+    </div>
 
 
-    <div class="col-md-9">
 
-        {#Relatorio aqui#}
-        <page size="A4">
+    <div class="col-md-9 RelatorioGeral" id="RelatorioGeral">
 
-            <div class="tituloRelatorio padding-top"><h2>Lista de Clientes</h2></div>
+        {% set contador   = 1 %}
+
+        {% for cliente in clientes %}
+
+        <page id="pag{{ contador }}" size="A4" class="paginacao" {% if contador > 1 %} hidden {% endif %}>
+
+            {#Gera titulo do relatorio somente na primera pagina#}
+            {% if contador == 1 %}
+                <div class="tituloRelatorio padding-top"><h2>Lista de Clientes</h2></div>
+            {% endif%}
 
             <div class="divRelatorio">
-                <table class="detalhesRelatorio" align="center">
+                <table class="detalhesRelatorio" align="center" id="tableRelClientes">
                     <thead>
                     <tr class="table">
+                        <th class="center">#</th>
                         <th class="left">Cód.Cliente</th>
                         <th class="left"> Nome</th>
                         <th class="right"> Cpf/Cnpj</th>
                         <th class="center"> Telfone</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    {% for cliente in clientes %}
+                    <tbody id="body1">
+                    {% for cli in cliente %}
                         <tr>
-                            <td class="center"> {{ cliente.codigoCliente }} </td>
-                            <td class="left"> {{ cliente.nome }}</td>
-                            <td class="right">{{ cliente.cpfcnpj }}</td>
-                            <td class="center">{{ cliente.fone }}</td>
+                            <td class="center">{{ cli.id }}</td>
+                            <td class="center"> {{ cli.codigoCliente }} </td>
+                            <td class="left"> {{ cli.nome }}</td>
+                            <td class="right">{{ cli.cpfcnpj }}</td>
+                            <td class="center">{{ cli.fone }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
 
+            {% set contador = contador + 1 %}
         </page>
+
+        {% endfor %}
 
 
     </div>
@@ -49,7 +69,9 @@
 {% endblock %}
 
 {% block javascripts %}
+    {#Relatorios#}
     <link rel="stylesheet" href="{{ asset('assets/css/reports/BaseRelatorios.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/reports/clientes.css') }}">
+    <script src="{{ asset('assets/js/reports/reports.js') }}"></script>
 {% endblock %}
 

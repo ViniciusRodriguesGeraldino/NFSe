@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="" style="padding-left: 12px; padding-top: 5px">
                                     <label class="switch" id="switch">
-                                        <input type="checkbox" id="check_switch" name="check_switch" {% if empresa.simples == 'S' %}checked{% endif %}>
+                                        <input type="checkbox" id="check_switch" name="check_switch" {% if empresa.simples == 'S' %}value="true" checked{% else %}value="false"{% endif %}>
                                         <div class="slider round"></div>
                                     </label>
                                     <label id="EmpresaSimples" style="float: right; padding-right: 60px">
@@ -260,19 +260,31 @@
             });
         });
 
+
         //Salvar
         jQuery(document).ready(function () {
             jQuery('#form_empresa_edit').submit(function () {
 
                 var dados = jQuery(this).serializeArray();
+                var result = { };
+
+                $.each(dados, function(i, field){
+                    result[field.name] = field.value;
+                });
+
+//                console.log(dados);
+//                console.log(result);
+//                return false;
+
                 jQuery.ajax({
                     type: "POST",
                     url: "EditarEmpresa",
-                    data: {dados: dados},
+                    data: {dados: result},
                     success: function (data) {
                          if (data.success == false) {
                             alert('Erro ao salvar cadastro. Erros: ' + data.msg);
                         }else{
+                            alert('Cadastro Salvo.')
                              window.location.href = '../';
                          }
                     }

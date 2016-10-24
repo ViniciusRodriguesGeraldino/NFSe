@@ -456,7 +456,10 @@ function CancelarNf(obj) {
 
 //Carrega Clientes no Modal
 $(document).on('show.bs.modal','#modalClientes', function () {
-// $("#modalClientes").on("show.bs.modal", function(e) {
+
+    $('#body_pesquisa').show();
+    $('#body_cadastra_cliente').hide();
+
     var table = document.getElementById('table_search');
     var numOfRows = table.rows.length;
     if(numOfRows > 2)
@@ -504,10 +507,6 @@ $(document).on('show.bs.modal','#modalClientes', function () {
 
         }
     });
-
-
-
-
 });
 
 $(document).ready(function() {
@@ -539,5 +538,25 @@ $(document).ready(function() {
         }
     });
 
+    $('#BtnNovoCliente').click(function (e) {
+        $('#body_pesquisa').hide();
+        $('#body_cadastra_cliente').show();
+    });
+
+});
+
+
+$("#cliente_cpfcnpj").keydown(function(){
+    try {
+        $("#cliente_cpfcnpj").unmask();
+    } catch (e) {}
+
+    var tamanho = $("#cliente_cpfcnpj").val().length;
+
+    if(tamanho < 11){
+        $("#cliente_cpfcnpj").mask("999.999.999-99");
+    } else {
+        $("#cliente_cpfcnpj").mask("99.999.999/9999-99");
+    }
 });
 

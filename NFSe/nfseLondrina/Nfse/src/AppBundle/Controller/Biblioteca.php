@@ -130,8 +130,9 @@ class Biblioteca extends Controller
         $stmt->execute($params);
         $cliente = $stmt->fetchAll();
 
-        if( !isset($empresa[0]['uf']) || trim($empresa[0]['uf'])==='' ||
-            !isset($empresa[0]['fone']) || trim($empresa[0]['fone'])==='' ||
+        if(
+            !isset($empresa[0]['uf']) || trim($empresa[0]['uf'])==='' ||
+//            !isset($empresa[0]['fone']) || trim($empresa[0]['fone'])==='' ||
             !isset($empresa[0]['e_mail']) || trim($empresa[0]['e_mail'])==='' ||
             !isset($empresa[0]['endereco']) || trim($empresa[0]['endereco'])==='' ||
             !isset($empresa[0]['numero']) || trim($empresa[0]['numero'])==='' ||
@@ -141,9 +142,10 @@ class Biblioteca extends Controller
             !isset($empresa[0]['cpfcnpj']) || trim($empresa[0]['cpfcnpj'])==='' ||
             !isset($empresa[0]['cmc']) || trim($empresa[0]['cmc'])==='' ||
             !isset($empresa[0]['cpf_prefeitura']) || trim($empresa[0]['cpf_prefeitura'])==='' ||
-            !isset($empresa[0]['senha_prefeitura']) || trim($empresa[0]['senha_prefeitura'])==='' ||
-            sizeof($cliente) == 0){
-
+            !isset($empresa[0]['senha_prefeitura']) || trim($empresa[0]['senha_prefeitura'])===''
+//            || sizeof($cliente) == 0
+            )
+        {
                 return false;
 
         }else{

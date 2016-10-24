@@ -83,9 +83,10 @@ class ClienteController extends Controller
         $query = isset($data['query']) && $data['query']?$data['query']:null;
 
         $qb->select('u')
-           ->from('AppBundle:Cliente', 'u')
-           ->andWhere('u.empresa = :idemp')
-           ->setParameter('idemp', $this->get('app.emp')->getIdEmpresa())
+            ->from('AppBundle:Cliente', 'u')
+            ->andWhere('u.empresa = :idemp')
+            ->andWhere('u.status = 1')
+            ->setParameter('idemp', $this->get('app.emp')->getIdEmpresa())
         ;
 
         if ($query) {

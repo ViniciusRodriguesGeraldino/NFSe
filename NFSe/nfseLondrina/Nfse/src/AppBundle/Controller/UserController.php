@@ -74,7 +74,7 @@ class UserController extends Controller
             $em->persist($user);
             $flush = $em->flush();
             if($flush==null){
-                $status = "Usuario Cadastrado!";
+                $status = "Usuario Cadastrado! \n Empresa criada!";
             }else{
                 $status = "Erro ao Cadastrar.#1";
             }
@@ -101,6 +101,7 @@ class UserController extends Controller
         $empresa->setCpfcnpj($cpfcnpj);
         $empresa->setEMail($email);
         $empresa->setSimples('S');
+        $empresa->setProducao('N');
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($empresa);

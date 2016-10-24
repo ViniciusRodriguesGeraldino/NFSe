@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Cliente;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -124,6 +125,100 @@ class EmpresaController extends Controller
             'empresa' => $empresa,
             'cliente' => $cliente,
         ));
+    }
+
+
+    /**
+     * @Route("/registra_cadastro", name="registra_cadastro")
+     * @Method({"POST"})
+     */
+    public function registra_cadastro(Request $request){
+
+        $passo = $request->request->get('passo');
+        $idEmpresa = $this->get('app.emp')->getIdEmpresa();
+        $em = $this->getDoctrine()->getManager();
+        $empresa= $em->getRepository('AppBundle:Empresa')->findOneBy(
+            array('id' => $idEmpresa,
+                'status'  => 1)
+        );
+
+        if($passo == 'passo1'){
+
+            $empresa->setCep($request->request->get('cep'));
+            $empresa->setEndereco($request->request->get('endereco'));
+            $empresa->setNumero($request->request->get('numero'));
+            $empresa->setBairro($request->request->get('bairro'));
+            $empresa->setCidade($request->request->get('cidade'));
+            $empresa->setCodCid($request->request->get('codCidade'));
+            $empresa->setUf($request->request->get('uf'));
+
+            try{
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($empresa);
+                $em->flush();
+
+                $response['success'] = true;
+                return new JsonResponse($response);
+
+            }catch (Exception $e){
+                $response['success'] = false;
+                $response['msg'] = $e;
+                return new JsonResponse($response);
+            }
+
+        }else if($passo == 'passo2'){
+
+            $empresa->setCpfPrefeitura($request->request->get('cpfprefeitura'));
+            $empresa->setSenhaPrefeitura($request->request->get('senhaprefeitura'));
+            $empresa->setCmc($request->request->get('cmc'));
+            $empresa->setProducao($request->request->get('tipoemissao'));
+
+            try{
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($empresa);
+                $em->flush();
+
+                $response['success'] = true;
+                return new JsonResponse($response);
+
+            }catch (Exception $e){
+                $response['success'] = false;
+                $response['msg'] = $e;
+                return new JsonResponse($response);
+            }
+
+        }else if($passo == 'passo3'){
+
+            $cliente = new Cliente();
+            $cliente->setEmpresa($idEmpresa);
+            $cliente->setNome($request->request->get('nomeCliente'));
+            $cliente->setCep($request->request->get('cepCliente'));
+            $cliente->setEndereco($request->request->get('enderecoCliente'));
+            $cliente->setNumero($request->request->get('numeroCliente'));
+            $cliente->setBairro($request->request->get('bairroCliente'));
+            $cliente->setCidade($request->request->get('cidadeCliente'));
+            $cliente->setCodCid($request->request->get('codCidCliente'));
+            $cliente->setUf($request->request->get('ufCliente'));
+            $cliente->setCpfcnpj($request->request->get('cpfcnpjCliente'));
+            $cliente->setEMail($request->request->get('emailCliente'));
+            $cliente->setDependente(0);
+            $cliente->setStatus(1);
+
+            try{
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($cliente);
+                $em->flush();
+
+                $response['success'] = true;
+                return new JsonResponse($response);
+
+            }catch (Exception $e){
+                $response['success'] = false;
+                $response['msg'] = $e;
+                return new JsonResponse($response);
+            }
+
+        }
 
     }
 

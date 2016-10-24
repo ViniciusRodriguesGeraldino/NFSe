@@ -12,6 +12,14 @@
 
         <br/>
 
+        <div class="row center">
+            <div class="col-md-10" style="min-width: 100px">
+                <h3 class="pagination-centered">Alguns dados são necessários para você começar a emitir notas...</h3>
+            </div>
+        </div>
+
+        <br/>
+
         <div class="row">
             <ul class="progressbar">
                 <li id="progressbar1" class="active">endereço</li>
@@ -25,315 +33,338 @@
         <br/>
 
         <div style="max-width: 84%">
-        {#Endereço#}
-        <div id="cadastro_endereco" class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row padding-top">
 
-                        <div class="col-md-12">
-                            <div class="">
-                                <p>&bull; Por favor preencha o endereço de sua empresa.</p>
-                                <br/>
-                            </div>
-                        </div>
+            {#Endereço#}
+            <div id="cadastro_endereco" class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
 
-                        <div class="col-md-2">
-                            <div class="">
-                                <label>Cep</label>
+                            <div class="col-md-12">
+                                <div class="">
+                                    <p>&bull; Por favor preencha o endereço de sua empresa.</p>
+                                    <br/>
+                                </div>
                             </div>
-                            <div>
-                                <input type="text" value="{{ empresa.cep }}" id="empresa_cep" name="empresa_cep" class="form-control"  placeholder="Digite o seu cep">
-                            </div>
-                        </div>
 
-                        <div class="col-md-3">
-                            <div class="">
-                                <label>Endereço</label>
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Cep</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.cep }}" id="empresa_cep" name="empresa_cep" class="form-control"  placeholder="99999000">
+                                </div>
                             </div>
-                            <div>
-                                <input type="text" value="{{ empresa.endereco }}" id="empresa_endereco" name="empresa_endereco" class="form-control" placeholder="" >
-                            </div>
-                        </div>
 
-                        <div class="col-md-1">
-                            <div class="">
-                                <label>Número</label>
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Endereço</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.endereco }}" id="empresa_endereco" name="empresa_endereco" class="form-control" placeholder="" >
+                                </div>
                             </div>
-                            <div>
-                                <input type="text" value="{{ empresa.numero }}" id="empresa_numero" name="empresa_numero" class="form-control" placeholder="" >
-                            </div>
-                        </div>
 
-                        <div class="col-md-3">
-                            <div class="">
-                                <label>Bairro</label>
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>Número</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.numero }}" id="empresa_numero" name="empresa_numero" class="form-control" placeholder="" >
+                                </div>
                             </div>
-                            <div>
-                                <input type="text" value="{{ empresa.bairro }}" id="empresa_bairro" name="empresa_bairro" class="form-control" placeholder="" >
-                            </div>
-                        </div>
 
-                        <div class="col-md-3">
-                            <div class="">
-                                <label>Complemento</label>
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Bairro</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.bairro }}" id="empresa_bairro" name="empresa_bairro" class="form-control" placeholder="" >
+                                </div>
                             </div>
-                            <div>
-                                <input type="text" value="{{ empresa.complemento }}" id="empresa_complemento" name="empresa_complemento" class="form-control" placeholder="" >
+
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Complemento</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.complemento }}" id="empresa_complemento" name="empresa_complemento" class="form-control" placeholder="" >
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row padding-top">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
 
-                        <div class="col-md-2">
-                            <div class="">
-                                <label>Cidade</label>
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Cidade</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.cidade }}" id="empresa_cidade" name="empresa_cidade" class="form-control" placeholder="" >
+                                    <input type="hidden" value="{{ empresa.codCid }}" id="empresa_cod_cidade" name="empresa_cod_cidade" class="form-control" placeholder="" >
+                                </div>
                             </div>
-                            <div>
-                                <input type="text" value="{{ empresa.cidade }}" id="empresa_cidade" name="empresa_cidade" class="form-control" placeholder="" >
-                                <input type="hidden" value="{{ empresa.codCid }}" id="empresa_cod_cidade" name="empresa_cod_cidade" class="form-control" placeholder="" >
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>UF</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.uf }}" id="empresa_uf" name="empresa_uf" class="form-control" placeholder="" >
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-1">
-                            <div class="">
-                                <label>UF</label>
+                            <div class="col-md-6">
                             </div>
-                            <div>
-                                <input type="text" value="{{ empresa.uf }}" id="empresa_uf" name="empresa_uf" class="form-control" placeholder="" >
+
+                            <div class="col-md-3" style="padding-top: 5px">
+                                <div><label></label></div>
+                                <div>
+                                    <input id="continuar_passo2" type="button" class="btn btn-success" value="Continuar >>"/>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-6">
-                        </div>
-
-                        <div class="col-md-3" style="padding-top: 5px">
-                            <div><label></label></div>
-                            <div>
-                                <input id="continuar_passo2" type="button" class="btn btn-success" value="Continuar >>"/>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {#Nota Serviço#}
-        <div id="cadastro_nota" class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row padding-top">
-
-                        <div class="col-md-12">
-                            <div class="">
-                                <p>&bull; Cadastro de Login de sua prefeitura.</p>
-                                <p>&bull; Para Emissão de <strong>Nota Fiscal de Serviços</strong>, é necessário que estes dados estejam preenchidos pois serão utilizados para a emissão da nota.</p>
-                                <p>&bull; Tipo Emissão: Homologação: Usado para emitir notas em testes, não possui valor fiscal e pode emitir quantas notas forem necessárias.</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row padding-top">
-
-                        <div class="col-md-2">
-                            <div class="">
-                                <label>CMC</label>
-                            </div>
-                            <div>
-                                <input type="text" value="{{ empresa.cmc }}" id="empresa_cmc" name="empresa_cmc" class="form-control"  placeholder="" >
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="">
-                                <label>CPF</label>
-                            </div>
-                            <div>
-                                <input type="text" value="{{ empresa.cpfPrefeitura }}" id="empresa_cpf_prefeitura" name="empresa_cpf_prefeitura" class="form-control"  placeholder="" >
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-2">
-                            <div class="">
-                                <label>Senha</label>
-                            </div>
-                            <div>
-                                <input type="password" value="{{ empresa.senhaPrefeitura }}" id="empresa_senha_prefeitura" name="empresa_senha_prefeitura" class="form-control"  placeholder="" >
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-3">
-                            <div class="">
-                                <label>Tipo Emissão</label>
-                            </div>
-                            <div>
-                                <select class="form-control" id="empresa_tipo_emissao" name="empresa_tipo_emissao">
-                                    <option {% if empresa.producao == 'N' %}selected{% endif %} value="N">Homologação (Testes)</option>
-                                    <option {% if empresa.producao == 'S' %}selected{% endif %} value="S">Produção (Emissão Normal)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3" style="padding-top: 5px">
-                            <div><label></label></div>
-                            <div>
-                                <input id="continuar_passo3" type="button" class="btn btn-success" value="Continuar >>"/>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {#Cliente#}
-        <div id="cadastro_cliente" class="container">
-
-            {#linha 1#}
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row padding-top">
-
-                        <div class="col-md-12">
-                            <div class="">
-                                <p>&bull; Cadastrar um cliente para poder emitir nota (Não Obrigatório caso já possua algum cliente cadastrado).</p>
-                                <br/>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="">
-                                <label>Nome Cliente</label>
-                            </div>
-                            <div>
-                                <input type="text" id="cliente_nome" name="cliente_nome" class="form-control" placeholder="Digite o nome">
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="">
-                                <label>Cep</label>
-                            </div>
-                            <div>
-                                <input type="text" id="cliente_cep" name="cliente_cep" class="form-control" placeholder="00000111" >
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="">
-                                <label>Endereço</label>
-                            </div>
-                            <div>
-                                <input type="text" id="cliente_endereco" name="cliente_endereco" class="form-control" placeholder="" >
-                            </div>
-                        </div>
-
-                        <div class="col-md-1">
-                            <div class="">
-                                <label>Número</label>
-                            </div>
-                            <div>
-                                <input type="text" id="cliente_numero" name="cliente_numero" class="form-control" placeholder="" >
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="">
-                                <label>Bairro</label>
-                            </div>
-                            <div>
-                                <input type="text" id="cliente_bairro" name="cliente_bairro" class="form-control" placeholder="" >
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            {#linha 2#}
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row padding-top">
-
-
-                        <div class="col-md-3">
-                            <div class="">
-                                <label>Cidade</label>
-                            </div>
-                            <div>
-                                <input type="text" id="cliente_cidade" name="cliente_cidade" class="form-control" placeholder="" >
-                                <input type="hidden" id="cliente_codCidade" name="cliente_codCidade" class="form-control" placeholder="" >
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-1">
-                            <div class="">
-                                <label>UF</label>
-                            </div>
-                            <div>
-                                <input type="text" id="cliente_uf" name="cliente_uf" class="form-control" placeholder="" >
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {#linha 3#}
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row padding-top">
+            {#Nota Serviço#}
+            <div id="cadastro_nota" class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
 
-
-                        <div class="col-md-3">
-                            <div class="">
-                                <label>CPF/CNPJ</label>
-                            </div>
-                            <div>
-                                <input type="text" id="cliente_cpfcnpj" name="cliente_cpfcnpj" class="form-control" placeholder="" >
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-3">
-                            <div class="">
-                                <label>Email</label>
-                            </div>
-                            <div>
-                                <input type="email" id="cliente_email" name="cliente_email" class="form-control" placeholder="" >
+                            <div class="col-md-12">
+                                <div class="">
+                                    <p>&bull; Cadastro de Login de sua prefeitura.</p>
+                                    <p>&bull; Para Emissão de <strong>Nota Fiscal de Serviços</strong>, é necessário que estes dados estejam preenchidos pois serão utilizados para a emissão da nota.</p>
+                                    <p>&bull; Tipo Emissão: Homologação: Usado para emitir notas em testes, não possui valor fiscal e pode emitir quantas notas forem necessárias.</p>
+                                </div>
                             </div>
                         </div>
 
-                        {#<div class="col-md-3">#}
-                        {#</div>#}
 
-                        <div class="col-md-3" style="padding-top: 5px">
-                        <div><label></label></div>
-                        <div>
-                        <input id="continuar_passo4_sem_cadastro" type="button" class="btn btn-primary" value="Cadastrarei mais tarde"/>
-                        </div>
-                        </div>
+                        <div class="row padding-top">
 
-                        <div class="col-md-3" style="padding-top: 5px">
-                        <div><label></label></div>
-                        <div>
-                        <input id="continuar_passo4" type="button" class="btn btn-success" value="Continuar >>"/>
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>CMC</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.cmc }}" id="empresa_cmc" name="empresa_cmc" class="form-control"  placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>CPF</label>
+                                </div>
+                                <div>
+                                    <input type="text" value="{{ empresa.cpfPrefeitura }}" id="empresa_cpf_prefeitura" name="empresa_cpf_prefeitura" class="form-control"  placeholder="" >
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Senha</label>
+                                </div>
+                                <div>
+                                    <input type="password" value="{{ empresa.senhaPrefeitura }}" id="empresa_senha_prefeitura" name="empresa_senha_prefeitura" class="form-control"  placeholder="" >
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Tipo Emissão</label>
+                                </div>
+                                <div>
+                                    <select class="form-control" id="empresa_tipo_emissao" name="empresa_tipo_emissao">
+                                        <option {% if empresa.producao == 'N' %}selected{% endif %} value="N">Homologação (Testes)</option>
+                                        <option {% if empresa.producao == 'S' %}selected{% endif %} value="S">Produção (Emissão Normal)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="padding-top: 5px">
+                                <div><label></label></div>
+                                <div>
+                                    <input id="continuar_passo3" type="button" class="btn btn-success" value="Continuar >>"/>
+                                </div>
+                            </div>
+
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            {#Cliente#}
+            <div id="cadastro_cliente" class="container">
+
+                {#linha 1#}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
+
+                            <div class="col-md-12">
+                                <div class="">
+                                    <p>&bull; Cadastrar um cliente para poder emitir nota (Não Obrigatório caso já possua algum cliente cadastrado).</p>
+                                    <br/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>CPF/CNPJ</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="cliente_cpfcnpj" name="cliente_cpfcnpj" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="">
+                                    <label>Nome Cliente</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="cliente_nome" name="cliente_nome" class="form-control" placeholder="Digite o nome">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Email</label>
+                                </div>
+                                <div>
+                                    <input type="email" id="cliente_email" name="cliente_email" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Cep</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="cliente_cep" name="cliente_cep" class="form-control" placeholder="00000111" >
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                {#linha 2#}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
+
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Endereço</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="cliente_endereco" name="cliente_endereco" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>Número</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="cliente_numero" name="cliente_numero" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="">
+                                    <label>Bairro</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="cliente_bairro" name="cliente_bairro" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="">
+                                    <label>Cidade</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="cliente_cidade" name="cliente_cidade" class="form-control" placeholder="" >
+                                    <input type="hidden" id="cliente_codCidade" name="cliente_codCidade" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="">
+                                    <label>UF</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="cliente_uf" name="cliente_uf" class="form-control" placeholder="" >
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                {#linha 3#}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
+
+                            <div class="col-md-6">
+                                <div><label></label></div>
+                                <div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="padding-top: 5px">
+                                <div><label></label></div>
+                                <div>
+                                    <input id="continuar_passo4_sem_cadastro" type="button" class="btn btn-primary" value="Cadastrarei mais tarde"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="padding-top: 5px">
+                                <div><label></label></div>
+                                <div>
+                                    <input id="continuar_passo4" type="button" class="btn btn-success" value="Continuar >>"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {#Finalizado#}
+            <div id="cadastro_finalizado" class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="row padding-top center" style="font-size: 20px">
+                            <div class="col-md-12">
+                                <div class="">
+                                   <span class="glyphicon glyphicon-ok-sign"></span> <p>Pronto! Agora você pode emitir suas notas com tranquilidade.</p>
+                                </div>
+                                <div class="center">
+                                    <input type="button" class="btn btn-success" value="Emitir nota" id="emitir_nota">
+                                </div>
+                            </div>
                         </div>
 
                     </div>
                 </div>
             </div>
-        </div>
-
 
         </div>
     </div>
@@ -346,65 +377,187 @@
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
     <script>
         $(document).ready(function(){
-            $('#check_switch').click(function(){
+            $('#empresa_cep').change(function() {
 
-                if(document.getElementById('check_switch').checked) {
-                    document.getElementById('EmpresaSimples').innerHTML = 'Sim';
-                } else {
-                    document.getElementById('EmpresaSimples').innerHTML = 'Não';
+                var selected = $(this).val()
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "http://api.postmon.com.br/v1/cep/"+selected, false);
+                xhr.send();
+
+                if(xhr.statusText == 'OK' && xhr.status == 200){
+                    var dadosJson = JSON.parse(xhr.response);
+
+                    var endereco = document.getElementById('empresa_endereco');
+                    endereco.value = dadosJson.logradouro;
+                    var bairro = document.getElementById('empresa_bairro');
+                    bairro.value = dadosJson.bairro;
+                    var cidade = document.getElementById('empresa_cidade');
+                    cidade.value = dadosJson.cidade;
+                    var estado = document.getElementById('empresa_uf');
+                    estado.value = dadosJson.estado;
+                    var codIbge = document.getElementById('empresa_cod_cidade');
+                    codIbge.value = dadosJson.cidade_info.codigo_ibge;
                 }
+
+            });
+
+
+            $('#cliente_cep').change(function() {
+
+                var selected = $(this).val()
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "http://api.postmon.com.br/v1/cep/"+selected, false);
+                xhr.send();
+
+                if(xhr.statusText == 'OK' && xhr.status == 200){
+                    var dadosJson = JSON.parse(xhr.response);
+
+                    var endereco = document.getElementById('cliente_endereco');
+                    endereco.value = dadosJson.logradouro;
+                    var bairro = document.getElementById('cliente_bairro');
+                    bairro.value = dadosJson.bairro;
+                    var cidade = document.getElementById('cliente_cidade');
+                    cidade.value = dadosJson.cidade;
+                    var estado = document.getElementById('cliente_uf');
+                    estado.value = dadosJson.estado;
+                    var codIbge = document.getElementById('cliente_codCidade');
+                    codIbge.value = dadosJson.cidade_info.codigo_ibge;
+                }
+
             });
         });
 
-
         jQuery(document).ready(function () {
-            //Salvar
-            jQuery('#form_empresa_edit').submit(function () {
+            $('#continuar_passo2').click(function (e) {
 
-                var dados = jQuery(this).serializeArray();
-                var result = { };
+                var cep = document.getElementById('empresa_cep').value;
+                var endereco = document.getElementById('empresa_endereco').value;
+                var numero = document.getElementById('empresa_numero').value;
+                var bairro = document.getElementById('empresa_bairro').value;
+                var cidade = document.getElementById('empresa_cidade').value;
+                var uf = document.getElementById('empresa_uf').value;
+                var codCid = document.getElementById('empresa_cod_cidade').value;
 
-                $.each(dados, function(i, field){
-                    result[field.name] = field.value;
-                });
+                if(cep==null || cep=="" || endereco==null || endereco=="" || numero==null || numero=="" || bairro==null || bairro=="" ||
+                    cidade==null || cidade=="" || uf==null || uf==""){
+                    alert('Por favor preencha os campos antes de continuar.');
+                    return false;
+                }
 
-//                console.log(dados);
-//                console.log(result);
-//                return false;
+                var dados = {'passo' : 'passo1', 'cep' : cep, 'endereco' : endereco, 'numero' : numero, 'bairro' : bairro, 'cidade' : cidade,
+                             'uf' : uf, 'codCidade' : codCid};
 
                 jQuery.ajax({
                     type: "POST",
-                    url: "EditarEmpresa",
-                    data: {dados: result},
+                    url: "registra_cadastro",
+                    data: dados,
                     success: function (data) {
-                         if (data.success == false) {
-                            alert('Erro ao salvar cadastro. Erros: ' + data.msg);
-                        }else{
-                            alert('Cadastro Salvo.')
-                             window.location.href = '../';
-                         }
+                        if (data.success == false) {
+                            alert('Erro ao salvar este cadastro. Erros: ' + data.msg);
+                            return false;
+                        }
                     }
                 });
 
-                return false;
-            });
-
-            $('#continuar_passo2').click(function (e) {
                 e.stopPropagation();
                 $('#cadastro_endereco').hide('slide', {direction: 'left'}, 1400);
                 $('#cadastro_nota').stop().show('slide', {direction: 'right'}, 1400);
                 document.getElementById('progressbar2').setAttribute('class', 'active');
             });
 
-
             $('#continuar_passo3').click(function (e) {
+
+                var cmc = document.getElementById('empresa_cmc').value;
+                var cpfprefeitura = document.getElementById('empresa_cpf_prefeitura').value;
+                var senhaprefeitura = document.getElementById('empresa_senha_prefeitura').value;
+                var tipoemissao = document.getElementById('empresa_tipo_emissao').value;
+
+                if(cmc==null || cmc=="" || cpfprefeitura==null || cpfprefeitura=="" ||
+                        senhaprefeitura==null || senhaprefeitura=="" || tipoemissao==null || tipoemissao==""){
+                    alert('Por favor preencha os campos antes de continuar.');
+                    return false;
+                }
+
+                var dados = {'passo' : 'passo2', 'cpfprefeitura' : cpfprefeitura, 'cmc' : cmc,
+                             'senhaprefeitura' : senhaprefeitura, 'tipoemissao' : tipoemissao
+                            };
+
+                jQuery.ajax({
+                    type: "POST",
+                    url: "registra_cadastro",
+                    data: dados,
+                    success: function (data) {
+                        if (data.success == false) {
+                            alert('Erro ao salvar este cadastro. Erros: ' + data.msg);
+                            return false;
+                        }
+                    }
+                });
+
                 e.stopPropagation();
                 $('#cadastro_nota').hide('slide', {direction: 'left'}, 1400);
                 $('#cadastro_cliente').stop().show('slide', {direction: 'right'}, 1400);
                 document.getElementById('progressbar3').setAttribute('class', 'active');
             });
 
+            $('#continuar_passo4_sem_cadastro').click(function (e) {
+                e.stopPropagation();
+                $('#cadastro_cliente').hide('slide', {direction: 'left'}, 1400);
+                $('#cadastro_finalizado').stop().show('slide', {direction: 'right'}, 1400);
+                document.getElementById('progressbar4').setAttribute('class', 'active');
+            });
+
+            $('#continuar_passo4').click(function (e) {
+
+                var nomeCliente = document.getElementById('cliente_nome').value;
+                var cepCliente = document.getElementById('cliente_cep').value;
+                var enderecoCliente = document.getElementById('cliente_endereco').value;
+                var numeroCliente = document.getElementById('cliente_numero').value;
+                var bairroCliente = document.getElementById('cliente_cidade').value;
+                var ufCliente = document.getElementById('cliente_uf').value;
+                var emailCliente = document.getElementById('cliente_email').value;
+                var codCidCliente = document.getElementById('cliente_codCidade').value;
+                var cidadeCliente = document.getElementById('cliente_cidade').value;
+                var cpfcnpjCliente = document.getElementById('cliente_cpfcnpj').value;
+
+                if(nomeCliente==null || nomeCliente=="" || cepCliente==null || cepCliente=="" || enderecoCliente==null || enderecoCliente=="" ||
+                   numeroCliente==null || numeroCliente=="" || bairroCliente==null || bairroCliente=="" || ufCliente==null || ufCliente=="" ||
+                   emailCliente==null || emailCliente=="" || cidadeCliente==null || cidadeCliente=="" || cpfcnpjCliente==null || cpfcnpjCliente==""){
+                    alert('Preencha todos os campos por favor.');
+                    return false;
+                }
+
+                var dados = {'passo' : 'passo3', 'nomeCliente' : nomeCliente, 'cepCliente' : cepCliente, 'enderecoCliente' : enderecoCliente,
+                    'numeroCliente' : numeroCliente, 'bairroCliente' : bairroCliente, 'ufCliente' : ufCliente, 'emailCliente' : emailCliente,
+                    'codCidCliente' : codCidCliente, 'cidadeCliente' : cidadeCliente, 'cpfcnpjCliente' : cpfcnpjCliente
+                };
+
+                jQuery.ajax({
+                    type: "POST",
+                    url: "registra_cadastro",
+                    data: dados,
+                    success: function (data) {
+                        if (data.success == false) {
+                            alert('Erro ao salvar este cadastro. Erros: ' + data.msg);
+                            return false;
+                        }
+                    }
+                });
+
+                e.stopPropagation();
+                $('#cadastro_cliente').hide('slide', {direction: 'left'}, 1400);
+                $('#cadastro_finalizado').stop().show('slide', {direction: 'right'}, 1400);
+                document.getElementById('progressbar4').setAttribute('class', 'active');
+            });
+
+            $('#emitir_nota').click(function (e) {
+                var url = '{{ path("nota_new") }}';
+                url = url.replace("region_id", this.value);
+                window.location.href = url;
+            });
+
         });
+
 
     </script>
     <style>
@@ -414,7 +567,7 @@
             padding: 0;
         }
 
-        #cadastro_nota, #cadastro_cliente {
+        #cadastro_nota, #cadastro_cliente, #cadastro_finalizado {
             display: none;
             border: 1px solid #ddd;
             padding-bottom: 1%;

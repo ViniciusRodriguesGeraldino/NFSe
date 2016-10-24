@@ -454,3 +454,13 @@ table th {
     /*height: 400px;*/
     /*overflow-y: scroll;*/
 }
+
+.tdNotaEnviada{
+    color: #0ccf4d;
+}
+.tdNotaCancelada{
+    color: #c9302c;
+}
+.tdNotaSemStatus{
+    color: #cfcd30;
+}

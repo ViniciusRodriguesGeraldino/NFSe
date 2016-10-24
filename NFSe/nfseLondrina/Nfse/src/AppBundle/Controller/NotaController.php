@@ -67,6 +67,7 @@ class NotaController extends Controller
         $em = $this->getDoctrine()->getManager();
         $id         = $this->getNewId();
         $data       = date("d/m/Y");
+
         $clientes   = $em->createQueryBuilder()
             ->select('c.nome, c.cpfcnpj')
             ->from('AppBundle:Cliente', 'c')
@@ -208,54 +209,33 @@ class NotaController extends Controller
             $totalDescontos += $prod[4];
         }
 
-
         $nota->setEmpresa($this->get('app.emp')->getIdEmpresa());
 
-//        $idAux = $dados[1]['value']; //Pega o id cliente aqui
-//        $pos = strpos($idAux, ')');
-//        $pos -= 1;
-//        $idAux2 = substr($idAux, 1, $pos );
-//        $idCliente = trim($idAux2);
-//        $nota->setCliente($idCliente);
+        $nota->setCliente($dados['codCliente']);
 
-        $nota->setCliente($dados[25]['value']);
-
-        $nota->setTotal($dados[22]['value']);
+        $nota->setTotal($dados['total']);
         $nota->setDesconto($totalDescontos);
         $nota->setTotalBruto($nota->getTotal()+$nota->getDesconto());
-        $data = $dados[3]['value'];
+        $data = $dados['dataNota'];
         $nota->setData(new \DateTime(date('Y-m-d')));
         $nota->setAno($this->getYear($data));
         $nota->setMes($this->getMonth($data));
 
         $nota->setTipoNota('NFSE');
-        $nota->setObservacao($dados[24]['value']);
-        $nota->setFormapagamento($dados[23]['value']);
+        $nota->setObservacao($dados['observacao']);
+        $nota->setFormapagamento($dados['formaPagamento']);
         $nota->setAutenticidade('');
         $nota->setNumeroNotaSubstitutiva('');
         $nota->setIdFaturamento('');
 
-//        $nota->setPercPis();
-        $nota->setPis($dados[16]['value']);
-//        $nota->setPisOrig();
-//
-        $nota->setCsl($dados[15]['value']);
-//        $nota->setCslOrig();
-//
-        $nota->setCofins($dados[18]['value']);
-//        $nota->setCofinsOrig();
-//
-        $nota->setInss($dados[19]['value']);
-//        $nota->setInssOrig();
-//
+        $nota->setPis($dados['pis']);
+        $nota->setCsl($dados['csl']);
+        $nota->setCofins($dados['cofins']);
+        $nota->setInss($dados['inss']);
         $nota->setIss($totalISS);
-//        $nota->setIssOrig();
-        $nota->setIssRetido($dados[14]['value']);
-//        $nota->setIssRetidoOrig();
-        $nota->setBaseIss($dados[20]['value']);
-//
-        $nota->setIrrf($dados[17]['value']);
-//        $nota->setIrrfOrig();
+        $nota->setIssRetido($dados['issRetido']);
+        $nota->setBaseIss($dados['baseIss']);
+        $nota->setIrrf($dados['irrf']);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($nota);
@@ -733,4 +713,55 @@ class NotaController extends Controller
 
         return new JsonResponse( $response );
     }
+
+
+    /**
+     *
+     * @Route("/notaCadastraCliente", name="notaCadastraCliente")
+     * @Method({"GET", "POST"})
+     */
+    public function notaCadastraCliente(Request $request){
+
+        $idEmpresa = $this->get('app.emp')->getIdEmpresa();
+        $em = $this->getDoctrine()->getManager();
+
+        $cliente = new Cliente();
+        $cliente->setEmpresa($idEmpresa);
+        $cliente->setNome($request->request->get('cliente_nome'));
+        $cliente->setCep($request->request->get('cliente_cep'));
+        $cliente->setEndereco($request->request->get('cliente_endereco'));
+        $cliente->setNumero($request->request->get('cliente_numero'));
+        $cliente->setBairro($request->request->get('cliente_bairro'));
+        $cliente->setCidade($request->request->get('cliente_cidade'));
+        $cliente->setCodCid($request->request->get('cliente_codCidade'));
+        $cliente->setUf($request->request->get('cliente_uf'));
+
+        $cnpj = $request->request->get('cliente_cpfcnpj');
+        $cnpj = str_replace(".", "", $cnpj);
+        $cnpj = str_replace("-", "", $cnpj);
+        $cnpj = str_replace("/", "", $cnpj);
+        $cliente->setCpfcnpj($cnpj);
+
+        $cliente->setEMail($request->request->get('cliente_email'));
+        $cliente->setDependente(0);
+        $cliente->setStatus(1);
+
+        try{
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($cliente);
+            $em->flush();
+
+            $response['success'] = true;
+            $response['id_cliente'] = $cliente->getId();
+            $response['nome_cliente'] = $cliente->getNome();
+            $response['cnpj_cliente'] = $cliente->getCpfcnpj();
+            return new JsonResponse($response);
+
+        }catch (Exception $e){
+            $response['success'] = false;
+            $response['msg'] = $e;
+            return new JsonResponse($response);
+        }
+    }
+
 }

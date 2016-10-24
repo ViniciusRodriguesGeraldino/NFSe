@@ -51,7 +51,7 @@ class Biblioteca extends Controller
             ->getRepository('AppBundle:Cliente');
         $query = $repo->createQueryBuilder('a')
             ->select('a.id,a.nome,a.cpfcnpj,a.codigoCliente')
-            ->where('a.status = 1')
+            ->andWhere('a.status = 1')
             ->andWhere('a.empresa = :emp')
             ->setParameter('emp', $this->getIdEmpresa())
             ->getQuery();
@@ -74,11 +74,15 @@ class Biblioteca extends Controller
     public function formataCpfCnpj($codigo){
         $mask = '';
 
-        if($codigo.$length = 11){
+        $codigo = str_replace(".", "", $codigo);
+        $codigo = str_replace("-", "", $codigo);
+        $codigo = str_replace("/", "", $codigo);
+
+        if(strlen($codigo) == 11){
             $mask = '###.###.###-##';
             return $this->Mask($mask, $codigo);
         }
-        else if($codigo.$length = 14){
+        else if(strlen($codigo) == 14){
             $mask = '##.###.###/####-##';
             return $this->Mask($mask, $codigo);
         }
@@ -151,5 +155,9 @@ class Biblioteca extends Controller
         }else{
                 return true;
         }
+    }
+
+    function IsNullOrEmptyString($question){
+        return (!isset($question) || trim($question)==='');
     }
 }

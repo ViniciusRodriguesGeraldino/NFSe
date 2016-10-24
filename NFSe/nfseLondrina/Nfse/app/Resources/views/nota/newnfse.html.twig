@@ -41,21 +41,9 @@
                         </a>
                     </div>
                     <input type="text" id="NomeCliente" name="NomeCliente" class="NomeCliente form-control" required="required"
-                           placeholder="Digite o nome do cliente" onchange="">
+                           placeholder="Digite o nome do cliente">
+                    <input type="hidden" id="idCliente" class="idCliente" name="idCliente" value=""/>
                 </div>
-
-                {#<div class="col-md-offset-1 col-md-3">#}
-                    {#<div class="float-left no-padding-left col-md-4">#}
-                        {#<label>Cliente</label>#}
-                    {#</div>#}
-                    {#<div class="input-group">#}
-                        {#<input type="text" id="NomeCliente" name="NomeCliente" class="NomeCliente form-control" required="required"#}
-                               {#placeholder="Digite o nome do cliente" onchange="">#}
-                        {#<span class="input-group-btn">#}
-                                            {#<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalServicos"><span class="glyphicon glyphicon-search"></span></button>#}
-                        {#</span>#}
-                    {#</div>#}
-                {#</div>#}
 
                 <div class="col-md-1">
                     <label>Número</label>
@@ -251,8 +239,6 @@
             </div>
         </div>
 
-        <input type="hidden" id="idCliente" class="idCliente" name="idCliente" value=""/>
-
     </form>
 
 
@@ -268,6 +254,7 @@
                     <h4 class="modal-title" id="myModalLabel">Lista de Clientes</h4>
                 </div>
 
+                {#Tabela Clientes Search#}
                 <div class="modal-body" id="body_pesquisa">
                     <div class="padding-bottom">
                         <input type="text" class="search form-control" placeholder="Procurar">
@@ -290,6 +277,7 @@
                     </div>
                 </div>
 
+                {#Div Cadastrar Novo Cliente#}
                 <div class="modal-body" id="body_cadastra_cliente" hidden>
 
                     <div class="row">
@@ -447,6 +435,8 @@
         .table-striped tbody tr.highlight td {
             background-color: red;
         }
+
+        .highlight { background-color: #ddd; }
 
     </style>
 {% endblock %}

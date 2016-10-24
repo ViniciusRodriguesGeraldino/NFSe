@@ -199,7 +199,13 @@ class EmpresaController extends Controller
             $cliente->setCidade($request->request->get('cidadeCliente'));
             $cliente->setCodCid($request->request->get('codCidCliente'));
             $cliente->setUf($request->request->get('ufCliente'));
-            $cliente->setCpfcnpj($request->request->get('cpfcnpjCliente'));
+
+            $cnpj = $request->request->get('cpfcnpjCliente');
+            $cnpj = str_replace(".", "", $cnpj);
+            $cnpj = str_replace("-", "", $cnpj);
+            $cnpj = str_replace("/", "", $cnpj);
+            $cliente->setCpfcnpj($cnpj);
+
             $cliente->setEMail($request->request->get('emailCliente'));
             $cliente->setDependente(0);
             $cliente->setStatus(1);

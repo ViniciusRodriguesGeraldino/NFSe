@@ -30,7 +30,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "besimple/soap-wsdl": "^0.2.6",
         "besimple/soap-client": "0.2.*@dev",
-        "ob/highcharts-bundle": "^1.5"
+        "ob/highcharts-bundle": "^1.5",
+        "fabpot/goutte": "^3.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

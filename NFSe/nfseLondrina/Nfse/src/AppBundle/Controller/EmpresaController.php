@@ -9,7 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Empresa;
+use AppBundle\Entity\Servico;
 use AppBundle\Form\EmpresaType;
+
 
 /**
  * Empresa controller.
@@ -121,9 +123,16 @@ class EmpresaController extends Controller
         $stmt->execute($params);
         $cliente = $stmt->fetchAll();
 
+        $sql = "select * from listaservico";
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        $listaServicos = $stmt->fetchAll();
+
         return $this->render('empresa/cadastro.html.twig', array(
             'empresa' => $empresa,
             'cliente' => $cliente,
+            'listaServicos' => $listaServicos,
         ));
     }
 
@@ -213,6 +222,34 @@ class EmpresaController extends Controller
             try{
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($cliente);
+                $em->flush();
+
+                $response['success'] = true;
+                return new JsonResponse($response);
+
+            }catch (Exception $e){
+                $response['success'] = false;
+                $response['msg'] = $e;
+                return new JsonResponse($response);
+            }
+
+        }else if($passo == 'passo4'){
+
+            $servico = new Servico();
+            $servico->setidEmpresa($idEmpresa);
+            $servico->setCodSerPref($request->request->get('codServ'));
+            $servico->setDescricao($request->request->get('nomeServ'));
+            $servico->setValor($request->request->get('valorServ'));
+
+            $servico->setPercIss($request->request->get('issServ'));
+            $servico->setPercIrrf($request->request->get('irrfServ'));
+            $servico->setPercCsl($request->request->get('cslServ'));
+            $servico->setPercPis($request->request->get('pisServ'));
+            $servico->setPercCofins($request->request->get('cofinsServ'));
+
+            try{
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($servico);
                 $em->flush();
 
                 $response['success'] = true;

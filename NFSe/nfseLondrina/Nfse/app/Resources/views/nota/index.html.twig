@@ -67,13 +67,13 @@
                         <td class="center">{% if notum.data %}{{ notum.data|date('d/m/Y') }}{% endif %}</td>
 
                         {% if notum.status == 'Enviada' %}
-                            <td class="tdNotaEnviada center" style="color: #0ccf4d">{{ notum.status }}</td>
+                            <td class="tdNotaEnviada center">{{ notum.status }}</td>
                         {% elseif notum.status == 'Não Enviada' %}
-                            <td class="tdNotaNEnviada center" style="color: #2d2d2d">{{ notum.status }}</td>
+                            <td class="tdNotaNEnviada center">{{ notum.status }}</td>
                         {% elseif notum.status == 'Cancelada' %}
-                            <td class="tdNotaCancelada center" style="color: #d43f3a">{{ notum.status }}</td>
+                            <td class="tdNotaCancelada center">{{ notum.status }}</td>
                         {% else %}
-                            <td class="tdNotaSemStatus center" style="color: #cfcd30">Sem Status</td>
+                            <td class="tdNotaSemStatus center">Sem Status</td>
                         {% endif %}
 
                         <td class="text-right">R$ {{ notum.total|number_format(2, ',', '') }}</td>

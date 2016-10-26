@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Empresa;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use AppBundle\Entity\User;
@@ -28,11 +29,18 @@ class UserController extends Controller
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
-
         return $this->render("security/login.html.twig", array(
             "error" => $error,
             "last_username" => $lastUsername,
+//            'params' => $params,
         ));
+    }
+
+    /**
+     * @Route("/getCaptchaReceita", name="getCaptchaReceita")
+     */
+    public function getCaptchaReceita(){
+        return ;
     }
 
     /**
@@ -109,5 +117,6 @@ class UserController extends Controller
 
         return $empresa->getId();
     }
+
 
 }

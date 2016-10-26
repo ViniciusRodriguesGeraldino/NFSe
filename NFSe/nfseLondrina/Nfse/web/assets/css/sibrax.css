@@ -10,6 +10,7 @@ html, body {
     margin : 0;
     height : 100%;
     color: #23527c;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f3f3f3)) fixed;
 }
 
 .clear-left {
@@ -433,10 +434,10 @@ table th {
 @media(min-width:1200px){}
 
 .EditEmp{
-    background-color: #ddddff;
-    border-radius: 12px;
-    border: 1px;
-    border-color: #d58512;
+    background-color: #f3f3f3;
+    /*border-radius: 12px;*/
+    border: 1px solid #ddd; !important;
+    /*border-color: #d58512;*/
     padding-bottom: 20px;
 }
 
@@ -463,4 +464,8 @@ table th {
 }
 .tdNotaSemStatus{
     color: #cfcd30;
+}
+
+.tdNotaNEnviada{
+    color: #2d2d2d;
 }

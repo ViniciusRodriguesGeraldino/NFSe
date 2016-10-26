@@ -8,6 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\DomCrawler\Crawler;
+use Exception;
+use Goutte\Client;
 
 /**
  * GetEmpresa controller.
@@ -157,7 +160,12 @@ class Biblioteca extends Controller
         }
     }
 
-    function IsNullOrEmptyString($question){
-        return (!isset($question) || trim($question)==='');
+    function IsNullOrEmptyString($texto){
+        return (!isset($texto) || trim($texto)==='');
     }
+
+    public function unmask($texto) {
+        return preg_replace('/[\-\|\(\)\/\.\: ]/', '', $texto);
+    }
+
 }

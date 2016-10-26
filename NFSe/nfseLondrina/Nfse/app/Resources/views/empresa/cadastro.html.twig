@@ -25,7 +25,7 @@
                 <li id="progressbar1" class="active">endereço</li>
                 <li id="progressbar2">login</li>
                 <li id="progressbar3">cliente</li>
-                <li id="progressbar4">nota</li>
+                <li id="progressbar4">serviço</li>
             </ul>
         </div>
 
@@ -346,6 +346,74 @@
 
             </div>
 
+            {#Cadastro Serviço#}
+            <div id="cadastro_servico" class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row padding-top">
+
+                            <div class="col-md-12">
+                                <div class="">
+                                    <p>&bull; Selecione um serviço que sua empresa fornecerá.</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row padding-top">
+
+
+                            <div class="col-md-2" style="min-width: 120px">
+                                <div class="">
+                                    <label>#Cód.Serviço</label>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" id="cadastro_cod_servico" name="cadastro_cod_servico" class="form-control" placeholder="" >
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalServicos"><span class="glyphicon glyphicon-search"></span></button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="">
+                                    <label>Nome do Serviço</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="cadastro_nome_servico" name="cadastro_nome_servico" class="form-control"  placeholder="" >
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="">
+                                    <label>Valor</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="cadastro_valor_servico" name="cadastro_valor_servico" class="form-control"  placeholder="" >
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <input type="hidden" value="" id="cadastro_iss_servico" name="cadastro_iss_servico">
+                                <input type="hidden" value="" id="cadastro_irrf_servico" name="cadastro_irrf_servico">
+                                <input type="hidden" value="" id="cadastro_csl_servico" name="cadastro_csl_servico">
+                                <input type="hidden" value="" id="cadastro_pis_servico" name="cadastro_pis_servico">
+                                <input type="hidden" value="" id="cadastro_cofins_servico" name="cadastro_cofins_servico">
+                            </div>
+
+                            <div class="col-md-3" style="padding-top: 5px">
+                                <div><label></label></div>
+                                <div>
+                                    <input id="continuar_finalizar_cadastro" type="button" class="btn btn-success" value="Finalizar"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {#Finalizado#}
             <div id="cadastro_finalizado" class="container">
                 <div class="row">
@@ -366,6 +434,48 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+
+
+    <!-- Modal Lista Servicos -->
+    <div class="modal fade" id="modalServicos" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Lista de Serviços</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="padding-bottom">
+                        <input type="text" class="search form-control" placeholder="Procurar">
+                    </div>
+                    <div class="tabela_servicos">
+                        <table class="table table-bordered table-hover results" id="table_search">
+                            <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descrição</th>
+                                <th>Aliquota</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in listaServicos %}
+                                <tr>
+                                    <td class="lista_codigo">{{ item.CODIGO }}</td>
+                                    <td class="lista_descricao">{{ item.DESCRICAO }}</td>
+                                    <td class="lista_aliquota">{{ item.ALIQUOTA }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="modalServicosVoltar" class="btn btn-default" data-dismiss="modal">Voltar</button>
+                    <button type="button" class="btn btn-primary">Selecionar</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -401,7 +511,6 @@
 
             });
 
-
             $('#cliente_cep').change(function() {
 
                 var selected = $(this).val()
@@ -424,6 +533,53 @@
                     codIbge.value = dadosJson.cidade_info.codigo_ibge;
                 }
 
+            });
+
+            $(".search").keyup(function () {
+                var searchTerm = $(".search").val();
+                var listItem = $('.results tbody').children('tr');
+                var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+
+                $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+                    return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+                }
+                });
+
+                $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+                    $(this).attr('visible','false');
+                });
+
+                $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+                    $(this).attr('visible','true');
+                });
+                var jobCount = $('.results tbody tr[visible="true"]').length;
+                $('.counter').text(jobCount + ' item');
+
+                if(jobCount == '0') {
+                    $('.no-result').show();
+                }else {
+                    $('.no-result').hide();
+                }
+            });
+
+            //Seleciona o serviço no modal
+            $('#table_search > tbody > tr').dblclick(function () {
+//                $('#modalServicos').modal('toggle');
+
+                var inputCodigo = document.getElementById('cadastro_cod_servico');
+                var inputNome   = document.getElementById('cadastro_nome_servico');
+                var inputISS    = document.getElementById('cadastro_iss_servico');
+
+                document.getElementById('cadastro_irrf_servico').value = 0;
+                document.getElementById('cadastro_csl_servico').value = 0;
+                document.getElementById('cadastro_pis_servico').value = 0;
+                document.getElementById('cadastro_cofins_servico').value = 0;
+
+                inputCodigo.value = $(this).find(".lista_codigo").text();
+                inputISS.value = $(this).find(".lista_aliquota").text();
+                inputNome.value = $(this).find(".lista_descricao").text();
+
+                $('#modalServicosVoltar').trigger('click');
             });
         });
 
@@ -503,7 +659,7 @@
             $('#continuar_passo4_sem_cadastro').click(function (e) {
                 e.stopPropagation();
                 $('#cadastro_cliente').hide('slide', {direction: 'left'}, 1400);
-                $('#cadastro_finalizado').stop().show('slide', {direction: 'right'}, 1400);
+                $('#cadastro_servico').stop().show('slide', {direction: 'right'}, 1400);
                 document.getElementById('progressbar4').setAttribute('class', 'active');
             });
 
@@ -546,8 +702,47 @@
 
                 e.stopPropagation();
                 $('#cadastro_cliente').hide('slide', {direction: 'left'}, 1400);
-                $('#cadastro_finalizado').stop().show('slide', {direction: 'right'}, 1400);
+                $('#cadastro_servico').stop().show('slide', {direction: 'right'}, 1400);
                 document.getElementById('progressbar4').setAttribute('class', 'active');
+            });
+
+            $('#continuar_finalizar_cadastro').click(function (e) {
+
+                var codServ    = document.getElementById('cadastro_cod_servico').value;
+                var nomeServ   = document.getElementById('cadastro_nome_servico').value;
+                var valorServ  = document.getElementById('cadastro_valor_servico').value;
+                var issServ    = document.getElementById('cadastro_iss_servico').value;
+                var irrfServ   = document.getElementById('cadastro_irrf_servico').value;
+                var cslServ    = document.getElementById('cadastro_csl_servico').value;
+                var pisServ    = document.getElementById('cadastro_pis_servico').value;
+                var cofinsServ = document.getElementById('cadastro_cofins_servico').value;
+
+                if(codServ=="" || codServ==null || nomeServ=="" || nomeServ==null || valorServ=="" || valorServ==null ||
+                   issServ=="" || issServ==null || irrfServ=="" || irrfServ==null || cslServ=="" || cslServ==null ||
+                   pisServ=="" || pisServ==null || cofinsServ=="" || cofinsServ==null){
+                    alert('Por favor preencha todos os campos.');
+                    return false;
+                }
+
+                var dados = {'passo' : 'passo4', 'codServ' : codServ, 'nomeServ' : nomeServ, 'valorServ' : valorServ, 'issServ' : issServ,
+                    'irrfServ' : irrfServ, 'cslServ' : cslServ, 'pisServ' : pisServ, 'cofinsServ' : cofinsServ
+                };
+
+                jQuery.ajax({
+                    type: "POST",
+                    url: "registra_cadastro",
+                    data: dados,
+                    success: function (data) {
+                        if (data.success == false) {
+                            alert('Erro ao salvar este cadastro. Erros: ' + data.msg);
+                            return false;
+                        }
+                    }
+                });
+
+                e.stopPropagation();
+                $('#cadastro_servico').hide('slide', {direction: 'left'}, 1400);
+                $('#cadastro_finalizado').stop().show('slide', {direction: 'right'}, 1400);
             });
 
             $('#emitir_nota').click(function (e) {
@@ -555,11 +750,9 @@
                 url = url.replace("region_id", this.value);
                 window.location.href = url;
             });
-
         });
-
-
     </script>
+
     <style>
         body {
             /*font-family: 'Alegreya Sans', sans-serif;*/
@@ -567,7 +760,7 @@
             padding: 0;
         }
 
-        #cadastro_nota, #cadastro_cliente, #cadastro_finalizado {
+        #cadastro_nota, #cadastro_cliente, #cadastro_finalizado, #cadastro_servico {
             display: none;
             border: 1px solid #ddd;
             padding-bottom: 1%;
@@ -635,6 +828,31 @@
         }
         .progressbar li.active + li:after {
             background-color: #55b776;
+        }
+
+        .results tr[visible='false'],
+        .no-result{
+            display:none;
+        }
+
+        .results tr[visible='true']{
+            display:table-row;
+        }
+        .tabela_servicos{
+            height: 380px !important;
+            overflow: scroll;
+        }
+
+        .tabela_servicos tr {
+            cursor: pointer;
+        }
+
+        .table-striped tbody tr:nth-child(odd) td {
+            background-color: green;
+        }
+
+        .table-striped tbody tr.highlight td {
+            background-color: red;
         }
     </style>
 

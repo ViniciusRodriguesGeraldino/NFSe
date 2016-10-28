@@ -19,3 +19,8 @@ services:
         class: AppBundle\Controller\LancamentosController
         calls:
                     - [setContainer, ["@service_container"]]
+
+    app.consultacnpj:
+        class: AppBundle\Controller\ConsultaCnpj
+        calls:
+                    - [setContainer, ["@service_container"]]

@@ -86,7 +86,12 @@ class ContasPagarReceberController extends Controller
             'clientes'   => $clientes
         ];
 
-        return $this->render('contas/new.html.twig' , array('formValues' => $formValues, 'tipoConta' => $tipo, 'plano' => $plano));
+        return $this->render('contas/new.html.twig' ,
+            array('formValues' => $formValues,
+                  'tipoConta' => $tipo,
+                  'plano' => $plano,
+
+                ));
     }
 
     /**

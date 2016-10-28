@@ -115,7 +115,7 @@
                     <h4 class="modal-title" id="myModalLabel">Captcha</h4>
                 </div>
                 <div class="modal-body">
-                    <img src="" /><br /><br />
+                    <img src="{{ params['captchaBase64'] }}" /><br /><br />
                     <input type="text" class="form-control" id="captcha" placeholder="Informe os caracteres da imagem acima" />
                 </div>
                 <div class="modal-footer">
@@ -161,7 +161,7 @@
 
                 btn.html('Aguarde! Consultando..');
 
-                $.post("consultaCnpjCadastro", param, function(json) {
+                $.post("processaConsulta", param, function(json) {
 
                    if (json.code === 0) {
                         alert('Aeeeeee');
@@ -194,7 +194,7 @@
     </script>
 
     <style>
-        @import url(http://fonts.googleapis.com/css?family=Roboto);
+        /*@import url(http://fonts.googleapis.com/css?family=Roboto);*/
 
         html {
             height: 100%;

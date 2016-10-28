@@ -45,17 +45,25 @@
             <!-- Navigation -->
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                 <div class="container">
-
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        {#<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">#}
+                    <div class="navbar-header visible-md visible-lg">
+                        <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('assets/resources/logo.png') }}" alt="Homepage" height="36" width="110" style="padding-bottom: 2px"></a>
+                    </div>
+
+                    {#<div class="navbar-header">#}
+                        {#<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">#}
                             {#<span class="sr-only">Toggle navigation</span>#}
                             {#<span class="icon-bar"></span>#}
                             {#<span class="icon-bar"></span>#}
                             {#<span class="icon-bar"></span>#}
                         {#</button>#}
-                        <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('assets/resources/logo.png') }}" alt="Homepage" height="36" width="110" style="padding-bottom: 2px"></a>
-                    </div>
+                        {#<a class="navbar-brand" href="#">Brand</a>#}
+                    {#</div>#}
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -110,7 +118,10 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                   aria-expanded="false">Bem Vindo {{ app.user.name }} &nbsp;&nbsp;
+                                   aria-expanded="false">
+                                   {#<div class="visible-lg">#}
+                                       {#Bem Vindo {{ app.user.name }} &nbsp;&nbsp;#}
+                                   {#</div>#}
                                     <span class="glyphicon glyphicon-cog"></span><span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     {% if app.user == null%}

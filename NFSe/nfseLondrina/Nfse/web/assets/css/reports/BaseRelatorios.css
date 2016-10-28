@@ -52,7 +52,6 @@ page[size="A5"][layout="portrait"] {
     page-break-inside:auto; !important;
 }
 
-
 .detalhesRelatorio>tr   {
     page-break-inside:avoid; !important;
     page-break-after:always; !important;
@@ -73,7 +72,6 @@ page[size="A5"][layout="portrait"] {
     page-break-before: always;
 }
 
-
 .controladorRelatorio{
     text-align: center;
     float: left;
@@ -83,7 +81,6 @@ page[size="A5"][layout="portrait"] {
     padding: 10px 5px 0px 5px;
     cursor: move;
 }
-
 
 /*Esconde tudo e mostra somente o que deve ser impresso*/
 @media print {

@@ -210,7 +210,29 @@ $(document).on('input', '.NomeCliente', function () {
         type: 'post',
         success: function (data) {
             $("#NomeCliente").autocomplete({
-                source: data
+                source: function(request, response) {
+                    var rows = formataClientes(data);
+                    return response(rows);
+                },
+
+                delay: 200,
+
+                select: function(event, ui) {
+                    var hasValue = (ui.item.value != undefined && ui.item.value != "" && ui.item.value != null);
+                    if (hasValue) {
+                        var focusedElement = $(this);
+                        focusedElement.val(ui.item.label);
+
+                        document.getElementById('NomeCliente').value = ui.item.label;
+                        document.getElementById('idCliente').value = ui.item.value;
+
+                        return false;
+                    }
+                    else {
+                        return false;
+                    }
+                },
+
             });
         }
     });
@@ -306,4 +328,226 @@ jQuery(document).ready(function () {
 
         return false;
     });
+});
+
+function formataClientes(data) {
+    var rows = [];
+    var rowData = null;
+    var dataLength = data.length;
+    for (var i = 0; i < dataLength; i++) {
+        rowData = data[i];
+        rows[i] = {
+            label: rowData.nome + ' (' + rowData.cpfcnpj + ')',
+            value: rowData.id
+        };
+    }
+    return rows;
+}
+
+//Carrega Clientes no Modal
+$(document).on('show.bs.modal','#modalClientes', function () {
+    $('#body_pesquisa').show();
+    $('#body_cadastra_cliente').hide();
+    $('#BtnNovoCliente').show();
+    $('#SelecionarCliente')[0].textContent = "Selecionar";
+
+    var table = document.getElementById('table_search');
+    var numOfRows = table.rows.length;
+    if(numOfRows > 2)
+        return;
+
+    $.ajax({
+        url: 'carregaClientes',
+        data: {str: ''},
+        type: 'post',
+        success: function (data) {
+            for(var i=0; i<= data.length-1; i++){
+
+                var newRow = table.insertRow(numOfRows);
+
+                newCell = newRow.insertCell(0);
+                newCell.innerHTML = data[i].codigoCliente;
+                newCell.setAttribute('class', 'lista_codigo_cliente');
+
+                newCell = newRow.insertCell(1);
+                newCell.innerHTML = data[i].nome;
+                newCell.setAttribute('class', 'lista_nome');
+
+                newCell = newRow.insertCell(2);
+                newCell.innerHTML = data[i].cnpj;
+                newCell.setAttribute('class', 'lista_cnpj');
+
+                newCell = newRow.insertCell(3);
+                newCell.innerHTML = data[i].id;
+                newCell.setAttribute('class', 'lista_id');
+
+                numOfRows++;
+            }
+
+            //Atribui valor do Modal para o campo do form
+            $('#table_search > tbody > tr').dblclick(function () {
+                $('#modalClientes').modal('toggle');
+
+                var inputNome   = document.getElementById('NomeCliente');
+                inputNome.value = $(this).find(".lista_nome").text() + ' (' + $(this).find(".lista_cnpj").text() + ')';
+
+                var inputIdCliente = document.getElementById('idCliente');
+                inputIdCliente.value = $(this).find(".lista_id").text();
+            });
+
+            $("#table_search > tbody > tr").click(function() {
+                var selected = $(this).hasClass("highlight");
+                $("#table_search > tbody > tr").removeClass("highlight");
+                if(!selected)
+                    $(this).addClass("highlight");
+            });
+
+            $("#SelecionarCliente").click(function () {
+
+                $('#modalClientes').modal('toggle');
+
+                if ($('#SelecionarCliente')[0].textContent == "Selecionar"){
+                    var cliente = $('.highlight');
+                    var inputNome   = document.getElementById('NomeCliente');
+                    inputNome.value = cliente.find(".lista_nome").text() + ' (' + cliente.find(".lista_cnpj").text() + ')';
+
+                    var inputIdCliente = document.getElementById('idCliente');
+                    inputIdCliente.value = cliente.find(".lista_id").text();
+                }else if($('#SelecionarCliente')[0].textContent == "Salvar"){
+
+                    var cliente_cpfcnpj = document.getElementById('cliente_cpfcnpj').value;
+                    var cliente_nome = document.getElementById('cliente_nome').value;
+                    var cliente_email = document.getElementById('cliente_email').value;
+                    var cliente_cep = document.getElementById('cliente_cep').value;
+                    var cliente_uf = document.getElementById('cliente_uf').value;
+                    var cliente_endereco = document.getElementById('cliente_endereco').value;
+                    var cliente_numero = document.getElementById('cliente_numero').value;
+                    var cliente_cidade = document.getElementById('cliente_cidade').value;
+                    var cliente_bairro = document.getElementById('cliente_bairro').value;
+                    var cliente_codCidade = document.getElementById('cliente_codCidade').value;
+
+                    if(cliente_cpfcnpj=="" || cliente_cpfcnpj==null || cliente_nome=="" || cliente_nome==null ||
+                        cliente_email=="" || cliente_email==null || cliente_cep=="" || cliente_cep==null ||
+                        cliente_uf=="" || cliente_uf==null || cliente_endereco=="" || cliente_endereco==null ||
+                        cliente_numero=="" || cliente_numero==null || cliente_cidade=="" || cliente_cidade==null ||
+                        cliente_bairro=="" || cliente_bairro==null || cliente_codCidade=="" || cliente_codCidade==null){
+                        alert('Preencha os dados corretamente.');
+                        return false;
+                    }else{
+
+                        var dados = {'cliente_cpfcnpj' : cliente_cpfcnpj, 'cliente_nome' : cliente_nome, 'cliente_email' : cliente_email,
+                            'cliente_cep' : cliente_cep, 'cliente_uf' : cliente_uf, 'cliente_endereco' : cliente_endereco,
+                            'cliente_numero' : cliente_numero, 'cliente_cidade' : cliente_cidade, 'cliente_bairro' : cliente_bairro,
+                            'cliente_codCidade' : cliente_codCidade
+                        };
+
+                        jQuery.ajax({
+                            type: "POST",
+                            url: "notaCadastraCliente",
+                            data: dados,
+                            success: function (data) {
+                                if (data.success == false) {
+                                    alert('Erro ao salvar este cadastro. Erros: ' + data.msg);
+                                    return false;
+                                }else if (data.success == true) {
+                                    var inputNome = document.getElementById('NomeCliente');
+                                    inputNome.value = data.nome_cliente + ' (' + data.cnpj_cliente + ')';
+
+                                    var inputIdCliente = document.getElementById('idCliente');
+                                    inputIdCliente.value = data.id_cliente;
+
+                                    var newRow = table.insertRow(numOfRows);
+
+                                    newCell = newRow.insertCell(0);
+                                    newCell.innerHTML = "";
+                                    newCell.setAttribute('class', 'lista_codigo_cliente');
+
+                                    newCell = newRow.insertCell(1);
+                                    newCell.innerHTML = data.nome_cliente;
+                                    newCell.setAttribute('class', 'lista_nome');
+
+                                    newCell = newRow.insertCell(2);
+                                    newCell.innerHTML = data.cnpj_cliente;
+                                    newCell.setAttribute('class', 'lista_cnpj');
+
+                                    newCell = newRow.insertCell(3);
+                                    newCell.innerHTML = data.id_cliente;
+                                    newCell.setAttribute('class', 'lista_id');
+
+                                    numOfRows++;
+
+                                }else{
+                                    alert('Erro ao cadastrar. Entre em contato com o suporte.')
+                                }
+                            }
+                        });
+                    }
+                }
+
+            });
+
+        }
+    });
+});
+
+$(document).ready(function() {
+    //Busca Clientes no Modal
+    $(".search").keyup(function () {
+        var searchTerm = $(".search").val();
+        var listItem = $('.results tbody').children('tr');
+        var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+
+        $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+            return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+        }
+        });
+
+        $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+            $(this).attr('visible','false');
+        });
+
+        $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+            $(this).attr('visible','true');
+        });
+        var jobCount = $('.results tbody tr[visible="true"]').length;
+        $('.counter').text(jobCount + ' item');
+
+        if(jobCount == '0') {
+            $('.no-result').show();
+        }else {
+            $('.no-result').hide();
+        }
+    });
+
+    $('#BtnNovoCliente').click(function (e) {
+        $('#body_pesquisa').hide();
+        $('#body_cadastra_cliente').show();
+        $('#SelecionarCliente')[0].textContent = "Salvar";
+        $('#BtnNovoCliente').hide();
+    });
+
+});
+
+$('#cliente_cep').change(function() {
+
+    var selected = $(this).val()
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://api.postmon.com.br/v1/cep/"+selected, false);
+    xhr.send();
+
+    if(xhr.statusText == 'OK' && xhr.status == 200){
+        var dadosJson = JSON.parse(xhr.response);
+
+        var endereco = document.getElementById('cliente_endereco');
+        endereco.value = dadosJson.logradouro;
+        var bairro = document.getElementById('cliente_bairro');
+        bairro.value = dadosJson.bairro;
+        var cidade = document.getElementById('cliente_cidade');
+        cidade.value = dadosJson.cidade;
+        var estado = document.getElementById('cliente_uf');
+        estado.value = dadosJson.estado;
+        var codIbge = document.getElementById('cliente_codCidade');
+        codIbge.value = dadosJson.cidade_info.codigo_ibge;
+    }
+
 });

@@ -29,10 +29,11 @@ class UserController extends Controller
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
+
         return $this->render("security/login.html.twig", array(
             "error" => $error,
             "last_username" => $lastUsername,
-//            'params' => $params,
+            'params' => $this->get('app.consultacnpj')->getCaptcha(),
         ));
     }
 
@@ -118,5 +119,38 @@ class UserController extends Controller
         return $empresa->getId();
     }
 
+
+    /**
+     * @Route("/processaConsulta", name="processaConsulta")
+     * @Method({"GET", "POST"})
+     */
+    public function processaConsulta(Request $request){
+
+        // dados da postagem de formulário de CNPJ
+        $cnpj = $request->get('cnpj'); // $_POST['cnpj'];	// Entradas POST devem ser tratadas para evitar injections
+        $captcha_cnpj = $request->get('captcha_cnpj'); // $_POST['captcha_cnpj'];		// Entradas POST devem ser tratadas para evitar injections
+
+        // dados da postagem do formulario de CPF
+//        $cpf = $request->get('captcha_cnpj'); // $_POST['cpf'];						// Entradas POST devem ser tratadas para evitar injections
+//        $datanascim = $_POST['txtDataNascimento'];	// Entradas POST devem ser tratadas para evitar injections
+//        $captcha_cpf = $_POST['captcha_cpf'];		// Entradas POST devem ser tratadas para evitar injections
+
+
+//        if($cnpj AND $captcha_cnpj)
+//        {
+            $getHtmlCNPJ = $this->get('app.consultacnpj')->getHtmlCNPJ($cnpj, $captcha_cnpj);
+        die(var_dump($getHtmlCNPJ));
+            $campos = $this->get('app.consultacnpj')->parseHtmlCNPJ($getHtmlCNPJ);
+//        }
+//        if($cpf AND $datanascim AND $captcha_cpf)
+//        {
+//            $getHtmlCPF = getHtmlCPF($cpf, $datanascim, $captcha_cpf);
+//            $campos = parseHtmlCPF($getHtmlCPF);
+//        }
+
+        die(var_dump($campos));
+//        return new JsonResponse($campos);
+
+    }
 
 }

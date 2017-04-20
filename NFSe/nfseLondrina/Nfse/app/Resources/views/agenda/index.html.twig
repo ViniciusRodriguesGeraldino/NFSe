@@ -1,0 +1,192 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <link href="{{ asset('assets/fullcalendar-3.3.0/fullcalendar.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/fullcalendar-3.3.0/fullcalendar.print.min.css') }}" rel="stylesheet" media="print"/>
+    <script src="{{ asset('assets/fullcalendar-3.3.0/lib/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/fullcalendar-3.3.0/lib/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/fullcalendar-3.3.0/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('assets/fullcalendar-3.3.0/locale/pt-br.js') }}"></script>
+
+    <div class="row col-xs-offset-1 padding-top">
+        <h1>Agenda</h1>
+    </div>
+
+    <div class="row col-xs-offset-1 padding-top">
+        <a href="#" data-toggle="modal" data-target="#modalNovoEvento" class="customer-edit-link">
+            Novo Evento
+        </a>
+    </div>
+
+    <div class="row col-xs-offset-1 padding-top">
+        <div class="col-xs-10">
+            <div id='calendar'></div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    <input type="hidden" id="idConta" value="">
+                    <div id="grid_pagamentos">
+                        <div class="row">
+                            <label class="col-xs-3 control-label padding-left">Hora Inicio: </label>
+                            <div class="col-xs-2">
+                                <input type="text" class="" id="valorTot" value="">
+                            </div>
+
+
+                            <label class="col-xs-3 control-label">Desconto: </label>
+                            <div class="col-xs-2">
+                                <input type="text" class="" id="valorTotDesconto" value="0,00">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-xs-3 control-label padding-left">Valor Pago: </label>
+                            <div class="col-xs-2">
+                                <input type="text" class="" id="valorPago" value="0,00">
+                            </div>
+
+                            <label class="col-xs-3 control-label">Juros: </label>
+                            <div class="col-xs-2">
+                                <input type="text" class="" id="valorTotAcrescimo" value="0,00">
+                            </div>
+                        </div>
+
+                        <div class="row padding-top">
+                            <div class="col-sm-1">
+                                <button id="addFormPag" class="btn btn-sm btn-link" onclick="GeraNovoPgto()">Adicionar Pagamento</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="cancelaModal" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="FinalizarPagamento">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function() {
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'listDay,listWeek,month'
+                },
+
+                // customize the button names,
+                // otherwise they'd all just say "list"
+                views: {
+                    listDay: { buttonText: 'Lista do Dia' },
+                    listWeek: { buttonText: 'Lista da Semana' }
+                },
+
+                defaultView: 'month',
+                navLinks: true, // can click day/week names to navigate views
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+                events: []
+
+            });
+
+            //Carrega Eventos
+            var events = {};
+            events = getEventos();
+
+            for(var i=0; i<events.length; i+=1){
+                var myEvent = {
+                    title: events[i].title,
+                    //allDay: true,
+                    start: events[i].start,
+                    //end: new Date()
+                };
+                $('#calendar').fullCalendar( 'renderEvent', myEvent );
+            }
+
+            //Salvar
+            $(function () {
+                $("#save").click(function () {
+                    var eventsFromCalendar = $('#calendar').fullCalendar('clientEvents');
+                    alert(eventsFromCalendar);
+                    $.ajax(
+                        {
+                            url: '@Url.Action("Save")',
+                            type: 'POST',
+                            traditional: true,
+                            data: { eventsJson: JSON.stringify(eventsFromCalendar) },
+                            dataType: "json",
+                            success: function (response) {
+                                $('#calendar1').fullCalendar('renderEvent', {
+                                    title: title,
+                                    start: start,
+                                    end: end,
+                                }, true);
+                            },
+                            error: function (xhr) {
+                                debugger;
+                                alert(xhr);
+                            }
+
+                        });
+                });
+            });
+
+        });
+
+        function getEventos() {
+
+            var ret;
+            jQuery.ajax({
+                type: "GET",
+                url: "agenda_getEventos",
+                data: {dados: ''},
+                async:false,
+                success: function (data) {
+                    ret = data;
+                }
+            });
+
+            return ret;
+        }
+
+
+    </script>
+    <script type="text/css">
+
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .table th, .table td {
+            border-top: 1px solid !important;
+        }
+        table td {
+            border-top: 1px solid !important;
+            font-size : 14px; !important;
+        }
+        table th {
+            border-top: 1px solid !important;
+            font-size : 11px; !important;
+            color: #23527c;
+            /*background-color: #6897BB;*/
+        }
+
+    </script>
+{% endblock %}

@@ -200,7 +200,7 @@ class NotaController extends Controller
 
         $dados = $request->request->get('dados', null);
         $prods = $request->request->get('produtos', null);
-
+        die(var_dump($dados));
         $totalISS = 0;
         $totalDescontos = 0;
 

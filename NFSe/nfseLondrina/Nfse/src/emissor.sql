@@ -309,3 +309,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 INSERT INTO `user` VALUES ('ROLE_USER','Vinicius','Rodrigues','vinicius@sibrax.com.br','$2y$04$WM17yAB/.9QSwbGPCXrrIuRk6W0ihn52iUzkML0Py9FoFx1bWMhNe',NULL,1),('ROLE_USER','Hilquias','Xuxa','hilquias@sibrax.com.br','$2y$04$WM17yAB/.9QSwbGPCXrrIuRk6W0ihn52iUzkML0Py9FoFx1bWMhNe',NULL,2),('ROLE_USER','Adriano','Dri','adriano@sibrax.com.br','$2y$04$wzMAjWNWsdpWKW4ujFnLEeHfniJ0EfDiyBQ8lAB4Z8TqbicR74.ZK',NULL,3),('ROLE_USER','Teste','AAA','teste@teste.com','$2y$04$6V30nI/lKRo5/iMh9R15duEbgVQOnVimfhyOfHt1ugu8ABuVlZk/y',NULL,4);
+
+
+Create table agenda (
+	id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	data_inicio datetime NOT NULL,
+	data_fim datetime,
+	descricao_evento TEXT,
+	responsavel_evento VARCHAR(255),
+	idCliente int(11)
+)

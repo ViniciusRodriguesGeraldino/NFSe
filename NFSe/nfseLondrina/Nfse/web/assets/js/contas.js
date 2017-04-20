@@ -252,7 +252,21 @@ function habilitaParcelamento() {
 jQuery(document).ready(function () {
     jQuery('#contas_form').submit(function () {
 
-        var dados = jQuery(this).serializeArray();
+        alert('FODEOOO');
+        var dados = {
+            'tipoConta' : document.getElementById('tipoConta').value,
+            'NomeCliente' : document.getElementById('NomeCliente').value,
+            'idCliente' : document.getElementById('idCliente').value,
+            'dataVencimentoNota' : document.getElementById('dataVencimentoNota').value,
+            'numeroDocumento' : document.getElementById('numeroDocumento').value,
+            'PlanoContas' : document.getElementById('PlanoContas').value,
+            'valorTotalDocumento' : document.getElementById('valorTotalDocumento').value,
+            'acrescimos' : document.getElementById('acrescimos').value,
+            'descontos' : document.getElementById('descontos').value,
+            'historico' : document.getElementById('historico').value,
+            'formaPagamento' : document.getElementById('formapagamento').value,
+            'qtdParcelas' : document.getElementById('qtdParcelas').value
+        }
 
         var table = document.getElementById('tabelaLancamentos');
         var rowLength = table.rows.length;
@@ -316,7 +330,7 @@ jQuery(document).ready(function () {
             url: "EditarConta",
             data: {dados: dados, lancamentos: lancs},
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 if (data.success == true){
                     alert('Conta Salva com Sucesso!');
                 }

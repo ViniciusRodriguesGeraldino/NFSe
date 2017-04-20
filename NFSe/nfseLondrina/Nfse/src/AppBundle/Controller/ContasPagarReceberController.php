@@ -212,7 +212,7 @@ class ContasPagarReceberController extends Controller
         $dados = $request->request->get('dados', null);
         $lancs = $request->request->get('lancamentos', null);
 
-        if($dados[0]['value'] == '1'){ //1 = a pagar -- 2 = a receber
+        if($dados['tipoConta'] == '1'){ //1 = a pagar -- 2 = a receber
             $conta->setTipoConta('PAGAR');
         }else{
             $conta->setTipoConta('RECEBER');
@@ -220,7 +220,7 @@ class ContasPagarReceberController extends Controller
 
         $conta->setEmpresa($this->get('app.emp')->getIdEmpresa());
 
-        $idAux = $dados[1]['value']; //Pega o id cliente aqui
+        $idAux = $dados['idCliente']; //Pega o id cliente aqui
         $pos = strpos($idAux, ')');
         $pos -= 1;
         $idAux2 = substr($idAux, 1, $pos );
@@ -231,18 +231,17 @@ class ContasPagarReceberController extends Controller
         $nome = trim($nome);
 
         $conta->setNome($nome);
-        $conta->setNumeroDocumento($dados[3]['value']);
+        $conta->setNumeroDocumento($dados['numeroDocumento']);
         $conta->setDataLancamento(new \DateTime(date('Y-m-d')));
-        $conta->setDataVencimento(new \DateTime(date($this->inverteData($dados[2]['value']))));
-        $conta->setPlano($dados[4]['value']);
-        $conta->setValorTotal($dados[5]['value']);
-        $conta->setAcrescimos($dados[6]['value']);
-        $conta->setDescontos($dados[7]['value']);
+        $conta->setDataVencimento(new \DateTime(date($this->inverteData($dados['dataVencimentoNota']))));
+        $conta->setPlano($dados['PlanoContas']);
+        $conta->setValorTotal($dados['valorTotalDocumento']);
+        $conta->setAcrescimos($dados['acrescimos']);
+        $conta->setDescontos($dados['descontos']);
 //        $conta->setCredito();
 //        $conta->setDebito();
-        $conta->setPlano($dados[4]['value']);
-        $conta->setHistorico($dados[8]['value']);
-        $conta->setPagamento($dados[9]['value']);
+        $conta->setHistorico($dados['historico']);
+        $conta->setPagamento($dados['formaPagamento']);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($conta);
